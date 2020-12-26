@@ -38,12 +38,12 @@ Le seguenti coreografie modellano tutti quanti i possibili processi che possono 
 Le interazioni che non comprendono AS come mittente o destinatario sono molto semplificate, in quanto esterni ad essa e di cui non possiamo conoscere l'implementazione interna.
 
 ```
-ProcessoRegistrazioneInteresseUtente ::= 
+**ProcessoRegistrazioneInteresseUtente** ::= 
 (**reg**: UT -> AS; **reg_res**: AS -> UT)
 ```
 
 ```
-VerificaGiornaliera ::= 
+**VerificaGiornaliera** ::= 
 ( 
 	(**control**: AS -> CA1 ; **control_res**: CA1 -> AS ) | 
 	... | 
@@ -55,7 +55,7 @@ VerificaGiornaliera ::=
 ```
 
 ```
-NotificaVoliLastMinute ::= 
+**NotificaVoliLastMinute** ::= 
 ( **last_minute**: CA<sub>*i*</sub> -> AS ) ; 
 ( 
 	( **notify**: AS -> PG ; **message**: PG -> UT ) + 1 
@@ -63,7 +63,7 @@ NotificaVoliLastMinute ::=
 ```
 
 ```
-AcquistoOfferta ::= 
+**AcquistoOfferta** ::= 
 ( **ins_code**: UT -> AS; **ins_code_res**: AS -> UT ) ;
 (
 	(
@@ -85,10 +85,10 @@ AcquistoOfferta ::=
 ```
 
 ### Verifica della connectedness delle coreografie
-- ProcessoRegistrazioneInteresseUtente è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
-- VerificaGiornaliera: la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate. Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni (**control** ; **control_res**) fra AS e i vari CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di **notify** è AS. Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT. Essendo AS il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito.
-- NotificaVoliLastMinute è connessa in modo non dissimile a quanto avviene in VerificaGiornaliera. AS è ricevente in **last_minute** e mittente in **notify** dopodiché PG è ricevente in **notify** e mittente in **message**. Da notare che **notify** e **message**, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, ProntoGram resterebbe in attesa ma non sarebbe un problema poiché è il suo compito.
-- AcquistoOfferta è connessa perché:
+- **ProcessoRegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
+- **VerificaGiornaliera**: la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate. Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni (**control** ; **control_res**) fra AS e i vari CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di **notify** è AS. Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT. Essendo AS il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito.
+- **NotificaVoliLastMinute** è connessa in modo non dissimile a quanto avviene in **VerificaGiornaliera**. AS è ricevente in **last_minute** e mittente in **notify** dopodiché PG è ricevente in **notify** e mittente in **message**. Da notare che **notify** e **message**, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, ProntoGram resterebbe in attesa ma non sarebbe un problema poiché è il suo compito.
+- **AcquistoOfferta** è connessa perché:
   - il ricevente di **ins_code** corrisponde al mittente di **ins_code_res**;
   - il mittente di **req_pay** è lo stesso di **ins_code_res** e quindi si verifica la condizione di tipo "Sender" poiché non è richiesto che la ricezione da parte di UT in **ins_code_res** avvenga prima di quella in **req_pay** ma è certamente necessario che **req_pay** avvenga dopo **ins_code_res**;
   - l'interazione **req_pay** ha il ricevente corrispondente al mittente di **pay_offer**;
@@ -107,12 +107,12 @@ Seguono le proiezioni delle coreografie, divise per ruolo.
 
 ### AS (ACMESky)
 ```
-proj(ProcessoRegistrazioneInteresseUtente, AS) = 
+proj(**ProcessoRegistrazioneInteresseUtente**, AS) = 
 ( **reg**@UT ; ^**reg_res**@UT )
 ```
 
 ```
-proj(VerificaGiornaliera, AS) = 
+proj(**VerificaGiornaliera**, AS) = 
 ( 
   (^**control**@CA1 ; **control_res**@CA1 ) | 
   ... | 
@@ -124,7 +124,7 @@ proj(VerificaGiornaliera, AS) =
 ```
 
 ```
-proj(NotificaVoliLastMinute, AS) = 
+proj(**NotificaVoliLastMinute**, AS) = 
 ( **last_minute**@CA<sub>*i*</sub> ) ; 
 ( 
   ( ^**notify**@PG ; 1 ) + 1 
@@ -132,7 +132,7 @@ proj(NotificaVoliLastMinute, AS) =
 ```
 
 ```
-proj(AcquistoOfferta, AS) = 
+proj(**AcquistoOfferta**, AS) = 
 ( **ins_code**@UT ; ^**ins_code_res**@UT ) ; 
 (
 	(
@@ -155,12 +155,12 @@ proj(AcquistoOfferta, AS) =
 
 ### UT (UTente)
 ```
-proj(ProcessoRegistrazioneInteresseUtente, UT) = 
+proj(**ProcessoRegistrazioneInteresseUtente**, UT) = 
 ( ^**reg**@AS ; **reg_res**@AS )
 ```
 
 ```
-proj(VerificaGiornaliera, UT) = 
+proj(**VerificaGiornaliera**, UT) = 
 (
   ( 1 ; 1 ) | 
   ... | 
@@ -173,7 +173,7 @@ proj(VerificaGiornaliera, UT) =
 ```
 
 ```
-proj(NotificaVoliLastMinute, UT) = 
+proj(**NotificaVoliLastMinute**, UT) = 
 ( 1 ) ;  
 ( 
   ( 1 ; **message**@PG  ) + 1 
@@ -182,7 +182,7 @@ proj(NotificaVoliLastMinute, UT) =
 ```
 
 ```
-proj(AcquistoOfferta, UT) = 
+proj(**AcquistoOfferta**, UT) = 
 ( ^**ins_code**@AS ; **ins_code_res**@AS ) ; 
 (
 	( 
@@ -205,12 +205,12 @@ proj(AcquistoOfferta, UT) =
 
 ### DG (Distanze Geografiche)
 ```
-proj(ProcessoRegistrazioneInteresseUtente, DG) = 
+proj(**ProcessoRegistrazioneInteresseUtente**, DG) = 
 ( 1 ; 1 ) = 1
 ```
 
 ```
-proj(VerificaGiornaliera, DG) = 
+proj(**VerificaGiornaliera**, DG) = 
 ( 
   (1 ; 1) | 
   ... | 
@@ -223,7 +223,7 @@ proj(VerificaGiornaliera, DG) =
 ```
 
 ```
-proj(NotificaVoliLastMinute, DG) = 
+proj(**NotificaVoliLastMinute**, DG) = 
 ( 1 ) ; 
 ( 
   ( 1 ; 1 ) + 1 
@@ -232,7 +232,7 @@ proj(NotificaVoliLastMinute, DG) =
 ```
 
 ```
-proj(AcquistoOfferta, DG) = 
+proj(**AcquistoOfferta**, DG) = 
 ( 1 ; 1 ) ; 
 (
 	(
@@ -255,12 +255,12 @@ proj(AcquistoOfferta, DG) =
 
 ### PP (Provider Pagamenti)
 ```
-proj(ProcessoRegistrazioneInteresseUtente, PP) = 
+proj(**ProcessoRegistrazioneInteresseUtente**, PP) = 
 ( 1 ; 1 ) = 1
 ```
 
 ```
-proj(VerificaGiornaliera, PP) = 
+proj(**VerificaGiornaliera**, PP) = 
 ( 
   ( 1 ; 1 ) | 
   ... | 
@@ -272,7 +272,7 @@ proj(VerificaGiornaliera, PP) =
 ```
 
 ```
-proj(NotificaVoliLastMinute, PP) = 
+proj(**NotificaVoliLastMinute**, PP) = 
 ( 1 ) ; 
 ( 
   ( 1 ; 1 ) + 1 
@@ -280,7 +280,7 @@ proj(NotificaVoliLastMinute, PP) =
 ```
 
 ```
-proj(AcquistoOfferta, PP) = 
+proj(**AcquistoOfferta**, PP) = 
 ( 1 ; 1 ) ; 
 (
 	( 
@@ -303,12 +303,12 @@ proj(AcquistoOfferta, PP) =
 
 ### PG (ProntoGram)
 ```
-proj(ProcessoRegistrazioneInteresseUtente, PG) = 
+proj(**ProcessoRegistrazioneInteresseUtente**, PG) = 
 ( 1 ; 1 ) = 1
 ```
 
 ```
-proj(VerificaGiornaliera, PG) = 
+proj(**VerificaGiornaliera**, PG) = 
 ( 
   ( 1 ; 1 ) | 
   ... | 
@@ -320,7 +320,7 @@ proj(VerificaGiornaliera, PG) =
 ```
 
 ```
-proj(NotificaVoliLastMinute, PG) = 
+proj(**NotificaVoliLastMinute**, PG) = 
 ( 1 ) ; 
 ( 
   ( **notify**@AS ; ^**notify**@UT ) + 1 
@@ -328,7 +328,7 @@ proj(NotificaVoliLastMinute, PG) =
 ```
 
 ```
-proj(AcquistoOfferta, PG) = 
+proj(**AcquistoOfferta**, PG) = 
 ( 1 ; 1 ) ; 
 (
 	( 
@@ -351,12 +351,12 @@ proj(AcquistoOfferta, PG) =
 
 ### CT<sub>*j*</sub> (Compagnia Trasporti)
 ```
-proj(ProcessoRegistrazioneInteresseUtente, CT<sub>*j*</sub>) = 
+proj(**ProcessoRegistrazioneInteresseUtente**, CT<sub>*j*</sub>) = 
 ( 1 ; 1 ) = 1
 ```
 
 ```
-proj(VerificaGiornaliera, CT<sub>*j*</sub>) = 
+proj(**VerificaGiornaliera**, CT<sub>*j*</sub>) = 
 ( 
   ( 1 ; 1 ) | 
   ... | 
@@ -368,7 +368,7 @@ proj(VerificaGiornaliera, CT<sub>*j*</sub>) =
 ```
 
 ```
-proj(NotificaVoliLastMinute, CT<sub>*j*</sub>) = 
+proj(**NotificaVoliLastMinute**, CT<sub>*j*</sub>) = 
 ( 1 ) ; 
 ( 
   ( 1 ; 1 ) + 1 
@@ -376,7 +376,7 @@ proj(NotificaVoliLastMinute, CT<sub>*j*</sub>) =
 ```
 
 ```
-proj(AcquistoOfferta, CT<sub>*j*</sub>) = 
+proj(**AcquistoOfferta**, CT<sub>*j*</sub>) = 
 ( 1 ; 1 ) ; 
 (
 	( 
@@ -399,12 +399,12 @@ proj(AcquistoOfferta, CT<sub>*j*</sub>) =
 
 ### CA<sub>*i*</sub> (Compagnia Aerea)
 ```
-proj(ProcessoRegistrazioneInteresseUtente, CA<sub>*i*</sub>) = 
+proj(**ProcessoRegistrazioneInteresseUtente**, CA<sub>*i*</sub>) = 
 ( 1 ; 1 ) = 1
 ```
 
 ```
-proj(VerificaGiornaliera, CA<sub>*i*</sub>) = 
+proj(**VerificaGiornaliera**, CA<sub>*i*</sub>) = 
 ( 
   (1 ; 1) | 
   ... | 
@@ -418,7 +418,7 @@ proj(VerificaGiornaliera, CA<sub>*i*</sub>) =
 ```
 
 ```
-proj(NotificaVoliLastMinute, CA<sub>*i*</sub>) = 
+proj(**NotificaVoliLastMinute**, CA<sub>*i*</sub>) = 
 ( ^**last_minute**@AS ) ; 
 ( 
   ( 1 ; 1 ) + 1 
@@ -426,7 +426,7 @@ proj(NotificaVoliLastMinute, CA<sub>*i*</sub>) =
 ```
 
 ```
-proj(AcquistoOfferta, CA<sub>*i*</sub>) = 
+proj(**AcquistoOfferta**, CA<sub>*i*</sub>) = 
 ( 1 ; 1 ) ; 
 ( 
 	( 
