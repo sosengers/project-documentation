@@ -1,3 +1,9 @@
+<style>
+    div#choreographies ul li,
+    div#projections ul li {
+        list-style-type: none;
+	}
+</style>
 # Coreografie, ruoli e proiezioni delle coreografie sui ruoli
 
 ## Sigle e nomenclatura
@@ -37,52 +43,56 @@
 Le seguenti coreografie modellano tutti quanti i possibili processi che possono avvenire nel sistema che verrà implementato.  
 Le interazioni che non comprendono AS come mittente o destinatario sono molto semplificate, in quanto esterni ad essa e di cui non possiamo conoscere l'implementazione interna.
 
-```
-**ProcessoRegistrazioneInteresseUtente** ::= 
+<div id="choreographies">
+
+**ProcessoRegistrazioneInteresseUtente** ::=  
 (**reg**: UT -> AS; **reg_res**: AS -> UT)
-```
 
-```
-**VerificaGiornaliera** ::= 
-( 
-	(**control**: AS -> CA1 ; **control_res**: CA1 -> AS ) | 
-	... | 
-	(**control**: AS -> CAN ; **control_res**: CAN -> AS ) 
-) ; 
-( 
-	( **notify**: AS -> PG ; **message**: PG -> UT ) + 1 
-)
-```
-
-```
-**NotificaVoliLastMinute** ::= 
-( **last_minute**: CA<sub>*i*</sub> -> AS ) ; 
-( 
-	( **notify**: AS -> PG ; **message**: PG -> UT ) + 1 
-)
-```
-
-```
-**AcquistoOfferta** ::= 
-( **ins_code**: UT -> AS; **ins_code_res**: AS -> UT ) ;
+**VerificaGiornaliera** ::=  
 (
-	(
-    		( **req_pay**: AS -> PP ; **pay_offer**: PP -> UT ;  **pay_offer_res**: UT -> PP ; **req_pay_res**: PP -> AS ) ;
-		( 
-			(
-				( **buy_flights**: AS -> CA<sub>*i*</sub> ; **buy_flights_res**: CA<sub>*i*</sub> -> AS ) ;
-    				( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS ) ;
-    				(
-        				( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS) + 1 
-				)
-			)  
-			+ 1
-		) 
-	)
-	+ 1
-) ;
+- ( **control**: AS -> CA<sub>*1*</sub> ; **control_res**: CA<sub>*1*</sub> -> AS ) |  
+- ... |  
+- ( **control**: AS -> CA<sub>*N*</sub> ; **control_res**: CA<sub>*N*</sub> -> AS )
+  
+) ;  
+(
+- ( **notify**: AS -> PG ; **message**: PG -> UT ) + 1  
+
+)
+
+**NotificaVoliLastMinute** ::=  
+( **last_minute**: CA<sub>*i*</sub> -> AS ) ;  
+(  
+- ( **notify**: AS -> PG ; **message**: PG -> UT ) + 1  
+
+)
+
+**AcquistoOfferta** ::=  
+( **ins_code**: UT -> AS; **ins_code_res**: AS -> UT ) ;  
+(  
+- (  
+    - ( **req_pay**: AS -> PP ; **pay_offer**: PP -> UT ;  **pay_offer_res**: UT -> PP ; **req_pay_res**: PP -> AS ) ;  
+	- (  
+		- (  
+			- ( **buy_flights**: AS -> CA<sub>*i*</sub> ; **buy_flights_res**: CA<sub>*i*</sub> -> AS ) ;  
+			- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS ) ;  
+			- (  
+				- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS) + 1  
+				
+			- )  
+			
+		- )  
+		- \+ 1  
+		
+	- )  
+	
+- )  
+- \+ 1  
+
+) ;  
 ( **end_operation**: AS -> UT )
-```
+
+</div>
 
 ### Verifica della connectedness delle coreografie
 - **ProcessoRegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
@@ -105,344 +115,354 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 ## Proiezioni
 Seguono le proiezioni delle coreografie, divise per ruolo.
 
+<div id="projections">
+
 ### AS (ACMESky)
-```
-proj(**ProcessoRegistrazioneInteresseUtente**, AS) = 
-( **reg**@UT ; ^**reg_res**@UT )
-```
 
-```
-proj(**VerificaGiornaliera**, AS) = 
-( 
-  (^**control**@CA1 ; **control_res**@CA1 ) | 
-  ... | 
-  (^**control**@CAN ; **control_res**@CAN ) 
-) ; 
-( 
-  ( ^**notify**@PG ; 1 ) + 1 
+proj(**ProcessoRegistrazioneInteresseUtente**, AS) =  
+( **reg**@UT ; <span style="text-decoration: overline">**reg_res**</span>@UT )
+
+proj(**VerificaGiornaliera**, AS) =   
+(  
+- (<span style="text-decoration: overline">**control**</span>@CA<sub>*1*</sub> ; **control_res**@CA<sub>*1*</sub> ) |  
+- ... |  
+- (<span style="text-decoration: overline">**control**</span>@CA<sub>*N*</sub> ; **control_res**@CA<sub>*N*</sub> )  
+
+) ;  
+(  
+- ( <span style="text-decoration: overline">**notify**</span>@PG ; 1 ) + 1  
+
 )
-```
 
-```
-proj(**NotificaVoliLastMinute**, AS) = 
-( **last_minute**@CA<sub>*i*</sub> ) ; 
-( 
-  ( ^**notify**@PG ; 1 ) + 1 
+proj(**NotificaVoliLastMinute**, AS) =  
+( **last_minute**@CA<sub>*i*</sub> ) ;  
+(  
+- ( <span style="text-decoration: overline">**notify**</span>@PG ; 1 ) + 1  
+
 )
-```
 
-```
-proj(**AcquistoOfferta**, AS) = 
-( **ins_code**@UT ; ^**ins_code_res**@UT ) ; 
-(
-	(
-		( ^**req_pay**@PP ; 1 ; 1 ; **req_pay_res**@AS ) ; 
-		(
-			( 
-				( ^**buy_flights**@CA<sub>*i*</sub> ; **buy_flights_res**@CA<sub>*i*</sub> ) ; 
-				( ^**calc_dist**@DG ; **calc_dist_res**@DG ) ; 
-				( 
-					( ^**pren_trs**@CT<sub>*j*</sub> ; **pren_trs_res**@CT<sub>*j*</sub> ) + 1 
-				)
-			)
-			+ 1
-		)
-	)
-  + 1 
-) ;
-(^**end_operation**@UT)
-```
+proj(**AcquistoOfferta**, AS) =  
+( **ins_code**@UT ; <span style="text-decoration: overline">**ins_code_res**</span>@UT ) ;  
+(  
+- (  
+	- ( <span style="text-decoration: overline">**req_pay**</span>@PP ; 1 ; 1 ; **req_pay_res**@AS ) ;  
+	- (  
+		- (  
+			- ( <span style="text-decoration: overline">**buy_flights**</span>@CA<sub>*i*</sub> ; **buy_flights_res**@CA<sub>*i*</sub> ) ;  
+			- ( <span style="text-decoration: overline">**calc_dist**</span>@DG ; **calc_dist_res**@DG ) ;  
+			- (  
+				- ( <span style="text-decoration: overline">**pren_trs**</span>@CT<sub>*j*</sub> ; **pren_trs_res**@CT<sub>*j*</sub> ) + 1  
+				     
+			- )  
+		- )  
+		- \+ 1  
+		
+	- )  
+	
+- )  
+- \+ 1  
+
+) ;  
+(<span style="text-decoration: overline">**end_operation**</span>@UT)  
+
 
 ### UT (UTente)
-```
-proj(**ProcessoRegistrazioneInteresseUtente**, UT) = 
-( ^**reg**@AS ; **reg_res**@AS )
-```
 
-```
-proj(**VerificaGiornaliera**, UT) = 
-(
-  ( 1 ; 1 ) | 
-  ... | 
-  ( 1 ; 1 ) 
-) ; 
-( 
-  ( 1 ; **message**@PG ) + 1 
-) 
+proj(**ProcessoRegistrazioneInteresseUtente**, UT) =  
+( <span style="text-decoration: overline">**reg**</span>@AS ; **reg_res**@AS )
+
+proj(**VerificaGiornaliera**, UT) =  
+(  
+- ( 1 ; 1 ) |  
+- ... |  
+- ( 1 ; 1 )  
+
+) ;  
+(  
+- ( 1 ; **message**@PG ) + 1  
+
+)  
 = **message**@PG
-```
 
-```
-proj(**NotificaVoliLastMinute**, UT) = 
+proj(**NotificaVoliLastMinute**, UT) =  
 ( 1 ) ;  
-( 
-  ( 1 ; **message**@PG  ) + 1 
-) 
-= **message**@PG
-```
+(  
+- ( 1 ; **message**@PG ) + 1  
 
-```
-proj(**AcquistoOfferta**, UT) = 
-( ^**ins_code**@AS ; **ins_code_res**@AS ) ; 
-(
-	( 
-		( 1 ; **pay_offer**@PP ; ^**pay_offer_res**@PP ; 1 ) ; 
-		(
-			(
-				( 1 ; 1 ) ; 
-				( 1 ; 1 ) ; 
-				( 
-					( 1 ; 1 ) + 1 
-				) 
-			)
-			+ 1 
-		) 
-	)
-	+ 1
-) ; 
-( **end_operation**@AS ) = ( ^**ins_code**@AS ; **ins_code_res**@AS ) ; ( **pay_offer**@PP ; ^**pay_offer_res**@PP ) ; ( **end_operation**@AS )
-```
+)  
+= **message**@PG
+
+proj(**AcquistoOfferta**, UT) =  
+( <span style="text-decoration: overline">**ins_code**</span>@AS ; **ins_code_res**@AS ) ;  
+(  
+- (  
+	- ( 1 ; **pay_offer**@PP ; <span style="text-decoration: overline">**pay_offer_res**</span>@PP ; 1 ) ;  
+	- (  
+		- (  
+			- ( 1 ; 1 ) ;  
+			- ( 1 ; 1 ) ;  
+			- (  
+				- ( 1 ; 1 ) + 1  
+				
+			- )  
+			
+		- )  
+		- \+ 1  
+		
+	- )  
+	
+- )  
+- \+ 1  
+
+) ;  
+( **end_operation**@AS ) = ( ( <span style="text-decoration: overline">**ins_code**</span>@AS ; **ins_code_res**@AS ) ; ( **pay_offer**@PP ; <span style="text-decoration: overline">**pay_offer_res**</span>@PP ) ; **end_operation**@AS )
 
 ### DG (Distanze Geografiche)
-```
-proj(**ProcessoRegistrazioneInteresseUtente**, DG) = 
+
+proj(**ProcessoRegistrazioneInteresseUtente**, DG) =  
 ( 1 ; 1 ) = 1
-```
 
-```
-proj(**VerificaGiornaliera**, DG) = 
-( 
-  (1 ; 1) | 
-  ... | 
-  ( 1 ; 1 ) 
-) ; 
-( 
-  ( 1 ; 1 ) + 1 
-) 
+proj(**VerificaGiornaliera**, DG) =  
+(  
+- (1 ; 1) |  
+- ... |  
+- ( 1 ; 1 )  
+
+) ;  
+(  
+- ( 1 ; 1 ) + 1  
+
+)  
 = 1
-```
 
-```
-proj(**NotificaVoliLastMinute**, DG) = 
-( 1 ) ; 
-( 
-  ( 1 ; 1 ) + 1 
-) 
+proj(**NotificaVoliLastMinute**, DG) =  
+( 1 ) ;  
+(  
+- ( 1 ; 1 ) + 1  
+
+)  
 = 1
-```
 
-```
-proj(**AcquistoOfferta**, DG) = 
-( 1 ; 1 ) ; 
-(
-	(
-		( 1 ; 1 ; 1 ; 1 ) ; 
-		(
-			(
-				( 1 ; 1 ) ; 
-				( **calc_dist**@AS ; ^**calc_dist_res**@AS ) ; 
-				( 
-					( 1 ; 1 ) + 1 
-				) 
-			)
-			+ 1
-		)
-	)
-	+ 1
-) ; 
-( 1 ) = ( **calc_dist**@AS ; ^**calc_dist_res**@AS )
-```
+proj(**AcquistoOfferta**, DG) =  
+( 1 ; 1 ) ;  
+(  
+- (  
+	- ( 1 ; 1 ; 1 ; 1 ) ;  
+	- (  
+		- (  
+			- ( 1 ; 1 ) ;  
+			- ( **calc_dist**@AS ;<span style="text-decoration: overline">**calc_dist_res**</span>@AS ) ;  
+			- (  
+				- ( 1 ; 1 ) + 1  
+				
+			- )  
+			
+		- )  
+		- \+ 1  
+		
+	- )  
+	
+- )   
+- \+ 1  
+  
+) ;  
+( 1 ) = ( **calc_dist**@AS ; <span style="text-decoration: overline">**calc_dist_res**</span>@AS )
 
 ### PP (Provider dei Pagamenti)
-```
-proj(**ProcessoRegistrazioneInteresseUtente**, PP) = 
+
+proj(**ProcessoRegistrazioneInteresseUtente**, PP) =  
 ( 1 ; 1 ) = 1
-```
 
-```
-proj(**VerificaGiornaliera**, PP) = 
-( 
-  ( 1 ; 1 ) | 
-  ... | 
-  ( 1 ; 1 ) 
-) ; 
-( 
-  ( 1 ; 1 ) + 1 
+proj(**VerificaGiornaliera**, PP) =  
+(  
+- ( 1 ; 1 ) |  
+- ... |  
+- ( 1 ; 1 )  
+
+) ;  
+(  
+- ( 1 ; 1 ) + 1  
+
 ) = 1
-```
 
-```
-proj(**NotificaVoliLastMinute**, PP) = 
-( 1 ) ; 
-( 
-  ( 1 ; 1 ) + 1 
+proj(**NotificaVoliLastMinute**, PP) =  
+( 1 ) ;  
+(  
+- ( 1 ; 1 ) + 1  
+
 ) = 1
-```
 
-```
-proj(**AcquistoOfferta**, PP) = 
-( 1 ; 1 ) ; 
-(
-	( 
-		( **req_pay**@AS ; ^**pay_offer**@UT ; **pay_offer_res**@UT ; ^**req_pay_res**@AS ) ; 
-		(
-			(
-				( 1 ; 1 ) ; 
-				( 1 ; 1 ) ; 
-				( 
-					( 1 ; 1 ) + 1 
-				) 
-			)
-			+ 1
-		)
-	)
-	+ 1
-);
-( 1 ) = ( **req_pay**@AS ; ^**pay_offer**@UT ; **pay_offer_res**@UT ; ^**req_pay_res**@AS )
-```
+proj(**AcquistoOfferta**, PP) =  
+( 1 ; 1 ) ;  
+(  
+- (  
+	- ( **req_pay**@AS ; <span style="text-decoration: overline">**pay_offer**</span>@UT ; **pay_offer_res**@UT ; <span style="text-decoration: overline">**req_pay_res**</span>@AS ) ;  
+	- (  
+		- (  
+			- ( 1 ; 1 ) ;  
+			- ( 1 ; 1 ) ;  
+			- (  
+			    - ( 1 ; 1 ) + 1  
+		    - )  
+                
+		- )  
+		- \+ 1  
+		
+	- )  
+	
+- )  
+- \+ 1  
+
+);  
+( 1 ) = ( **req_pay**@AS ; <span style="text-decoration: overline">**pay_offer**</span>@UT ; **pay_offer_res**@UT ; <span style="text-decoration: overline">**req_pay_res**</span>@AS )  
 
 ### PG (ProntoGram)
-```
-proj(**ProcessoRegistrazioneInteresseUtente**, PG) = 
+
+proj(**ProcessoRegistrazioneInteresseUtente**, PG) =  
 ( 1 ; 1 ) = 1
-```
 
-```
-proj(**VerificaGiornaliera**, PG) = 
-( 
-  ( 1 ; 1 ) | 
-  ... | 
-  ( 1 ; 1 ) 
-) ; 
-( 
-  ( **notify**@AS ; ^**message**@UT ) + 1 
-) = ( **notify**@AS ; ^**message**@UT )
-```
+proj(**VerificaGiornaliera**, PG) =  
+(  
+- ( 1 ; 1 ) |  
+- ... |  
+- ( 1 ; 1 )  
 
-```
-proj(**NotificaVoliLastMinute**, PG) = 
-( 1 ) ; 
-( 
-  ( **notify**@AS ; ^**notify**@UT ) + 1 
-) = ( **notify**@AS ; ^**notify**@UT )
-```
+) ;  
+(  
+- ( **notify**@AS ; <span style="text-decoration: overline">**message**</span>@UT ) + 1  
 
-```
-proj(**AcquistoOfferta**, PG) = 
-( 1 ; 1 ) ; 
-(
-	( 
-		( 1 ; 1 ; 1 ; 1 ) ; 
-		(
-			( 
-				( 1 ; 1 ) ; 
-				( 1 ; 1 ) ; 
-				( 
-					( 1 ; 1 ) + 1 
-				) 
-			)
-			+ 1 
-		)
-	)
-	+ 1
-); 
+) = ( **notify**@AS ; <span style="text-decoration: overline">**message**</span>@UT )  
+
+proj(**NotificaVoliLastMinute**, PG) =  
+( 1 ) ;  
+(  
+- ( **notify**@AS ; <span style="text-decoration: overline">**notify**</span>@UT ) + 1  
+ 
+) = ( **notify**@AS ; <span style="text-decoration: overline">**notify**</span>@UT )
+
+proj(**AcquistoOfferta**, PG) =  
+( 1 ; 1 ) ;  
+(  
+- (  
+	- ( 1 ; 1 ; 1 ; 1 ) ;  
+	- (  
+		- (  
+			- ( 1 ; 1 ) ;  
+			- ( 1 ; 1 ) ;  
+			- (   
+			    - ( 1 ; 1 ) + 1  
+			    
+		    - )  
+		    
+		- )  
+		- \+ 1  
+		
+	- )  
+	
+- )  
+- \+ 1  
+
+);  
 ( 1 ) = 1
-```
 
 ### CT<sub>*j*</sub> (Compagnia Trasporti)
-```
-proj(**ProcessoRegistrazioneInteresseUtente**, CT<sub>*j*</sub>) = 
+
+proj(**ProcessoRegistrazioneInteresseUtente**, CT<sub>*j*</sub>) =  
 ( 1 ; 1 ) = 1
-```
 
-```
-proj(**VerificaGiornaliera**, CT<sub>*j*</sub>) = 
-( 
-  ( 1 ; 1 ) | 
-  ... | 
-  ( 1 ; 1 ) 
-) ; 
-( 
-  ( 1 ; 1 ) + 1 
+proj(**VerificaGiornaliera**, CT<sub>*j*</sub>) =  
+(  
+- ( 1 ; 1 ) |  
+- ... |  
+- ( 1 ; 1 )  
+
+) ;  
+(  
+- ( 1 ; 1 ) + 1  
+
 ) = 1
-```
 
-```
-proj(**NotificaVoliLastMinute**, CT<sub>*j*</sub>) = 
-( 1 ) ; 
-( 
-  ( 1 ; 1 ) + 1 
+proj(**NotificaVoliLastMinute**, CT<sub>*j*</sub>) =  
+( 1 ) ;  
+(  
+- ( 1 ; 1 ) + 1  
+
 ) = 1
-```
 
-```
-proj(**AcquistoOfferta**, CT<sub>*j*</sub>) = 
-( 1 ; 1 ) ; 
-(
-	( 
-		( 1 ; 1 ; 1 ; 1 ) ; 
-		(
-			( 
-				( 1 ; 1 ) ; 
-				( 1 ; 1 ) ; 
-				( 
-					( **pren_trs**@AS ; ^**pren_trs_res**@AS ) + 1 
-				)
-			) 
-			+ 1
-		) 
-	)
-	+ 1
-) ; 
-( 1 ) = ( **pren_trs**@AS ; ^**pren_trs_res**@AS )
-```
+proj(**AcquistoOfferta**, CT<sub>*j*</sub>) =  
+( 1 ; 1 ) ;  
+( 
+- (  
+	- ( 1 ; 1 ; 1 ; 1 ) ;  
+	- (  
+		- (  
+		    - ( 1 ; 1 ) ;  
+			- ( 1 ; 1 ) ;  
+			- (  
+			    - ( **pren_trs**@AS ; <span style="text-decoration: overline">**pren_trs_res**</span>@AS ) + 1  
+			    
+			- )  
+			
+		- )  
+		- \+ 1  
+		
+	- )  
+	
+- )  
+- \+ 1  
+ 
+) ;  
+( 1 ) = ( **pren_trs**@AS ; <span style="text-decoration: overline">**pren_trs_res**</span>@AS )
 
 ### CA<sub>*i*</sub> (Compagnia Aerea)
-```
-proj(**ProcessoRegistrazioneInteresseUtente**, CA<sub>*i*</sub>) = 
+
+proj(**ProcessoRegistrazioneInteresseUtente**, CA<sub>*i*</sub>) =  
 ( 1 ; 1 ) = 1
-```
 
-```
-proj(**VerificaGiornaliera**, CA<sub>*i*</sub>) = 
-( 
-  (1 ; 1) | 
-  ... | 
-  ( **control**@AS ; ^**control_res**@AS ) | 
-  ... | 
-  ( 1 ; 1 ) 
-) ; 
-( 
-  ( 1 ; 1 ) + 1 
-) = ( **control**@AS ; ^**control_res**@AS )
-```
+proj(**VerificaGiornaliera**, CA<sub>*i*</sub>) =  
+(  
+- (1 ; 1) |  
+- ... |  
+- ( **control**@AS ; <span style="text-decoration: overline">**control_res**</span>@AS ) |  
+- ... |  
+- ( 1 ; 1 )  
 
-```
-proj(**NotificaVoliLastMinute**, CA<sub>*i*</sub>) = 
-( ^**last_minute**@AS ) ; 
-( 
-  ( 1 ; 1 ) + 1 
-) = ^**last_minute**@AS
-```
+) ;  
+(  
+- ( 1 ; 1 ) + 1  
 
-```
-proj(**AcquistoOfferta**, CA<sub>*i*</sub>) = 
-( 1 ; 1 ) ; 
-( 
-	( 
-		( 1 ; 1 ; 1 ; 1 ) ; 
-		(
-			(
-				( **buy_flights**@AS ; ^**buy_flights_res**@AS ) ;
-				( 1 ; 1 ) ; 
-				( 
-					( 1 ; 1 ) + 1
-				)
-			)
-			+ 1
-		)
-	)
-	+ 1
-) ;
-( 1 ) = ( **buy_flights**@AS ; ^**buy_flights_res**@AS )
-```
+) = ( **control**@AS ; <span style="text-decoration: overline">**control_res**</span>@AS )
+
+proj(**NotificaVoliLastMinute**, CA<sub>*i*</sub>) =  
+( <span style="text-decoration: overline">**last_minute**</span>@AS ) ;  
+(  
+- ( 1 ; 1 ) + 1  
+
+) = <span style="text-decoration: overline">**last_minute**</span>@AS
+
+proj(**AcquistoOfferta**, CA<sub>*i*</sub>) =  
+( 1 ; 1 ) ;  
+(  
+- (  
+	- ( 1 ; 1 ; 1 ; 1 ) ;  
+	- (  
+		- (  
+			- ( **buy_flights**@AS ; <span style="text-decoration: overline">**buy_flights_res**</span>@AS ) ;  
+			- ( 1 ; 1 ) ;  
+			- (  
+				- ( 1 ; 1 ) + 1  
+				
+			- )  
+			
+		- )  
+		- \+ 1  
+		
+	- )  
+	 
+- )  
+- \+ 1  
+ 
+) ;  
+( 1 ) = ( **buy_flights**@AS ; <span style="text-decoration: overline">**buy_flights_res**</span>@AS )
+
+</div>
