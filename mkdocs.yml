@@ -1,17 +1,5 @@
-site_name: Relazione progetto "ACMESky" | SOSENG
-repo_url: https://github.com/sosengers/project-documentation
-
+site_name: ACMESky - Documentazione progetto | SOSENG
 theme:
   name: material
-  custom_dir: "docs_theme"
-
-markdown_extensions:
-  # https://github.com/g-provost/lightgallery-markdown
-  - lightgallery
-  # https://squidfunk.github.io/mkdocs-material/extensions/admonition/
-  - admonition
-  # https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
-  - codehilite
-
 nav:
-  - Coreografie: "coreografie.md"
+  - Home: "index.md"
