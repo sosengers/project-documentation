@@ -1,5 +1,13 @@
 site_name: ACMESky - Documentazione progetto | SOSENG
+repo_name: sosengers/project-documentation
+repo_url: https://github.com/sosengers/project-documentation
 theme:
   name: material
+  language: it
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - toc.integrate
 nav:
   - Home: "index.md"
