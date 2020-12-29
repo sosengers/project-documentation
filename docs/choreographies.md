@@ -70,33 +70,32 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 **AcquistoOfferta** ::=  
 ( **ins_code**: UT -> AS ) ;  
 (  
+- ( **req_pay**: AS -> PP ; **pay_offer**: PP -> UT ; **pay_offer_res**: UT -> PP ; **req_pay_res**: PP -> AS ) ;  
 - (  
-    - ( **req_pay**: AS -> PP ; **pay_offer**: PP -> UT ;  **pay_offer_res**: UT -> PP ; **req_pay_res**: PP -> AS ) ;   
+	- ( **buy_flights**: AS -> CA<sub>_i_</sub> ; **buy_flights_res**: CA<sub>_i_</sub> -> AS ) ;  
 	- (  
-		- ( **buy_flights**: AS -> CA<sub>_i_</sub> ; **buy_flights_res**: CA<sub>_i_</sub> -> AS ) ;
-		- (
-			- (
-				- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS ) ;  <!--Calcolo distanza aereoporto/casa-->
-				- (
-					- (
-						- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS )<sup>\*</sup> ; <!--Calcolo distanze per identificare la compagnia di trasporto-->
-						- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS) 
-					- ) 
-					- \+ 1 
-				- )
+		- (  
+		    <!-- Calcolo distanza aeroporto/casa -->
+			- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS ) ;  
+    			- (  
+    			    <!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
+    				- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS )<sup>\*</sup> ;  
+    				- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS)
 
-			- ) 
-			- \+ 1
-		- ); 
-		- **send_tickets**: AS -> UT
+    			- )  
+    			- \+ 1
 
-	- )   
-	- \+ **payment_failure**: AS -> UT   	
-	
+		- )  
+		- \+ 1
+
+	- );    
+	- **send_tickets**: AS -> UT
+
 - )  
-- \+ **ins_code_failure**: AS -> UT
+- \+ **payment_failure**: AS -> UT
 
-)
+)  
+\+ **ins_code_failure**: AS -> UT
 
 </div>
 
