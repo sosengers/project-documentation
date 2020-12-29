@@ -20,7 +20,7 @@
 ### Nomenclature per le interazioni fra ruoli
 - **reg**: registrazione dell'interesse di un utente per un viaggio;
 - **reg_res**: risposta al task **reg**;
-- **control**: controllo giornaliero della presenza di voli di interesse per l'utente;
+- **control**: controllo giornaliero della presenza di offerte da parte della compagnia aerea;
 - **control_res**: risposta al task **control**;
 - **notify**: notifica della presenza di voli di interesse per l'utente tramite ProntoGram (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;
 - **last_minute**: compagnia aerea notifica ACMESky di un'offerta last minute;
