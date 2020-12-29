@@ -78,13 +78,13 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 		- (  
 		    <!-- Calcolo distanza aeroporto/casa -->
 			- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS ) ;  
-    			- (  
-    			    <!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
-    				- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS )<sup>\*</sup> ;  
-    				- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS)
+			- (  
+				<!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
+				- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS )<sup>\*</sup> ;  
+				- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS)
 
-    			- )  
-    			- \+ 1
+			- )  
+			- \+ 1
 
 		- )  
 		- \+ 1
@@ -150,29 +150,32 @@ proj(**NotificaVoliLastMinute**, AS) =
 )
 
 proj(**AcquistoOfferta**, AS) =  
-( **ins_code**@UT ; <span style="text-decoration: overline">**ins_code_res**</span>@UT ) ;  
-(  
-- (  
-	- ( <span style="text-decoration: overline">**req_pay**</span>@PP ; 1 ; 1 ; **req_pay_res**@AS ) ;  
-	- (  
-		- (  
-			- ( <span style="text-decoration: overline">**buy_flights**</span>@CA<sub>*i*</sub> ; **buy_flights_res**@CA<sub>*i*</sub> ) ;  
+( **ins_code**@UT ) ;  
+(    
+- ( <span style="text-decoration: overline">**req_pay**</span>@PP ; 1 ; 1 ; **req_pay_res**@AS ) ;  
+- (    
+	- ( <span style="text-decoration: overline">**buy_flights**</span>@CA<sub>*i*</sub> ; **buy_flights_res**@CA<sub>*i*</sub> ) ;  
+	- (
+		- (
 			- ( <span style="text-decoration: overline">**calc_dist**</span>@DG ; **calc_dist_res**@DG ) ;  
 			- (  
-				- ( <span style="text-decoration: overline">**pren_trs**</span>@CT<sub>*j*</sub> ; **pren_trs_res**@CT<sub>*j*</sub> ) + 1  
-				     
-			- )  
-		- )  
-		- \+ 1  
-		
-	- )  
-	
-- )  
-- \+ 1  
+				- ( <span style="text-decoration: overline">**calc_dist**</span>@DG ; **calc_dist_res**@DG )<sup>\*</sup>
+				- ( <span style="text-decoration: overline">**pren_trs**</span>@CT<sub>*j*</sub> ; **pren_trs_res**@CT<sub>*j*</sub> )
 
-) ;  
-(<span style="text-decoration: overline">**end_operation**</span>@UT)  
+			- )
+			- \+ 1
 
+		- )
+		- \+ 1
+
+	- );  
+	- <span style="text-decoration: overline">**send_tickets**</span>@UT
+
+- )
+- \+ <span style="text-decoration: overline">**payment_failure**</span>@UT
+
+)  
+\+ <span style="text-decoration: overline">**ins_code_failure**</span>@UT
 
 ### UT (UTente)
 
@@ -201,29 +204,32 @@ proj(**NotificaVoliLastMinute**, UT) =
 = **message**@PG
 
 proj(**AcquistoOfferta**, UT) =  
-( <span style="text-decoration: overline">**ins_code**</span>@AS ; **ins_code_res**@AS ) ;  
+( <span style="text-decoration: overline">**ins_code**</span>@AS ) ;  
 (  
-- (  
-	- ( 1 ; **pay_offer**@PP ; <span style="text-decoration: overline">**pay_offer_res**</span>@PP ; 1 ) ;  
-	- (  
-		- (  
-			- ( 1 ; 1 ) ;  
-			- ( 1 ; 1 ) ;  
+- ( 1 ; **pay_offer**@PP ; <span style="text-decoration: overline">**pay_offer_res**</span>@PP ; 1 ) ;  
+- (    
+	- ( 1 ; 1 ) ;  
+	- (
+		- (
+			- ( 1 ; 1 )
 			- (  
-				- ( 1 ; 1 ) + 1  
-				
-			- )  
-			
-		- )  
-		- \+ 1  
-		
-	- )  
-	
-- )  
-- \+ 1  
+				- ( 1 ; 1 )<sup>\*</sup>
+				- ( 1 ; 1 )
 
-) ;  
-( **end_operation**@AS ) = ( ( <span style="text-decoration: overline">**ins_code**</span>@AS ; **ins_code_res**@AS ) ; ( **pay_offer**@PP ; <span style="text-decoration: overline">**pay_offer_res**</span>@PP ) ; **end_operation**@AS )
+			- )
+			- \+ 1
+
+		- )
+		- \+ 1
+
+	- ) ;
+	- **send_tickets**@AS
+
+- )
+- \+ **payment_failure**@AS
+
+)
+\+ **ins_code_failure**@AS
 
 ### DG (Distanze Geografiche)
 
@@ -252,29 +258,32 @@ proj(**NotificaVoliLastMinute**, DG) =
 = 1
 
 proj(**AcquistoOfferta**, DG) =  
-( 1 ; 1 ) ;  
-(  
-- (  
-	- ( 1 ; 1 ; 1 ; 1 ) ;  
-	- (  
-		- (  
-			- ( 1 ; 1 ) ;  
-			- ( **calc_dist**@AS ;<span style="text-decoration: overline">**calc_dist_res**</span>@AS ) ;  
+( 1 ) ;  
+(    
+- ( 1 ; 1 ; 1 ; 1 ) ;  
+- (    
+	- ( 1 ; 1 ) ;  
+	- (
+		- (
+			- ( **calc_dist**@AS ; <span style="text-decoration: overline">**calc_dist_res**</span>@AS ) ;  
 			- (  
-				- ( 1 ; 1 ) + 1  
-				
-			- )  
-			
-		- )  
-		- \+ 1  
-		
-	- )  
-	
-- )   
-- \+ 1  
-  
-) ;  
-( 1 ) = ( **calc_dist**@AS ; <span style="text-decoration: overline">**calc_dist_res**</span>@AS )
+				- ( **calc_dist**</span>@AS ; <span style="text-decoration: overline">**calc_dist_res**</span>@AS )<sup>\*</sup>
+				- ( 1 ; 1 )
+
+			- )
+			- \+ 1
+
+		- )
+		- \+ 1
+
+	- );  
+	- 1
+
+- )
+- \+ 1
+
+)  
+\+ 1
 
 ### PP (Provider dei Pagamenti)
 
@@ -301,28 +310,32 @@ proj(**NotificaVoliLastMinute**, PP) =
 ) = 1
 
 proj(**AcquistoOfferta**, PP) =  
-( 1 ; 1 ) ;  
-(  
-- (  
-	- ( **req_pay**@AS ; <span style="text-decoration: overline">**pay_offer**</span>@UT ; **pay_offer_res**@UT ; <span style="text-decoration: overline">**req_pay_res**</span>@AS ) ;  
-	- (  
-		- (  
-			- ( 1 ; 1 ) ;  
+( 1 ) ;  
+(    
+- ( **req_pay**@AS ; <span style="text-decoration: overline">**pay_offer**</span>@UT ; **pay_offer_res**@UT ; <span style="text-decoration: overline">**req_pay_res**@AS</span> ) ;  
+- (    
+	- ( 1 ; 1 ) ;  
+	- (
+		- (
 			- ( 1 ; 1 ) ;  
 			- (  
-			    - ( 1 ; 1 ) + 1  
-		    - )  
-                
-		- )  
-		- \+ 1  
-		
-	- )  
-	
-- )  
-- \+ 1  
+				- ( 1 ; 1 )<sup>\*</sup>
+				- ( 1 ; 1 )
 
-);  
-( 1 ) = ( **req_pay**@AS ; <span style="text-decoration: overline">**pay_offer**</span>@UT ; **pay_offer_res**@UT ; <span style="text-decoration: overline">**req_pay_res**</span>@AS )  
+			- )
+			- \+ 1
+
+		- )
+		- \+ 1
+
+	- );  
+	- 1
+
+- )
+- \+ 1
+
+)  
+\+ 1
 
 ### PG (ProntoGram)
 
@@ -349,29 +362,32 @@ proj(**NotificaVoliLastMinute**, PG) =
 ) = ( **notify**@AS ; <span style="text-decoration: overline">**notify**</span>@UT )
 
 proj(**AcquistoOfferta**, PG) =  
-( 1 ; 1 ) ;  
-(  
-- (  
-	- ( 1 ; 1 ; 1 ; 1 ) ;  
-	- (  
-		- (  
+( 1 ) ;  
+(    
+- ( 1 ; 1 ; 1 ; 1 ) ;  
+- (    
+	- ( 1 ; 1 ) ;  
+	- (
+		- (
 			- ( 1 ; 1 ) ;  
-			- ( 1 ; 1 ) ;  
-			- (   
-			    - ( 1 ; 1 ) + 1  
-			    
-		    - )  
-		    
-		- )  
-		- \+ 1  
-		
-	- )  
-	
-- )  
-- \+ 1  
+			- (  
+				- ( 1 ; 1 )<sup>\*</sup>
+				- ( 1 ; 1 )
 
-);  
-( 1 ) = 1
+			- )
+			- \+ 1
+
+		- )
+		- \+ 1
+
+	- );  
+	- 1
+
+- )
+- \+ 1
+
+)  
+\+ 1
 
 ### CT<sub>*j*</sub> (Compagnia Trasporti)
 
@@ -398,29 +414,32 @@ proj(**NotificaVoliLastMinute**, CT<sub>*j*</sub>) =
 ) = 1
 
 proj(**AcquistoOfferta**, CT<sub>*j*</sub>) =  
-( 1 ; 1 ) ;  
-( 
-- (  
-	- ( 1 ; 1 ; 1 ; 1 ) ;  
-	- (  
-		- (  
-		    - ( 1 ; 1 ) ;  
+( 1 ) ;  
+(    
+- ( 1 ; 1 ; 1 ; 1 ) ;  
+- (    
+	- ( 1 ; 1 ) ;  
+	- (
+		- (
 			- ( 1 ; 1 ) ;  
 			- (  
-			    - ( **pren_trs**@AS ; <span style="text-decoration: overline">**pren_trs_res**</span>@AS ) + 1  
-			    
-			- )  
-			
-		- )  
-		- \+ 1  
-		
-	- )  
-	
-- )  
-- \+ 1  
- 
-) ;  
-( 1 ) = ( **pren_trs**@AS ; <span style="text-decoration: overline">**pren_trs_res**</span>@AS )
+				- ( 1 ; 1 )<sup>\*</sup>
+				- ( **pren_trs**</span>@AS; <span style="text-decoration: overline">**pren_trs_res**</span>@AS )
+
+			- )
+			- \+ 1
+
+		- )
+		- \+ 1
+
+	- );  
+	- 1
+
+- )
+- \+ 1
+
+)  
+\+ 1
 
 ### CA<sub>*i*</sub> (Compagnia Aerea)
 
@@ -449,28 +468,31 @@ proj(**NotificaVoliLastMinute**, CA<sub>*i*</sub>) =
 ) = <span style="text-decoration: overline">**last_minute**</span>@AS
 
 proj(**AcquistoOfferta**, CA<sub>*i*</sub>) =  
-( 1 ; 1 ) ;  
-(  
-- (  
-	- ( 1 ; 1 ; 1 ; 1 ) ;  
-	- (  
-		- (  
-			- ( **buy_flights**@AS ; <span style="text-decoration: overline">**buy_flights_res**</span>@AS ) ;  
+( 1 ) ;  
+(    
+- ( 1 ; 1 ; 1 ; 1 ) ;  
+- (    
+	- ( **buy_flights**@AS ; <span style="text-decoration: overline">**buy_flights_res**</span>@CA ) ;  
+	- (
+		- (
 			- ( 1 ; 1 ) ;  
 			- (  
-				- ( 1 ; 1 ) + 1  
-				
-			- )  
-			
-		- )  
-		- \+ 1  
-		
-	- )  
-	 
-- )  
-- \+ 1  
- 
-) ;  
-( 1 ) = ( **buy_flights**@AS ; <span style="text-decoration: overline">**buy_flights_res**</span>@AS )
+				- ( 1 ; 1 )<sup>\*</sup>
+				- ( 1 ; 1 )
+
+			- )
+			- \+ 1
+
+		- )
+		- \+ 1
+
+	- );  
+	- 1
+
+- )
+- \+ 1
+
+)  
+\+ 1
 
 </div>
