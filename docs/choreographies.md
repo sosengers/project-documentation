@@ -80,7 +80,7 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 				- (
 					- (
 						- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS )<sup>\*</sup> ; <!--Calcolo distanze per identificare la compagnia di trasporto-->
-						- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS)  
+						- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS) 
 					- ) 
 					- \+ 1 
 				- )
@@ -90,11 +90,11 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 		- ); 
 		- **send_tickets**: AS -> UT
 
-	- ) +   
-	- **payment_failure**: AS -> UT   	
+	- )   
+	- \+ **payment_failure**: AS -> UT   	
 	
 - )  
-- \+ **ins_code_failure: AS -> UT
+- \+ **ins_code_failure**: AS -> UT
 
 )
 
@@ -105,18 +105,20 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 - **VerificaGiornaliera**: la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate. Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni (**control** ; **control_res**) fra AS e i vari CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di **notify** è AS. Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT. Essendo AS il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito.
 - **NotificaVoliLastMinute** è connessa in modo non dissimile a quanto avviene in **VerificaGiornaliera**. AS è ricevente in **last_minute** e mittente in **notify** dopodiché PG è ricevente in **notify** e mittente in **message**. Da notare che **notify** e **message**, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, ProntoGram resterebbe in attesa ma non sarebbe un problema poiché è il suo compito.
 - **AcquistoOfferta** è connessa perché:
-  - il ricevente di **ins_code** corrisponde al mittente di **ins_code_res**;
-  - il mittente di **req_pay** è lo stesso di **ins_code_res** e quindi si verifica la condizione di tipo "Sender" poiché non è richiesto che la ricezione da parte di UT in **ins_code_res** avvenga prima di quella in **req_pay** ma è certamente necessario che **req_pay** avvenga dopo **ins_code_res**;
-  - l'interazione **req_pay** ha il ricevente corrispondente al mittente di **pay_offer**;
+  - il ricevente di **ins_code** è il mittente di **req_pay** e di **ins_code_failure** (quest'ultimo termina la coreografia);
+  - il ricevente di **req_pay** è il mittente di  **pay_offer**
   - il ricevente di **pay_offer** è il mittente di **pay_offer_res**;
   - il ricevente di **pay_offer_res** è il mittente di **req_pay_res**;
-  - il ricevente di **req_pay_res** è il mittente di **buy_flights**;
+  - il ricevente di **req_pay_res** è il mittente di **buy_flights** e di **payment_failure** (quest'ultimo termina la coreografia);
   - il ricevente di **buy_flights** è il mittente di **buy_flights_res**;
-  - il ricevente di **buy_flights_res** è il mittente di **calc_dist**;
+  - il ricevente di **buy_flights_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
   - il ricevente di **calc_dist** è il mittente di **calc_dist_res**;
-  - il ricevente di **calc_dist_res** è il mittente di **pren_trs**;
+  - il ricevente di **calc_dist_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
+  - il ricevente di **calc_dist** è il mittente di **calc_dist_res** (prima parte della sequenza);
+  - il ricevente di **calc_dist_res** è il mittente di **calc_dist** (seconda parte della sequenza che quindi è connessa);
+  - il ricevente di **calc_dist_res** (l'ultimo della sequenza lunga almeno uno per ipotesi) è il mittente di **pren_trs**;
   - il ricevente di **pren_trs** è il mittente di **pren_trs_res**;
-  - nel caso in cui le interazioni **pren_trs** e **pren_trs_res** siano avvenute allora il ricevente di **pren_trs_res** è il mittente di **end_operation** altrimenti il ricevente di **calc_dist_res** è il mittente di **end_operation**.
+  - il ricevente di **pren_trs_res** è il mittente di **send_tickets** (quest'ultimo termina la coreografia).
 
 ## Proiezioni
 Seguono le proiezioni delle coreografie, divise per ruolo.
