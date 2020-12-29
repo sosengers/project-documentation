@@ -25,19 +25,20 @@
 - **notify**: notifica della presenza di voli di interesse per l'utente tramite ProntoGram (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;
 - **last_minute**: compagnia aerea notifica ACMESky di un'offerta last minute;
 - **ins_code**: utente inserisce il codice ricevuto via ProntoGram sul portale;
-- **ins_code_res**: risposta al task **ins_code**;
 - **req_pay**: ACMESky richiede il pagamento al Provider dei Pagamenti;
 - **req_pay_res**: il Provider dei Pagamenti comunica ad ACMESky l'esito del pagamento;
 - **calc_dist**: ACMESky richiede il calcolo della distanza al servizio esterno per il calcolo delle distanze geografiche;
 - **calc_dist_res**: risposta al task **calc_dist**;
 - **pren_trs**: in base alla distanza ACMESky può, oppure no, prenotare il trasporto;
 - **pren_trs_res**: risposta al task **pren_trs**;
-- **end_operation**: ACMESky avvisa l'utente riguardo all'esito dell'operazione (successo/fallimento). In caso di successo, inoltra il biglietto;
 - **message**: ProntoGram riferisce il messaggio all'Utente (essendo un servizio esterno questa è una semplificazione);
 - **pay_offer**: il Provider dei Pagamenti, ricevuta la richiesta da ACMESky, inoltra all'utente la richiesta di pagamento, il quale dovrà soddisfarla per procedere;
-- **pay_offer_res**: l'utente ricevuta la richiesta da parte del Provider dei Pagamenti, paga l'offerta;
+- **pay_offer_res**: risposta al task **pay_offer** (invio dati carta per il pagamento);
 - **buy_flights**: ACMESky compra per conto dell'utente il biglietto per il volo A/R da lui/lei scelto presso la compagnia aerea CA<sub>*i*</sub> che fornisce i due voli che soddisfano il bisogno;
-- **buy_flights_res**: CA<sub>*i*</sub> conferma ad ACMESky la disponibilità del volo e inoltra il biglietto.
+- **buy_flights_res**: CA<sub>*i*</sub> conferma ad ACMESky la disponibilità del volo e inoltra il biglietto;
+- **send_tickets**: ACMESky invia all'utente i biglietti;
+- **payment_failure**: ACMESky comunica all'utente che c'è stato un problema durante il pagamento;
+- **ins_code_failure**: ACMESky comunica all'utente che il codice inserito non è valido.
 
 ## Coreografie
 Le seguenti coreografie modellano tutti quanti i possibili processi che possono avvenire nel sistema che verrà implementato.  
