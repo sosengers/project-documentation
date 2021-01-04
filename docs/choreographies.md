@@ -210,165 +210,212 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 )<br />
 + <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT
 </p>
-### UT (UTente)
+<h3>UT (UTente)</h3>
 
+<p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, UT) =<br />
 ( <span style="text-decoration: overline"><strong>reg</strong></span>@AS ; <strong>reg_res</strong>@AS )
+</p>
 
+<p>
 proj(<strong>VerificaGiornaliera</strong>, UT) =<br />
 (<br />
-- ( 1 ; 1 ) |  
-- ... |  
-- ( 1 ; 1 )  
-
+<ul>
+<li> ( 1 ; 1 ) |</li>  
+<li>... |</li> 
+<li> ( 1 ; 1 )</li>  
+</ul>
 ) ;  
 (<br />
-- ( 1 ; <strong>message</strong>@PG ) + 1  
-
+<ul>
+<li> ( 1 ; <strong>message</strong>@PG ) + 1</li>  
+</ul>
 )  
 = <strong>message</strong>@PG
+</p>
 
+<p>
 proj(<strong>NotificaVoliLastMinute</strong>, UT) =<br />
-( 1 ) ;  
-(<br />
-- ( 1 ; <strong>message</strong>@PG ) + 1  
-
+( 1 ) ;<br />
+(
+<ul>
+<li>( 1 ; <strong>message</strong>@PG ) + 1</li>  
+</ul>
 )  
 = <strong>message</strong>@PG
+</p>
 
+<p>
 proj(<strong>AcquistoOfferta</strong>, UT) =<br />
 ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ;  
-(<br />
-- ( 1 ; <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ; 1 ) ;  
-- (<br />  
-	- ( 1 ; 1 ) ;  
-	- (
-		- (
-			- ( 1 ; 1 )
-			- (<br />
-				- ( 1 ; 1 )<sup>\*</sup>
-				- ( 1 ; 1 )
-
-			- )
-			- \+ 1
-
-		- )
-		- \+ 1
-
-	- ) ;
-	- **send_tickets</strong>@AS
-
-- )
-- \+ <strong>payment_failure</strong>@AS
-
+(
+<ul>
+<li>( 1 ; <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ; 1 ) ;</li>  
+<li>(</li>
+<li><ul>
+	<li> ( 1 ; 1 ) ;</li>  
+	<li>(</li>
+<li><ul>
+		<li>(</li>
+<li><ul>
+			<li>( 1 ; 1 )</li> 
+			<li> (</li>
+<li><ul>
+				<li>( 1 ; 1 )<sup>*</sup></li>
+				<li>( 1 ; 1 )</li> 
+</ul></li>
+			<li>)</li>
+			<li>+ 1</li>
+</ul></li>
+		<li>)</li>
+		<li>+ 1</li>
+</ul></li>
+	<li>) ;</li>
+	<li><strong>send_tickets</strong>@AS</li>
+</ul></li>
+<li>)</li> 
+<li>+ <strong>payment_failure</strong>@AS</li>
+</ul>
 )
-\+ <strong>ins_code_failure</strong>@AS
++ <strong>ins_code_failure</strong>@AS
+</p>
 
-### DG (Distanze Geografiche)
+<h3>DG (Distanze Geografiche)</h3>
 
+<p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, DG) =<br />
 ( 1 ; 1 ) = 1
+</p>
 
+<p>
 proj(<strong>VerificaGiornaliera</strong>, DG) =<br />
-(<br />
-- (1 ; 1) |  
-- ... |  
-- ( 1 ; 1 )  
-
+(
+<ul>
+<li>(1 ; 1) |</li>  
+<li>... |</li>   
+<li>( 1 ; 1 )</li>  
+</ul>
 ) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+<ul>
+<li>( 1 ; 1 ) + 1</li>  
+</ul>
 )  
 = 1
+</p>
 
+<p>
 proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br />
-( 1 ) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+( 1 ) ;<br>  
+(
+<ul>
+<li>( 1 ; 1 ) + 1</li>  
+</ul>
 )  
 = 1
+</p>
 
+<p>
 proj(<strong>AcquistoOfferta</strong>, DG) =<br />
-( 1 ) ;  
-(<br />  
-- ( 1 ; 1 ; 1 ; 1 ) ;  
-- (<br />  
-	- ( 1 ; 1 ) ;  
-	- (
-		- (
-			- ( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS ) ;  
-			- (<br />
-				- ( <strong>calc_dist</strong></span>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS )<sup>\*</sup>
-				- ( 1 ; 1 )
-
-			- )
-			- \+ 1
-
-		- )
-		- \+ 1
-
-	- );  
-	- 1
-
-- )
-- \+ 1
-
+( 1 ) ;<br>
+(
+<ul>
+<li>( 1 ; 1 ; 1 ; 1 ) ;</li>  
+<li>(</li>
+<li><ul>
+	<li>( 1 ; 1 ) ;</li>  
+	<li>(</li>
+<li><ul>
+		<li>(</li>
+<li><ul>
+			<li>( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS ) ;</li>  
+			<li>(</li>
+<li><ul>
+				<li>( <strong>calc_dist</strong></span>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS )<sup>*</sup></li>
+				<li>( 1 ; 1 )</li>
+</ul></li>
+			<li>)</li>
+			<li>+ 1</li>
+</ul></li>
+		<li>)</li>
+		<li>+ 1</li>
+</ul></li>
+	<li>);</li>  
+	<li>1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul>
 )  
-\+ 1
++ 1
+</p>
 
-### PP (Provider dei Pagamenti)
+<h3>PP (Provider dei Pagamenti)</h3>
 
+<p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PP) =<br />
 ( 1 ; 1 ) = 1
+</p>
 
+<p>
 proj(<strong>VerificaGiornaliera</strong>, PP) =<br />
-(<br />
-- ( 1 ; 1 ) |  
-- ... |  
-- ( 1 ; 1 )  
-
-) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+(
+<ul>
+<li>( 1 ; 1 ) |</li>  
+<lI> ... |</lI>  
+<li>( 1 ; 1 )</li>  
+</ul>
+) ;<br/>  
+(
+<ul>
+<li>( 1 ; 1 ) + 1</li>  
+</ul>
 ) = 1
+</p>
 
+<p>
 proj(<strong>NotificaVoliLastMinute</strong>, PP) =<br />
-( 1 ) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+( 1 ) ;<br/>  
+(
+<ul>
+<li>( 1 ; 1 ) + 1</li>  
+</ul>
 ) = 1
+</p>
 
+<p>
 proj(<strong>AcquistoOfferta</strong>, PP) =<br />
-( 1 ) ;  
-(<br />  
-- ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong>@AS</span> ) ;  
-- (<br />  
-	- ( 1 ; 1 ) ;  
-	- (
-		- (
-			- ( 1 ; 1 ) ;  
-			- (<br />
-				- ( 1 ; 1 )<sup>\*</sup>
-				- ( 1 ; 1 )
-
-			- )
-			- \+ 1
-
-		- )
-		- \+ 1
-
-	- );  
-	- 1
-
-- )
-- \+ 1
-
+( 1 ) ; <br/>
+(
+<ul>
+<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong>@AS</span> ) ;</li>  
+<li>(</li>
+<li><ul>
+	<li>( 1 ; 1 ) ;</li>  
+	<li>(</li>
+<li><ul>
+		<li>(</li>
+<li><ul>
+			<li>( 1 ; 1 ) ;</li>  
+			<li>(</li>
+<li><ul>
+				<li>( 1 ; 1 )<sup>*</sup></li>
+				<li>( 1 ; 1 )</li>
+</ul></li>
+			<li>)</li>
+			<li>+ 1</li>
+</ul></li>
+		<li>)</li>
+		<li>+ 1</li>
+</ul></li>
+	<li>);</li>  
+	<li>1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul>
 )  
-\+ 1
++ 1
+</p>
 
 ### PG (ProntoGram)
 
