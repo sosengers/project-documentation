@@ -212,6 +212,7 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 )<br />
 + <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT
 </p>
+
 <h3>UT (UTente)</h3>
 
 <p>
@@ -232,7 +233,7 @@ proj(<strong>VerificaGiornaliera</strong>, UT) =<br />
 <ul>
 <li> ( 1 ; <strong>message</strong>@PG ) + 1</li>  
 </ul>
-)  
+)<br />
 = <strong>message</strong>@PG
 </p>
 
@@ -243,13 +244,13 @@ proj(<strong>NotificaVoliLastMinute</strong>, UT) =<br />
 <ul>
 <li>( 1 ; <strong>message</strong>@PG ) + 1</li>  
 </ul>
-)  
+)<br />
 = <strong>message</strong>@PG
 </p>
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, UT) =<br />
-( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS );<br />
+( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ;<br />
 (
 <ul>
 <li>( 1 ; <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ; 1 ) ;</li>  
@@ -279,14 +280,16 @@ proj(<strong>AcquistoOfferta</strong>, UT) =<br />
 <li>+ <strong>payment_failure</strong>@AS</li>
 </ul>
 )<br/>
-+ <strong>ins_code_failure</strong>@AS
++ <strong>ins_code_failure</strong>@AS<br />
+= ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ; ( ( <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ) ; ( <strong>send_tickets</strong>@AS ) + <strong>payment_failure</strong>@AS ) + <strong>ins_code_failure</strong>@AS
 </p>
 
 <h3>DG (Distanze Geografiche)</h3>
 
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, DG) =<br />
-( 1 ; 1 ) = 1
+( 1 ; 1 )<br />
+= 1
 </p>
 
 <p>
@@ -301,7 +304,7 @@ proj(<strong>VerificaGiornaliera</strong>, DG) =<br />
 <ul>
 <li>( 1 ; 1 ) + 1</li>  
 </ul>
-)  
+)<br />
 = 1
 </p>
 
@@ -312,7 +315,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br />
 <ul>
 <li>( 1 ; 1 ) + 1</li>  
 </ul>
-)  
+)<br />
 = 1
 </p>
 
@@ -348,14 +351,16 @@ proj(<strong>AcquistoOfferta</strong>, DG) =<br />
 <li>+ 1</li>
 </ul>
 )<br />
-+ 1
++ 1<br />
+= ( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS ) ; ( <strong>calc_dist</strong></span>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS )<sup>*</sup> ) + 1
 </p>
 
 <h3>PP (Provider dei Pagamenti)</h3>
 
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PP) =<br />
-( 1 ; 1 ) = 1
+( 1 ; 1 )<br />
+= 1
 </p>
 
 <p>
@@ -371,7 +376,8 @@ proj(<strong>VerificaGiornaliera</strong>, PP) =<br />
 <ul>
 <li>( 1 ; 1 ) + 1</li>  
 </ul>
-) = 1
+)<br />
+= 1
 </p>
 
 <p>
@@ -381,7 +387,8 @@ proj(<strong>NotificaVoliLastMinute</strong>, PP) =<br />
 <ul>
 <li>( 1 ; 1 ) + 1</li>  
 </ul>
-) = 1
+)<br />
+= 1
 </p>
 
 <p>
@@ -416,13 +423,15 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 <li>+ 1</li>
 </ul>
 )<br/>
-+ 1
++ 1<br />
+= ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS )
 </p>
 
 <h3>PG (ProntoGram)</h3>
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PG) =<br />
-( 1 ; 1 ) = 1
+( 1 ; 1 )<br />
+= 1
 </p>
 
 <p>
@@ -438,7 +447,8 @@ proj(<strong>VerificaGiornaliera</strong>, PG) =<br />
 <ul>
     <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT ) + 1</li>
 </ul>
-) = ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT )  
+)<br />
+= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT )  
 </p>
 
 <p>
@@ -446,9 +456,10 @@ proj(<strong>NotificaVoliLastMinute</strong>, PG) =<br />
 ( 1 ) ;<br />
 (
 <ul>
-    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>notify</strong></span>@UT ) + 1</li>
+    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT ) + 1</li>
 </ul>
-) = ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>notify</strong></span>@UT )
+)<br />
+= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT )
 </p>
 
 <p>
@@ -483,13 +494,15 @@ proj(<strong>AcquistoOfferta</strong>, PG) =<br />
     <li>+ 1</li>
 </ul>
 )<br /> 
-+ 1
++ 1<br />
+= 1
 </p>
 
 <h3>CT<sub><em>j</em></sub> (Compagnia Trasporti)</h3>
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br />
-( 1 ; 1 ) = 1
+( 1 ; 1 )<br />
+= 1
 </p>
 
 <p>
@@ -505,7 +518,8 @@ proj(<strong>VerificaGiornaliera</strong>, CT<sub><em>j</em></sub>) =<br />
 <ul>
     <li>( 1 ; 1 ) + 1</li>
 </ul>
-) = 1
+)<br />
+= 1
 </p>
 
 <p>
@@ -515,7 +529,8 @@ proj(<strong>NotificaVoliLastMinute</strong>, CT<sub><em>j</em></sub>) =<br />
 <ul>
     <li>( 1 ; 1 ) + 1</li>
 </ul>
-) = 1
+)<br />
+= 1
 </p>
 
 <p>
@@ -550,13 +565,15 @@ proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
     <li>+ 1</li>
 </ul>
 )<br />
-+ 1
++ 1<br />
+= ( <strong>pren_trs</strong></span>@AS; <span style="text-decoration: overline"><strong>pren_trs_res</strong></span>@AS )
 </p>
 
 <h3>CA<sub><em>i</em></sub> (Compagnia Aerea)</h3>
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br />
-( 1 ; 1 ) = 1
+( 1 ; 1 )<br />
+= 1
 </p>
 
 <p>
@@ -574,7 +591,8 @@ proj(<strong>VerificaGiornaliera</strong>, CA<sub><em>i</em></sub>) =<br />
 <ul>
     <li>( 1 ; 1 ) + 1 </li>
 </ul>
-) = ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS )
+)<br />
+= ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS )
 </p>
 
 <p>
@@ -584,7 +602,8 @@ proj(<strong>NotificaVoliLastMinute</strong>, CA<sub><em>i</em></sub>) =<br />
 <ul>
     <li>( 1 ; 1 ) + 1</li>
 </ul>
-) = <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS
+)<br />
+= <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS
 </p>
 
 <p>
@@ -595,7 +614,7 @@ proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
     <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
     <li>(</li>
     <li><ul>
-        <li>( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA ) ;  </li>
+        <li>( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA ) ;</li>
         <li>(</li>
         <li><ul>
             <li>(</li>
@@ -619,6 +638,7 @@ proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
     <li>+ 1</li>
 </ul>
 )<br />
-+ 1
++ 1<br />
+= ( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA )
 </p>
 </div>
