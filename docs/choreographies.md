@@ -51,73 +51,72 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 <div id="choreographies">
 
 <p>
-<strong>ProcessoRegistrazioneInteresseUtente</strong> ::=<br>
+<strong>ProcessoRegistrazioneInteresseUtente</strong> ::=<br />
 (<strong>reg</strong>: UT -> AS; <strong>reg_res</strong>: AS -> UT)
 </p>
 
 <p>
-<strong>VerificaGiornaliera</strong> ::=<br>
+<strong>VerificaGiornaliera</strong> ::=<br />
 (
 <ul>
-<li> ( <strong>control</strong>: AS -> CA<sub><em>1</em></sub> ; <strong>control_res</strong>: CA<sub><em>1</em></sub> -> AS ) | </li>
-<li> ... |</li>
-<li> ( <strong>control</strong>: AS -> CA<sub><em>N</em></sub> ; <strong>control_res</strong>: CA<sub><em>N</em></sub> -> AS ) </li>
+    <li> ( <strong>control</strong>: AS -> CA<sub><em>1</em></sub> ; <strong>control_res</strong>: CA<sub><em>1</em></sub> -> AS ) | </li>
+    <li> ... |</li>
+    <li> ( <strong>control</strong>: AS -> CA<sub><em>N</em></sub> ; <strong>control_res</strong>: CA<sub><em>N</em></sub> -> AS ) </li>
 </ul>
-) ;<br>
+) ;<br />
 (
 <ul>
-<li> ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>
+    <li> ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>
 </ul>
 )
 
 </p>
 
 <p>
-<strong>NotificaVoliLastMinute</strong> ::=<br>
+<strong>NotificaVoliLastMinute</strong> ::=<br />
 ( <strong>last_minute</strong>: CA<sub><em>i</em></sub> -> AS ) ;<br />
 (  
 <ul>
-<li>( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>  
+    <li>( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>  
 </ul>
 )
 
 </p>
 
 <p>
-<strong>AcquistoOfferta</strong> ::=  <br>
-( <strong>ins_code</strong>: UT -> AS ) ;<br>  
+<strong>AcquistoOfferta</strong> ::=  <br />
+( <strong>ins_code</strong>: UT -> AS ) ;<br />  
 (  
 <ul>
-<li> ( <strong>req_pay</strong>: AS -> PP ; <strong>pay_offer</strong>: PP -> UT ; <strong>pay_offer_res</strong>: UT -> PP ; <strong>req_pay_res</strong>: PP -> AS ) ;</li>
-<li> ( </li>
-<li><ul>
-	<li> ( <strong>buy_flights</strong>: AS -> CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>: CA<sub><em>i</em></sub> -> AS ) ;</li>  
-	<li> ( </li>
-<li><ul>
-		<li>(</li>  
-		    <!-- Calcolo distanza aeroporto/casa -->
-<li><ul>
-			<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS ) ;</li>  
-			<li> ( </li>
-<li><ul>
-				<!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
-				<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS )<sup>*</sup> ;</li>  
-				<li> ( <strong>pren_trs</strong>: AS -> CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>: CT<sub><em>j</em></sub> -> AS) </li>
-</ul></li>
-			<li> ) </li> 
-			<li> + 1 </li>
-</ul></li>
-		<li> ) </li> 
-		<li> + 1 </li>
-</ul></li>
-	<li> ); </li>    
-    <li> <strong>send_tickets</strong>: AS -> UT </li>
-</ul></li>
-
-<li> ) </li>  
-<li> + <strong>payment_failure</strong>: AS -> UT </li>
+    <li>( <strong>req_pay</strong>: AS -> PP ; <strong>pay_offer</strong>: PP -> UT ; <strong>pay_offer_res</strong>: UT -> PP ; <strong>req_pay_res</strong>: PP -> AS ) ;</li>
+    <li>( </li>
+    <li><ul>
+    	<li>( <strong>buy_flights</strong>: AS -> CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>: CA<sub><em>i</em></sub> -> AS ) ;</li>  
+    	<li>(</li>
+        <li><ul>
+            <li>(</li>  
+            <!-- Calcolo distanza aeroporto/casa -->
+            <li><ul>
+                <li>( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS ) ;</li>  
+                <li>(</li>
+                <li><ul>
+                    <!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
+                    <li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS )<sup>*</sup> ;</li>  
+                    <li> ( <strong>pren_trs</strong>: AS -> CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>: CT<sub><em>j</em></sub> -> AS)</li>
+                </ul></li>
+                <li>)</li> 
+                <li> + 1</li>
+            </ul></li>
+            <li>)</li> 
+            <li>+ 1</li>
+        </ul></li>
+        <li>);</li>    
+        <li><strong>send_tickets</strong>: AS -> UT </li>
+    </ul></li>
+    <li>) </li>  
+    <li> + <strong>payment_failure</strong>: AS -> UT </li>
 </ul>
-)  <br>
+)<br />
 + <strong>ins_code_failure</strong>: AS -> UT
 </p>
 </div>
@@ -308,7 +307,7 @@ proj(<strong>VerificaGiornaliera</strong>, DG) =<br />
 
 <p>
 proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br />
-( 1 ) ;<br>  
+( 1 ) ;<br />  
 (
 <ul>
 <li>( 1 ; 1 ) + 1</li>  
@@ -319,7 +318,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, DG) =<br />
-( 1 ) ;<br>
+( 1 ) ;<br />
 (
 <ul>
 <li>( 1 ; 1 ; 1 ; 1 ) ;</li>  
