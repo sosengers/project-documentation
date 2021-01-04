@@ -50,9 +50,12 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 
 <div id="choreographies">
 
+<p>
 <strong>ProcessoRegistrazioneInteresseUtente</strong> ::=<br>
 (<strong>reg</strong>: UT -> AS; <strong>reg_res</strong>: AS -> UT)
+</p>
 
+<p>
 <strong>VerificaGiornaliera</strong> ::=<br>
 (
 <ul>
@@ -67,20 +70,20 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 </ul>
 )
 
-<br>
-<br>
+</p>
 
+<p>
 <strong>NotificaVoliLastMinute</strong> ::=<br>
-( <strong>last_minute</strong>: CA<sub><em>i</em></sub> -> AS ) ;  
+( <strong>last_minute</strong>: CA<sub><em>i</em></sub> -> AS ) ;<br />
 (  
 <ul>
 <li>( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>  
 </ul>
 )
 
-<br>
-<br>
+</p>
 
+<p>
 <strong>AcquistoOfferta</strong> ::=  <br>
 ( <strong>ins_code</strong>: UT -> AS ) ;<br>  
 (  
@@ -116,7 +119,7 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 </ul>
 )  <br>
 + <strong>ins_code_failure</strong>: AS -> UT
-
+</p>
 </div>
 
 ### Verifica della connectedness delle coreografie
@@ -158,7 +161,7 @@ proj(</strong><strong>VerificaGiornaliera</strong>, AS) =<br />
 <li>... |</li>
 <li>(<span style="text-decoration: overline"><strong>control</strong></span>@CA<sub><em>N</em></sub> ; <strong>control_res</strong>@CA<sub><em>N</em></sub> )</li>
 </ul>
-) ;  <br />
+) ;<br />
 (
 <ul>
 <li>( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1</li>
@@ -225,7 +228,7 @@ proj(<strong>VerificaGiornaliera</strong>, UT) =<br />
 <li>... |</li> 
 <li> ( 1 ; 1 )</li>  
 </ul>
-) ;  
+) ;  <br />
 (<br />
 <ul>
 <li> ( 1 ; <strong>message</strong>@PG ) + 1</li>  
@@ -247,7 +250,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, UT) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, UT) =<br />
-( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ;  
+( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS );<br />
 (
 <ul>
 <li>( 1 ; <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ; 1 ) ;</li>  
@@ -276,7 +279,7 @@ proj(<strong>AcquistoOfferta</strong>, UT) =<br />
 <li>)</li> 
 <li>+ <strong>payment_failure</strong>@AS</li>
 </ul>
-)
+)<br/>
 + <strong>ins_code_failure</strong>@AS
 </p>
 
@@ -340,12 +343,12 @@ proj(<strong>AcquistoOfferta</strong>, DG) =<br />
 		<li>+ 1</li>
 </ul></li>
 	<li>);</li>  
-	<li>1</li>
+	<li>+ 1</li>
 </ul></li>
 <li>)</li>
 <li>+ 1</li>
 </ul>
-)  
+)<br />
 + 1
 </p>
 
@@ -387,7 +390,7 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 ( 1 ) ; <br/>
 (
 <ul>
-<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong>@AS</span> ) ;</li>  
+<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ) ;</li>  
 <li>(</li>
 <li><ul>
 	<li>( 1 ; 1 ) ;</li>  
@@ -408,12 +411,12 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 		<li>+ 1</li>
 </ul></li>
 	<li>);</li>  
-	<li>1</li>
+	<li>+ 1</li>
 </ul></li>
 <li>)</li>
 <li>+ 1</li>
 </ul>
-)  
+)<br/>
 + 1
 </p>
 
@@ -475,7 +478,7 @@ proj(<strong>AcquistoOfferta</strong>, PG) =<br />
             <li>+ 1</li>
         </ul></li>
         <li>);</li>
-        <li>1</li>
+        <li>+ 1</li>
 	</ul></li>
     <li>)</li>
     <li>+ 1</li>
@@ -542,7 +545,7 @@ proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
             <li>+ 1</li>
 		</ul></li>
         <li>);</li>
-        <li>1</li>
+        <li>+ 1</li>
     </ul></li>
     <li>)</li>
     <li>+ 1</li>
@@ -601,7 +604,7 @@ proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
                 <li>( 1 ; 1 ) ;</li>
                 <li>(</li>
                 <li><ul>
-                    <li>( 1 ; 1 )<sup>\*</sup></li>
+                    <li>( 1 ; 1 )<sup>*</sup></li>
                     <li>( 1 ; 1 )</li>
                 </ul></li>
                 <li>)</li>
@@ -611,7 +614,7 @@ proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
             <li>+ 1</li>
         </ul></li>
         <li>);</li>  
-        <li>1</li>
+        <li>+ 1</li>
     </ul></li>
     <li>)</li>
     <li>+ 1</li>
