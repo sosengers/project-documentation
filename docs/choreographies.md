@@ -3,6 +3,10 @@
     div#projections ul li {
         list-style-type: none;
 	}
+
+	div#choreographies ul, div#projections ul {
+		margin: 0px;
+	}
 </style>
 # Coreografie, ruoli e proiezioni delle coreografie sui ruoli
 
@@ -83,29 +87,29 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 <ul>
 <li> ( <strong>req_pay</strong>: AS -> PP ; <strong>pay_offer</strong>: PP -> UT ; <strong>pay_offer_res</strong>: UT -> PP ; <strong>req_pay_res</strong>: PP -> AS ) ;</li>
 <li> ( </li>
-<ul>
+<li><ul>
 	<li> ( <strong>buy_flights</strong>: AS -> CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>: CA<sub><em>i</em></sub> -> AS ) ;</li>  
 	<li> ( </li>
-<ul>
+<li><ul>
 		<li>(</li>  
 		    <!-- Calcolo distanza aeroporto/casa -->
-<ul>
+<li><ul>
 			<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS ) ;</li>  
 			<li> ( </li>
-<ul>
+<li><ul>
 				<!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
 				<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS )<sup>*</sup> ;</li>  
 				<li> ( <strong>pren_trs</strong>: AS -> CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>: CT<sub><em>j</em></sub> -> AS) </li>
-</ul>
+</ul></li>
 			<li> ) </li> 
 			<li> + 1 </li>
-</ul>
+</ul></li>
 		<li> ) </li> 
 		<li> + 1 </li>
-</ul>
+</ul></li>
 	<li> ); </li>    
     <li> <strong>send_tickets</strong>: AS -> UT </li>
-</ul>
+</ul></li>
 
 <li> ) </li>  
 <li> + <strong>payment_failure</strong>: AS -> UT </li>
@@ -141,10 +145,12 @@ Seguono le proiezioni delle coreografie, divise per ruolo.
 <div id="projections">
 
 <h3>AS (ACMESky)</h3>
-
+<p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, AS) =<br />
 ( <strong>reg</strong>@UT ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT )
-<br />
+</p>
+
+<p>
 proj(</strong><strong>VerificaGiornaliera</strong>, AS) =<br /> 
 (
 <ul>
@@ -158,42 +164,52 @@ proj(</strong><strong>VerificaGiornaliera</strong>, AS) =<br />
 <li>( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1</li>
 </ul>
 )
-<br />
+</p>
+
+<p>
 proj(<strong>NotificaVoliLastMinute</strong>, AS) =<br />
 ( <strong>last_minute</strong>@CA<sub><em>i</em></sub> ) ;<br />
 (
-- ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1  
-
+<ul>
+<li>( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1</li>
+</ul>
 )
+</p>
 
+<p>
 proj(<strong>AcquistoOfferta</strong>, AS) =<br />
-( <strong>ins_code</strong>@UT ) ;  
-(<br />  
-- ( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; 1 ; 1 ; <strong>req_pay_res</strong>@AS ) ;  
-- (<br />  
-	- ( <span style="text-decoration: overline"><strong>buy_flights</strong></span>@CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>@CA<sub><em>i</em></sub> ) ;  
-	- (
-		- (
-			- ( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG ) ;  
-			- (<br />
-				- ( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG )<sup>\*</sup>
-				- ( <span style="text-decoration: overline"><strong>pren_trs</strong></span>@CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>@CT<sub><em>j</em></sub> )
-
-			- )
-			- \+ 1
-
-		- )
-		- \+ 1
-
-	- );  
-	- <span style="text-decoration: overline">**send_tickets</strong></span>@UT
-
-- )
-- \+ <span style="text-decoration: overline"><strong>payment_failure</strong></span>@UT
-
-)  
-\+ <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT
-
+( <strong>ins_code</strong>@UT ) ;<br />
+(<br />
+<ul>
+<li>( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; 1 ; 1 ; <strong>req_pay_res</strong>@AS ) ;</li>
+<li>( </li>
+<li><ul>
+	<li>( <span style="text-decoration: overline"><strong>buy_flights</strong></span>@CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>@CA<sub><em>i</em></sub> ) ;</li>
+	<li>(</li>
+<li>	<ul>
+		<li>(</li>
+	<li>	<ul>
+			<li>( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG ) ;</li>
+			<li>(</li>
+		<li>	<ul>
+				<li>( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG )<sup>*</sup></li>
+				<li>( <span style="text-decoration: overline"><strong>pren_trs</strong></span>@CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>@CT<sub><em>j</em></sub> )</li>
+</ul></li>
+			<li>)</li>
+			<li>+ 1</li>
+</ul></li>
+		<li>)</li>
+		<li>+ 1</li>
+</ul></li>
+	<li>);</li>
+	<li><span style="text-decoration: overline"><strong>send_tickets</strong></span>@UT</li>
+</ul></li>
+<li>)</li>
+<li>+ <span style="text-decoration: overline"><strong>payment_failure</strong></span>@UT</li>
+</ul>
+)<br />
++ <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT
+</p>
 ### UT (UTente)
 
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, UT) =<br />
