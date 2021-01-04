@@ -281,7 +281,7 @@ proj(<strong>AcquistoOfferta</strong>, UT) =<br />
 </ul>
 )<br/>
 + <strong>ins_code_failure</strong>@AS<br />
-= ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ; ( ( <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ) ; ( <strong>send_tickets</strong>@AS ) + <strong>payment_failure</strong>@AS ) + <strong>ins_code_failure</strong>@AS
+= ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ; ( ( <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ) ; <strong>send_tickets</strong>@AS + <strong>payment_failure</strong>@AS ) + <strong>ins_code_failure</strong>@AS
 </p>
 
 <h3>DG (Distanze Geografiche)</h3>
