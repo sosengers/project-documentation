@@ -125,42 +125,44 @@ Seguono le proiezioni delle coreografie, divise per ruolo.
 
 <div id="projections">
 
-### AS (ACMESky)
+<h3>AS (ACMESky)</h3>
 
-proj(**ProcessoRegistrazioneInteresseUtente**, AS) =  
-( **reg**@UT ; <span style="text-decoration: overline">**reg_res**</span>@UT )
-
-proj(**VerificaGiornaliera**, AS) =   
-(  
-- (<span style="text-decoration: overline">**control**</span>@CA<sub>*1*</sub> ; **control_res**@CA<sub>*1*</sub> ) |  
-- ... |  
-- (<span style="text-decoration: overline">**control**</span>@CA<sub>*N*</sub> ; **control_res**@CA<sub>*N*</sub> )  
-
-) ;  
-(  
-- ( <span style="text-decoration: overline">**notify**</span>@PG ; 1 ) + 1  
+proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, AS) =<br />
+( <strong>reg</strong>@UT ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT )
+<br />
+proj(</strong><strong>VerificaGiornaliera</strong>, AS) =<br /> 
+(
+<ul>
+<li>(<span style="text-decoration: overline"><strong>control</strong></span>@CA<sub><em>1</em></sub> ; <strong>control_res</strong>@CA<sub><em>1</em></sub> ) |</li>
+<li>... |</li>
+<li>(<span style="text-decoration: overline"><strong>control</strong></span>@CA<sub><em>N</em></sub> ; <strong>control_res</strong>@CA<sub><em>N</em></sub> )</li>
+</ul>
+) ;  <br />
+(
+<ul>
+<li>( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1</li>
+</ul>
+)
+<br />
+proj(<strong>NotificaVoliLastMinute</strong>, AS) =<br />
+( <strong>last_minute</strong>@CA<sub><em>i</em></sub> ) ;<br />
+(
+- ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1  
 
 )
 
-proj(**NotificaVoliLastMinute**, AS) =  
-( **last_minute**@CA<sub>*i*</sub> ) ;  
-(  
-- ( <span style="text-decoration: overline">**notify**</span>@PG ; 1 ) + 1  
-
-)
-
-proj(**AcquistoOfferta**, AS) =  
-( **ins_code**@UT ) ;  
-(    
-- ( <span style="text-decoration: overline">**req_pay**</span>@PP ; 1 ; 1 ; **req_pay_res**@AS ) ;  
-- (    
-	- ( <span style="text-decoration: overline">**buy_flights**</span>@CA<sub>*i*</sub> ; **buy_flights_res**@CA<sub>*i*</sub> ) ;  
+proj(<strong>AcquistoOfferta</strong>, AS) =<br />
+( <strong>ins_code</strong>@UT ) ;  
+(<br />  
+- ( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; 1 ; 1 ; <strong>req_pay_res</strong>@AS ) ;  
+- (<br />  
+	- ( <span style="text-decoration: overline"><strong>buy_flights</strong></span>@CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>@CA<sub><em>i</em></sub> ) ;  
 	- (
 		- (
-			- ( <span style="text-decoration: overline">**calc_dist**</span>@DG ; **calc_dist_res**@DG ) ;  
-			- (  
-				- ( <span style="text-decoration: overline">**calc_dist**</span>@DG ; **calc_dist_res**@DG )<sup>\*</sup>
-				- ( <span style="text-decoration: overline">**pren_trs**</span>@CT<sub>*j*</sub> ; **pren_trs_res**@CT<sub>*j*</sub> )
+			- ( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG ) ;  
+			- (<br />
+				- ( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG )<sup>\*</sup>
+				- ( <span style="text-decoration: overline"><strong>pren_trs</strong></span>@CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>@CT<sub><em>j</em></sub> )
 
 			- )
 			- \+ 1
@@ -169,50 +171,50 @@ proj(**AcquistoOfferta**, AS) =
 		- \+ 1
 
 	- );  
-	- <span style="text-decoration: overline">**send_tickets**</span>@UT
+	- <span style="text-decoration: overline">**send_tickets</strong></span>@UT
 
 - )
-- \+ <span style="text-decoration: overline">**payment_failure**</span>@UT
+- \+ <span style="text-decoration: overline"><strong>payment_failure</strong></span>@UT
 
 )  
-\+ <span style="text-decoration: overline">**ins_code_failure**</span>@UT
+\+ <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT
 
 ### UT (UTente)
 
-proj(**ProcessoRegistrazioneInteresseUtente**, UT) =  
-( <span style="text-decoration: overline">**reg**</span>@AS ; **reg_res**@AS )
+proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, UT) =<br />
+( <span style="text-decoration: overline"><strong>reg</strong></span>@AS ; <strong>reg_res</strong>@AS )
 
-proj(**VerificaGiornaliera**, UT) =  
-(  
+proj(<strong>VerificaGiornaliera</strong>, UT) =<br />
+(<br />
 - ( 1 ; 1 ) |  
 - ... |  
 - ( 1 ; 1 )  
 
 ) ;  
-(  
-- ( 1 ; **message**@PG ) + 1  
+(<br />
+- ( 1 ; <strong>message</strong>@PG ) + 1  
 
 )  
-= **message**@PG
+= <strong>message</strong>@PG
 
-proj(**NotificaVoliLastMinute**, UT) =  
+proj(<strong>NotificaVoliLastMinute</strong>, UT) =<br />
 ( 1 ) ;  
-(  
-- ( 1 ; **message**@PG ) + 1  
+(<br />
+- ( 1 ; <strong>message</strong>@PG ) + 1  
 
 )  
-= **message**@PG
+= <strong>message</strong>@PG
 
-proj(**AcquistoOfferta**, UT) =  
-( <span style="text-decoration: overline">**ins_code**</span>@AS ) ;  
-(  
-- ( 1 ; **pay_offer**@PP ; <span style="text-decoration: overline">**pay_offer_res**</span>@PP ; 1 ) ;  
-- (    
+proj(<strong>AcquistoOfferta</strong>, UT) =<br />
+( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ;  
+(<br />
+- ( 1 ; <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ; 1 ) ;  
+- (<br />  
 	- ( 1 ; 1 ) ;  
 	- (
 		- (
 			- ( 1 ; 1 )
-			- (  
+			- (<br />
 				- ( 1 ; 1 )<sup>\*</sup>
 				- ( 1 ; 1 )
 
@@ -223,51 +225,51 @@ proj(**AcquistoOfferta**, UT) =
 		- \+ 1
 
 	- ) ;
-	- **send_tickets**@AS
+	- **send_tickets</strong>@AS
 
 - )
-- \+ **payment_failure**@AS
+- \+ <strong>payment_failure</strong>@AS
 
 )
-\+ **ins_code_failure**@AS
+\+ <strong>ins_code_failure</strong>@AS
 
 ### DG (Distanze Geografiche)
 
-proj(**ProcessoRegistrazioneInteresseUtente**, DG) =  
+proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, DG) =<br />
 ( 1 ; 1 ) = 1
 
-proj(**VerificaGiornaliera**, DG) =  
-(  
+proj(<strong>VerificaGiornaliera</strong>, DG) =<br />
+(<br />
 - (1 ; 1) |  
 - ... |  
 - ( 1 ; 1 )  
 
 ) ;  
-(  
+(<br />
 - ( 1 ; 1 ) + 1  
 
 )  
 = 1
 
-proj(**NotificaVoliLastMinute**, DG) =  
+proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br />
 ( 1 ) ;  
-(  
+(<br />
 - ( 1 ; 1 ) + 1  
 
 )  
 = 1
 
-proj(**AcquistoOfferta**, DG) =  
+proj(<strong>AcquistoOfferta</strong>, DG) =<br />
 ( 1 ) ;  
-(    
+(<br />  
 - ( 1 ; 1 ; 1 ; 1 ) ;  
-- (    
+- (<br />  
 	- ( 1 ; 1 ) ;  
 	- (
 		- (
-			- ( **calc_dist**@AS ; <span style="text-decoration: overline">**calc_dist_res**</span>@AS ) ;  
-			- (  
-				- ( **calc_dist**</span>@AS ; <span style="text-decoration: overline">**calc_dist_res**</span>@AS )<sup>\*</sup>
+			- ( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS ) ;  
+			- (<br />
+				- ( <strong>calc_dist</strong></span>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS )<sup>\*</sup>
 				- ( 1 ; 1 )
 
 			- )
@@ -287,38 +289,38 @@ proj(**AcquistoOfferta**, DG) =
 
 ### PP (Provider dei Pagamenti)
 
-proj(**ProcessoRegistrazioneInteresseUtente**, PP) =  
+proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PP) =<br />
 ( 1 ; 1 ) = 1
 
-proj(**VerificaGiornaliera**, PP) =  
-(  
+proj(<strong>VerificaGiornaliera</strong>, PP) =<br />
+(<br />
 - ( 1 ; 1 ) |  
 - ... |  
 - ( 1 ; 1 )  
 
 ) ;  
-(  
+(<br />
 - ( 1 ; 1 ) + 1  
 
 ) = 1
 
-proj(**NotificaVoliLastMinute**, PP) =  
+proj(<strong>NotificaVoliLastMinute</strong>, PP) =<br />
 ( 1 ) ;  
-(  
+(<br />
 - ( 1 ; 1 ) + 1  
 
 ) = 1
 
-proj(**AcquistoOfferta**, PP) =  
+proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 ( 1 ) ;  
-(    
-- ( **req_pay**@AS ; <span style="text-decoration: overline">**pay_offer**</span>@UT ; **pay_offer_res**@UT ; <span style="text-decoration: overline">**req_pay_res**@AS</span> ) ;  
-- (    
+(<br />  
+- ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong>@AS</span> ) ;  
+- (<br />  
 	- ( 1 ; 1 ) ;  
 	- (
 		- (
 			- ( 1 ; 1 ) ;  
-			- (  
+			- (<br />
 				- ( 1 ; 1 )<sup>\*</sup>
 				- ( 1 ; 1 )
 
@@ -339,38 +341,38 @@ proj(**AcquistoOfferta**, PP) =
 
 ### PG (ProntoGram)
 
-proj(**ProcessoRegistrazioneInteresseUtente**, PG) =  
+proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PG) =<br />
 ( 1 ; 1 ) = 1
 
-proj(**VerificaGiornaliera**, PG) =  
-(  
+proj(<strong>VerificaGiornaliera</strong>, PG) =<br />
+(<br />
 - ( 1 ; 1 ) |  
 - ... |  
 - ( 1 ; 1 )  
 
 ) ;  
-(  
-- ( **notify**@AS ; <span style="text-decoration: overline">**message**</span>@UT ) + 1  
+(<br />
+- ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT ) + 1  
 
-) = ( **notify**@AS ; <span style="text-decoration: overline">**message**</span>@UT )  
+) = ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT )  
 
-proj(**NotificaVoliLastMinute**, PG) =  
+proj(<strong>NotificaVoliLastMinute</strong>, PG) =<br />
 ( 1 ) ;  
-(  
-- ( **notify**@AS ; <span style="text-decoration: overline">**notify**</span>@UT ) + 1  
+(<br />
+- ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>notify</strong></span>@UT ) + 1  
  
-) = ( **notify**@AS ; <span style="text-decoration: overline">**notify**</span>@UT )
+) = ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>notify</strong></span>@UT )
 
-proj(**AcquistoOfferta**, PG) =  
+proj(<strong>AcquistoOfferta</strong>, PG) =<br />
 ( 1 ) ;  
-(    
+(<br />  
 - ( 1 ; 1 ; 1 ; 1 ) ;  
-- (    
+- (<br />  
 	- ( 1 ; 1 ) ;  
 	- (
 		- (
 			- ( 1 ; 1 ) ;  
-			- (  
+			- (<br />
 				- ( 1 ; 1 )<sup>\*</sup>
 				- ( 1 ; 1 )
 
@@ -389,42 +391,42 @@ proj(**AcquistoOfferta**, PG) =
 )  
 \+ 1
 
-### CT<sub>*j*</sub> (Compagnia Trasporti)
+### CT<sub><em>j</em></sub> (Compagnia Trasporti)
 
-proj(**ProcessoRegistrazioneInteresseUtente**, CT<sub>*j*</sub>) =  
+proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ; 1 ) = 1
 
-proj(**VerificaGiornaliera**, CT<sub>*j*</sub>) =  
-(  
+proj(<strong>VerificaGiornaliera</strong>, CT<sub><em>j</em></sub>) =<br />
+(<br />
 - ( 1 ; 1 ) |  
 - ... |  
 - ( 1 ; 1 )  
 
 ) ;  
-(  
+(<br />
 - ( 1 ; 1 ) + 1  
 
 ) = 1
 
-proj(**NotificaVoliLastMinute**, CT<sub>*j*</sub>) =  
+proj(<strong>NotificaVoliLastMinute</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ) ;  
-(  
+(<br />
 - ( 1 ; 1 ) + 1  
 
 ) = 1
 
-proj(**AcquistoOfferta**, CT<sub>*j*</sub>) =  
+proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ) ;  
-(    
+(<br />  
 - ( 1 ; 1 ; 1 ; 1 ) ;  
-- (    
+- (<br />  
 	- ( 1 ; 1 ) ;  
 	- (
 		- (
 			- ( 1 ; 1 ) ;  
-			- (  
+			- (<br />
 				- ( 1 ; 1 )<sup>\*</sup>
-				- ( **pren_trs**</span>@AS; <span style="text-decoration: overline">**pren_trs_res**</span>@AS )
+				- ( <strong>pren_trs</strong></span>@AS; <span style="text-decoration: overline"><strong>pren_trs_res</strong></span>@AS )
 
 			- )
 			- \+ 1
@@ -441,42 +443,42 @@ proj(**AcquistoOfferta**, CT<sub>*j*</sub>) =
 )  
 \+ 1
 
-### CA<sub>*i*</sub> (Compagnia Aerea)
+### CA<sub><em>i</em></sub> (Compagnia Aerea)
 
-proj(**ProcessoRegistrazioneInteresseUtente**, CA<sub>*i*</sub>) =  
+proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br />
 ( 1 ; 1 ) = 1
 
-proj(**VerificaGiornaliera**, CA<sub>*i*</sub>) =  
-(  
+proj(<strong>VerificaGiornaliera</strong>, CA<sub><em>i</em></sub>) =<br />
+(<br />
 - (1 ; 1) |  
 - ... |  
-- ( **control**@AS ; <span style="text-decoration: overline">**control_res**</span>@AS ) |  
+- ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS ) |  
 - ... |  
 - ( 1 ; 1 )  
 
 ) ;  
-(  
+(<br />
 - ( 1 ; 1 ) + 1  
 
-) = ( **control**@AS ; <span style="text-decoration: overline">**control_res**</span>@AS )
+) = ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS )
 
-proj(**NotificaVoliLastMinute**, CA<sub>*i*</sub>) =  
-( <span style="text-decoration: overline">**last_minute**</span>@AS ) ;  
-(  
+proj(<strong>NotificaVoliLastMinute</strong>, CA<sub><em>i</em></sub>) =<br />
+( <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS ) ;  
+(<br />
 - ( 1 ; 1 ) + 1  
 
-) = <span style="text-decoration: overline">**last_minute**</span>@AS
+) = <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS
 
-proj(**AcquistoOfferta**, CA<sub>*i*</sub>) =  
+proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
 ( 1 ) ;  
-(    
+(<br />  
 - ( 1 ; 1 ; 1 ; 1 ) ;  
-- (    
-	- ( **buy_flights**@AS ; <span style="text-decoration: overline">**buy_flights_res**</span>@CA ) ;  
+- (<br />  
+	- ( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA ) ;  
 	- (
 		- (
 			- ( 1 ; 1 ) ;  
-			- (  
+			- (<br />
 				- ( 1 ; 1 )<sup>\*</sup>
 				- ( 1 ; 1 )
 
