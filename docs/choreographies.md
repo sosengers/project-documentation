@@ -94,7 +94,7 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 			<li> ( </li>
 <ul>
 				<!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
-				<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS )<sup>\*</sup> ;</li>  
+				<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS )<sup>*</sup> ;</li>  
 				<li> ( <strong>pren_trs</strong>: AS -> CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>: CT<sub><em>j</em></sub> -> AS) </li>
 </ul>
 			<li> ) </li> 
