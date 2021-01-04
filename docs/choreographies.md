@@ -370,162 +370,206 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 )  
 \+ 1
 
-### PG (ProntoGram)
-
+<h3>PG (ProntoGram)</h3>
+<p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PG) =<br />
 ( 1 ; 1 ) = 1
+</p>
 
+<p>
 proj(<strong>VerificaGiornaliera</strong>, PG) =<br />
-(<br />
-- ( 1 ; 1 ) |  
-- ... |  
-- ( 1 ; 1 )  
-
-) ;  
-(<br />
-- ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT ) + 1  
-
+(
+<ul>
+    <li>( 1 ; 1 ) |</li>
+    <li>... |</li>
+    <li>( 1 ; 1 )</li>
+</ul>
+) ;<br />
+(
+<ul>
+    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT ) + 1</li>
+</ul>
 ) = ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT )  
+</p>
 
+<p>
 proj(<strong>NotificaVoliLastMinute</strong>, PG) =<br />
-( 1 ) ;  
-(<br />
-- ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>notify</strong></span>@UT ) + 1  
- 
+( 1 ) ;<br />
+(
+<ul>
+    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>notify</strong></span>@UT ) + 1</li>
+</ul>
 ) = ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>notify</strong></span>@UT )
+</p>
 
+<p>
 proj(<strong>AcquistoOfferta</strong>, PG) =<br />
-( 1 ) ;  
-(<br />  
-- ( 1 ; 1 ; 1 ; 1 ) ;  
-- (<br />  
-	- ( 1 ; 1 ) ;  
-	- (
-		- (
-			- ( 1 ; 1 ) ;  
-			- (<br />
-				- ( 1 ; 1 )<sup>\*</sup>
-				- ( 1 ; 1 )
+( 1 ) ;<br />
+(
+<ul>
+    <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
+    <li>(</li>
+    <li><ul>
+        <li>( 1 ; 1 ) ;</li>
+        <li>(</li>
+        <li><ul>
+            <li>(</li>
+            <li><ul>
+                <li>( 1 ; 1 ) ;</li>
+                <li>(</li>
+                <li><ul>
+                    <li>( 1 ; 1 )<sup>*</sup></li>
+                    <li>( 1 ; 1 )</li>
+				</ul></li>
+                <li>)</li>
+                <li>+ 1</li>
+            </ul></li>
+            <li>)</li>
+            <li>+ 1</li>
+        </ul></li>
+        <li>);</li>
+        <li>1</li>
+	</ul></li>
+    <li>)</li>
+    <li>+ 1</li>
+</ul>
+)<br /> 
++ 1
+</p>
 
-			- )
-			- \+ 1
-
-		- )
-		- \+ 1
-
-	- );  
-	- 1
-
-- )
-- \+ 1
-
-)  
-\+ 1
-
-### CT<sub><em>j</em></sub> (Compagnia Trasporti)
-
+<h3>CT<sub><em>j</em></sub> (Compagnia Trasporti)</h3>
+<p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ; 1 ) = 1
+</p>
 
+<p>
 proj(<strong>VerificaGiornaliera</strong>, CT<sub><em>j</em></sub>) =<br />
-(<br />
-- ( 1 ; 1 ) |  
-- ... |  
-- ( 1 ; 1 )  
-
-) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+(
+<ul>
+    <li>( 1 ; 1 ) |</li>
+    <li>... |</li>
+    <li>( 1 ; 1 )</li> 
+</ul>
+) ;<br />
+(
+<ul>
+    <li>( 1 ; 1 ) + 1</li>
+</ul>
 ) = 1
+</p>
 
+<p>
 proj(<strong>NotificaVoliLastMinute</strong>, CT<sub><em>j</em></sub>) =<br />
-( 1 ) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+( 1 ) ;<br />
+(
+<ul>
+    <li>( 1 ; 1 ) + 1</li>
+</ul>
 ) = 1
+</p>
 
+<p>
 proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
-( 1 ) ;  
-(<br />  
-- ( 1 ; 1 ; 1 ; 1 ) ;  
-- (<br />  
-	- ( 1 ; 1 ) ;  
-	- (
-		- (
-			- ( 1 ; 1 ) ;  
-			- (<br />
-				- ( 1 ; 1 )<sup>\*</sup>
-				- ( <strong>pren_trs</strong></span>@AS; <span style="text-decoration: overline"><strong>pren_trs_res</strong></span>@AS )
+( 1 ) ;<br /> 
+(
+<ul>
+    <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
+    <li>(</li>
+    <li><ul>
+		<li>( 1 ; 1 ) ;</li>
+        <li>(</li>
+        <li><ul>
+            <li>(</li>
+            <li><ul>
+                <li>( 1 ; 1 ) ;</li>  
+                <li>(</li>
+                <li><ul>
+                    <li>( 1 ; 1 )<sup>*</sup></li>
+                    <li>( <strong>pren_trs</strong></span>@AS; <span style="text-decoration: overline"><strong>pren_trs_res</strong></span>@AS )</li>
+                </ul></li>
+                <li>)</li>
+                <li>+ 1</li>
+            </ul></li>
+            <li>)</li>
+            <li>+ 1</li>
+		</ul></li>
+        <li>);</li>
+        <li>1</li>
+    </ul></li>
+    <li>)</li>
+    <li>+ 1</li>
+</ul>
+)<br />
++ 1
+</p>
 
-			- )
-			- \+ 1
-
-		- )
-		- \+ 1
-
-	- );  
-	- 1
-
-- )
-- \+ 1
-
-)  
-\+ 1
-
-### CA<sub><em>i</em></sub> (Compagnia Aerea)
-
+<h3>CA<sub><em>i</em></sub> (Compagnia Aerea)</h3>
+<p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br />
 ( 1 ; 1 ) = 1
+</p>
 
+<p>
 proj(<strong>VerificaGiornaliera</strong>, CA<sub><em>i</em></sub>) =<br />
-(<br />
-- (1 ; 1) |  
-- ... |  
-- ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS ) |  
-- ... |  
-- ( 1 ; 1 )  
-
-) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+(
+<ul>
+    <li>(1 ; 1) |</li>
+    <li>... |</li>
+    <li>( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS ) |</li>  
+    <li>... |</li>
+    <li>( 1 ; 1 )</li>
+</ul>
+) ;<br /> 
+(
+<ul>
+    <li>( 1 ; 1 ) + 1 </li>
+</ul>
 ) = ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS )
+</p>
 
+<p>
 proj(<strong>NotificaVoliLastMinute</strong>, CA<sub><em>i</em></sub>) =<br />
-( <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS ) ;  
-(<br />
-- ( 1 ; 1 ) + 1  
-
+( <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS ) ;<br />
+(
+<ul>
+    <li>( 1 ; 1 ) + 1</li>
+</ul>
 ) = <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS
+</p>
 
+<p>
 proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
-( 1 ) ;  
-(<br />  
-- ( 1 ; 1 ; 1 ; 1 ) ;  
-- (<br />  
-	- ( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA ) ;  
-	- (
-		- (
-			- ( 1 ; 1 ) ;  
-			- (<br />
-				- ( 1 ; 1 )<sup>\*</sup>
-				- ( 1 ; 1 )
-
-			- )
-			- \+ 1
-
-		- )
-		- \+ 1
-
-	- );  
-	- 1
-
-- )
-- \+ 1
-
-)  
-\+ 1
-
+( 1 ) ;<br />
+(
+<ul>
+    <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
+    <li>(</li>
+    <li><ul>
+        <li>( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA ) ;  </li>
+        <li>(</li>
+        <li><ul>
+            <li>(</li>
+            <li><ul>
+                <li>( 1 ; 1 ) ;</li>
+                <li>(</li>
+                <li><ul>
+                    <li>( 1 ; 1 )<sup>\*</sup></li>
+                    <li>( 1 ; 1 )</li>
+                </ul></li>
+                <li>)</li>
+                <li>+ 1</li>
+            </ul></li>
+            <li>)</li>
+            <li>+ 1</li>
+        </ul></li>
+        <li>);</li>  
+        <li>1</li>
+    </ul></li>
+    <li>)</li>
+    <li>+ 1</li>
+</ul>
+)<br />
++ 1
+</p>
 </div>
