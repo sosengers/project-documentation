@@ -46,57 +46,72 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 
 <div id="choreographies">
 
-**ProcessoRegistrazioneInteresseUtente** ::=  
-(**reg**: UT -> AS; **reg_res**: AS -> UT)
+<strong>ProcessoRegistrazioneInteresseUtente</strong> ::=<br>
+(<strong>reg</strong>: UT -> AS; <strong>reg_res</strong>: AS -> UT)
 
-**VerificaGiornaliera** ::=  
+<strong>VerificaGiornaliera</strong> ::=<br>
 (
-- ( **control**: AS -> CA<sub>*1*</sub> ; **control_res**: CA<sub>*1*</sub> -> AS ) |  
-- ... |  
-- ( **control**: AS -> CA<sub>*N*</sub> ; **control_res**: CA<sub>*N*</sub> -> AS )
-  
-) ;  
+<ul>
+<li> ( <strong>control</strong>: AS -> CA<sub><em>1</em></sub> ; <strong>control_res</strong>: CA<sub><em>1</em></sub> -> AS ) | </li>
+<li> ... |</li>
+<li> ( <strong>control</strong>: AS -> CA<sub><em>N</em></sub> ; <strong>control_res</strong>: CA<sub><em>N</em></sub> -> AS ) </li>
+</ul>
+) ;<br>
 (
-- ( **notify**: AS -> PG ; **message**: PG -> UT ) + 1  
-
+<ul>
+<li> ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>
+</ul>
 )
 
-**NotificaVoliLastMinute** ::=  
-( **last_minute**: CA<sub>*i*</sub> -> AS ) ;  
-(  
-- ( **notify**: AS -> PG ; **message**: PG -> UT ) + 1  
+<br>
+<br>
 
+<strong>NotificaVoliLastMinute</strong> ::=<br>
+( <strong>last_minute</strong>: CA<sub><em>i</em></sub> -> AS ) ;  
+(  
+<ul>
+<li>( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>  
+</ul>
 )
 
-**AcquistoOfferta** ::=  
-( **ins_code**: UT -> AS ) ;  
+<br>
+<br>
+
+<strong>AcquistoOfferta</strong> ::=  <br>
+( <strong>ins_code</strong>: UT -> AS ) ;<br>  
 (  
-- ( **req_pay**: AS -> PP ; **pay_offer**: PP -> UT ; **pay_offer_res**: UT -> PP ; **req_pay_res**: PP -> AS ) ;  
-- (  
-	- ( **buy_flights**: AS -> CA<sub>_i_</sub> ; **buy_flights_res**: CA<sub>_i_</sub> -> AS ) ;  
-	- (  
-		- (  
+<ul>
+<li> ( <strong>req_pay</strong>: AS -> PP ; <strong>pay_offer</strong>: PP -> UT ; <strong>pay_offer_res</strong>: UT -> PP ; <strong>req_pay_res</strong>: PP -> AS ) ;</li>
+<li> ( </li>
+<ul>
+	<li> ( <strong>buy_flights</strong>: AS -> CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>: CA<sub><em>i</em></sub> -> AS ) ;</li>  
+	<li> ( </li>
+<ul>
+		<li>(</li>  
 		    <!-- Calcolo distanza aeroporto/casa -->
-			- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS ) ;  
-			- (  
+<ul>
+			<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS ) ;</li>  
+			<li> ( </li>
+<ul>
 				<!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
-				- ( **calc_dist**: AS -> DG ; **calc_dist_res**: DG -> AS )<sup>\*</sup> ;  
-				- ( **pren_trs**: AS -> CT<sub>*j*</sub> ; **pren_trs_res**: CT<sub>*j*</sub> -> AS)
+				<li> ( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS )<sup>*</sup> ;</li>  
+				<li> ( <strong>pren_trs</strong>: AS -> CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>: CT<sub><em>j</em></sub> -> AS) </li>
+</ul>
+			<li> ) </li> 
+			<li> + 1 </li>
+</ul>
+		<li> ) </li> 
+		<li> + 1 </li>
+</ul>
+	<li> ); </li>    
+    <li> <strong>send_tickets</strong>: AS -> UT </li>
+</ul>
 
-			- )  
-			- \+ 1
-
-		- )  
-		- \+ 1
-
-	- );    
-	- **send_tickets**: AS -> UT
-
-- )  
-- \+ **payment_failure**: AS -> UT
-
-)  
-\+ **ins_code_failure**: AS -> UT
+<li> ) </li>  
+<li> + <strong>payment_failure</strong>: AS -> UT </li>
+</ul>
+)  <br>
++ <strong>ins_code_failure</strong>: AS -> UT
 
 </div>
 
