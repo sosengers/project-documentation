@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: Geographical Distances
+  version: '1.0'
+  description: Interface that models the operations available for the service that computes geographical distances in ACMESky.
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /distance:
+    post:
+      summary: calculateDistance
+      operationId: calculateDistance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+                format: double
+                minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Locations'
+        description: ''
+      description: Calculates the distance between the given locations. The distance is returned in meters.
+components:
+  schemas:
+    Locations:
+      title: Locations
+      type: object
+      description: ''
+      properties:
+        latitude_1:
+          type: number
+          format: double
+          minimum: 0
+        longitude_1:
+          type: number
+          format: double
+          minimum: 0
+        latitude_2:
+          type: number
+          format: double
+          minimum: 0
+        longitude_2:
+          type: number
+          format: double
+          minimum: 0
+      required:
+        - latitude_1
+        - longitude_1
+        - latitude_2
+        - longitude_2
