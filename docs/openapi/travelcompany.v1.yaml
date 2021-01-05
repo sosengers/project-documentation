@@ -8,7 +8,7 @@ servers:
 paths:
   /transfers/buy:
     post:
-      summary: ''
+      summary: buyTransfer
       operationId: buyTransfer
       responses:
         '200':
