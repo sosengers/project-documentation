@@ -17,10 +17,6 @@
     <bpmn:endEvent id="Event_096bi7u">
       <bpmn:incoming>Flow_091r9gv</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_0k07k8u" name="Salvataggio offerte last minute">
-      <bpmn:incoming>Flow_1ja8jn4</bpmn:incoming>
-      <bpmn:outgoing>Flow_00a8ojl</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:subProcess id="Activity_058igjb" name="Notificare presenza offerte agli utenti">
       <bpmn:incoming>Flow_00a8ojl</bpmn:incoming>
       <bpmn:outgoing>Flow_091r9gv</bpmn:outgoing>
@@ -32,10 +28,6 @@
         <bpmn:incoming>Flow_0dt1vhx</bpmn:incoming>
         <bpmn:outgoing>Flow_1lu6og9</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:task id="Activity_0hkmgby" name="Controllo presenza offerte last minute">
-        <bpmn:incoming>Flow_1veajlh</bpmn:incoming>
-        <bpmn:outgoing>Flow_1vuna2x</bpmn:outgoing>
-      </bpmn:task>
       <bpmn:exclusiveGateway id="Gateway_0pgupis" name="Ci sono offerte per l&#39;utente">
         <bpmn:incoming>Flow_1vuna2x</bpmn:incoming>
         <bpmn:outgoing>Flow_0dt1vhx</bpmn:outgoing>
@@ -50,10 +42,18 @@
       <bpmn:sequenceFlow id="Flow_0dt1vhx" name="Sì" sourceRef="Gateway_0pgupis" targetRef="Activity_0hemxla" />
       <bpmn:sequenceFlow id="Flow_1lu6og9" sourceRef="Activity_0hemxla" targetRef="Event_1doc52o" />
       <bpmn:sequenceFlow id="Flow_03zklof" name="No" sourceRef="Gateway_0pgupis" targetRef="Event_1doc52o" />
+      <bpmn:serviceTask id="Activity_0hkmgby" name="Controllo presenza offerte last minute">
+        <bpmn:incoming>Flow_1veajlh</bpmn:incoming>
+        <bpmn:outgoing>Flow_1vuna2x</bpmn:outgoing>
+      </bpmn:serviceTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_1ja8jn4" sourceRef="StartEvent_1" targetRef="Activity_0k07k8u" />
     <bpmn:sequenceFlow id="Flow_00a8ojl" sourceRef="Activity_0k07k8u" targetRef="Activity_058igjb" />
     <bpmn:sequenceFlow id="Flow_091r9gv" sourceRef="Activity_058igjb" targetRef="Event_096bi7u" />
+    <bpmn:serviceTask id="Activity_0k07k8u" name="Salvataggio offerte last minute">
+      <bpmn:incoming>Flow_1ja8jn4</bpmn:incoming>
+      <bpmn:outgoing>Flow_00a8ojl</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_16u9u32">
@@ -81,7 +81,7 @@
       <bpmndi:BPMNShape id="Event_096bi7u_di" bpmnElement="Event_096bi7u">
         <dc:Bounds x="1352" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0k07k8u_di" bpmnElement="Activity_0k07k8u">
+      <bpmndi:BPMNShape id="Activity_1wvb2n1_di" bpmnElement="Activity_0k07k8u">
         <dc:Bounds x="390" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_058igjb_di" bpmnElement="Activity_058igjb" isExpanded="true">
@@ -121,9 +121,6 @@
       <bpmndi:BPMNShape id="Activity_0hemxla_di" bpmnElement="Activity_0hemxla">
         <dc:Bounds x="970" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0hkmgby_di" bpmnElement="Activity_0hkmgby">
-        <dc:Bounds x="700" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0pgupis_di" bpmnElement="Gateway_0pgupis" isMarkerVisible="true">
         <dc:Bounds x="865" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel>
@@ -132,6 +129,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1doc52o_di" bpmnElement="Event_1doc52o">
         <dc:Bounds x="1132" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00c4pz5_di" bpmnElement="Activity_0hkmgby">
+        <dc:Bounds x="700" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0l2oyz5_di" bpmnElement="Participant_0l2oyz5" isHorizontal="true">
         <dc:Bounds x="160" y="430" width="440" height="60" />
