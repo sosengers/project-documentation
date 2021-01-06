@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Flight Company
+  version: '1.0'
+  description: Interface that models the operations available for a flight company in ACMESky.
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /flights/buy:
+    parameters: []
+    post:
+      summary: buyFlight
+      operationId: buyFlight
+      responses:
+        '200':
+          description: OK
+      description: Buys the flight with the given purchase details.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseDetails'
+        description: ''
+  /flights/offers:
+    get:
+      summary: getFlightOffers
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flight'
+      operationId: getFlightOffers
+      description: Returns the daily flight offers of the company.
+components:
+  schemas:
+    Flight:
+      title: Flight
+      type: object
+      properties:
+        flight_id:
+          type: string
+        departure_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        arrival_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        cost:
+          type: number
+          minimum: 0
+          format: double
+        departure_datetime:
+          type: string
+          format: date-time
+        arrival_datetime:
+          type: string
+          format: date-time
+      required:
+        - flight_id
+        - departure_airport_code
+        - arrival_airport_code
+        - cost
+        - departure_datetime
+        - arrival_datetime
+    PurchaseDetails:
+      title: PurchaseDetails
+      type: object
+      properties:
+        flight_id:
+          type: string
+        date:
+          type: string
+          format: date
+      required:
+        - flight_id
+        - date
+  securitySchemes: {}

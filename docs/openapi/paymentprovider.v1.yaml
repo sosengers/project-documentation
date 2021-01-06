@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Payment Provider
+  version: '1.0'
+  description: Interface that models the operations available for the Payment Provider that supports payments by customers in ACMESky.
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /payments/request:
+    parameters: []
+    post:
+      summary: createPaymentRequest
+      operationId: createPaymentRequest
+      responses:
+        '200':
+          description: OK
+      description: Creates a payment request to a user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        description: ''
+  /payments/pay:
+    parameters: []
+    post:
+      summary: sendPayment
+      operationId: sendPayment
+      responses:
+        '200':
+          description: OK
+      description: Sends the payment data for paying a request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentData'
+        description: ''
+components:
+  schemas:
+    PaymentRequest:
+      title: PaymentRequest
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          minimum: 0
+        description:
+          type: string
+        payment_receiver:
+          type: string
+        transaction_id:
+          type: string
+          format: uuid
+      required:
+        - amount
+        - payment_receiver
+    PaymentData:
+      title: PaymentData
+      type: object
+      properties:
+        transaction_id:
+          type: string
+          format: uuid
+        credit_cart_number:
+          type: string
+          pattern: '[0-9]{16,16}'
+        cvv:
+          type: string
+          pattern: '[0-9]{3,3}'
+        expiration_date:
+          type: string
+          format: date
+        owner_name:
+          type: string
+      required:
+        - transaction_id
+        - credit_cart_number
+        - cvv
+        - expiration_date
+        - owner_name

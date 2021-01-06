@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Travel Company
+  version: '1.0'
+  description: Interface that models the operations available for a travel company that offers car transfers from the customers' house and the airports in ACMESky.
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /transfers/buy:
+    post:
+      summary: buyTransfer
+      operationId: buyTransfer
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseDetails'
+      description: Buys the car transfer with the given purchase details.
+    parameters: []
+components:
+  schemas:
+    PurchaseDetails:
+      title: PurchaseDetails
+      type: object
+      properties:
+        customer_address:
+          type: string
+        airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        departure_transfer_datetime:
+          type: string
+          format: date-time
+        arrival_transfer_datetime:
+          type: string
+          format: date-time
+        customer_name:
+          type: string
+      required:
+        - customer_address
+        - airport_code
+        - departure_transfer_datetime
+        - arrival_transfer_datetime
+        - customer_name
