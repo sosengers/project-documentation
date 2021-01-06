@@ -12,4 +12,5 @@ jobs:
         with:
           python-version: 3.8
       - run: pip install mkdocs-material
+      - run: cd lightgallery-markdown && python setup.py install
       - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.yml
