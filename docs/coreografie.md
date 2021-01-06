@@ -1,10 +1,10 @@
 <style>
-    div#choreographies ul li,
-    div#projections ul li {
+    div.choreographies ul li,
+    div.projections ul li {
         list-style-type: none;
 	}
 
-	div#choreographies ul, div#projections ul {
+	div.choreographies ul, div.projections ul {
 		margin: 0px;
 	}
 </style>
@@ -48,7 +48,7 @@
 Le seguenti coreografie modellano tutti quanti i possibili processi che possono avvenire nel sistema che verrà implementato.  
 Le interazioni che non comprendono AS come mittente o destinatario sono molto semplificate, in quanto esterni ad essa e di cui non possiamo conoscere l'implementazione interna.
 
-<div id="choreographies">
+<div class="choreographies">
 
 <p>
 <strong>ProcessoRegistrazioneInteresseUtente</strong> ::=<br />
@@ -145,7 +145,7 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 Seguono le proiezioni delle coreografie, divise per ruolo.
 
 ### AS (ACMESky)
-<div id="projections">
+<div class="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, AS) =<br />
 ( <strong>reg</strong>@UT ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT )
@@ -213,7 +213,7 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 </p>
 </div>
 ### UT (UTente)
-<div id="projections">
+<div class="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, UT) =<br />
 ( <span style="text-decoration: overline"><strong>reg</strong></span>@AS ; <strong>reg_res</strong>@AS )
@@ -284,7 +284,7 @@ proj(<strong>AcquistoOfferta</strong>, UT) =<br />
 </p>
 </div>
 ### DG (Distanze Geografiche)
-<div id="projections">
+<div class="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, DG) =<br />
 ( 1 ; 1 )<br />
@@ -356,7 +356,7 @@ proj(<strong>AcquistoOfferta</strong>, DG) =<br />
 </div>
 
 ### PP (Provider dei Pagamenti)
-<div id="projections">
+<div class="projections">
 
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PP) =<br />
@@ -430,7 +430,7 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 </div>
 
 ### PG (ProntoGram)
-<div id="projections">
+<div class="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PG) =<br />
 ( 1 ; 1 )<br />
@@ -503,7 +503,7 @@ proj(<strong>AcquistoOfferta</strong>, PG) =<br />
 </div>
 
 ### CT<sub><em>j</em></sub> (Compagnia Trasporti)
-<div id="projections">
+<div class="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ; 1 )<br />
@@ -577,7 +577,7 @@ proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
 
 ### CA<sub><em>i</em></sub> (Compagnia Aerea)
 
-<div id="projections">
+<div class="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br />
 ( 1 ; 1 )<br />
