@@ -7,6 +7,7 @@ copyright: Documentazione del progetto ACMESky realizzato da Marco Ferrati e Tom
 theme:
   name: material
   language: it
+  custom_dir: theme
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -16,6 +17,7 @@ markdown_extensions:
   - admonition
   - footnotes
   - attr_list
+  - lightgallery
 nav:
   - Home: "index.md"
   - Coreografie: "coreografie.md"
