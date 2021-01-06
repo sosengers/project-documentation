@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: ProntoGram
+  version: '1.0'
+  description: Interface that models the operations available for ProntoGram in ACMESky.
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /messages:
+    post:
+      summary: sendMessage
+      operationId: sendMessage
+      responses:
+        '200':
+          description: OK
+      description: Sends the message to ProntoGram for being dispatched to the actual user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+    get:
+      summary: getMessages
+      operationId: getMessages
+      responses:
+        '200':
+          description: OK
+      description: Returns the messages of the given user.
+      parameters:
+        - schema:
+            type: string
+            minLength: 1
+          in: query
+          name: username
+          required: true
+components:
+  schemas:
+    Message:
+      title: Message
+      type: object
+      properties:
+        sender:
+          type: string
+          minLength: 1
+        receiver:
+          type: string
+          minLength: 1
+        body:
+          type: string
+          minLength: 1
+      required:
+        - sender
+        - receiver
+        - body
