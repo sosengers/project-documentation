@@ -144,9 +144,8 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 ## Proiezioni
 Seguono le proiezioni delle coreografie, divise per ruolo.
 
+### AS (ACMESky)
 <div id="projections">
-
-<h3>AS (ACMESky)</h3>
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, AS) =<br />
 ( <strong>reg</strong>@UT ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT )
@@ -212,9 +211,9 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 )<br />
 + <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT
 </p>
-
-<h3>UT (UTente)</h3>
-
+</div>
+### UT (UTente)
+<div id="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, UT) =<br />
 ( <span style="text-decoration: overline"><strong>reg</strong></span>@AS ; <strong>reg_res</strong>@AS )
@@ -283,9 +282,9 @@ proj(<strong>AcquistoOfferta</strong>, UT) =<br />
 + <strong>ins_code_failure</strong>@AS<br />
 = ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ; ( ( <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ) ; <strong>send_tickets</strong>@AS + <strong>payment_failure</strong>@AS ) + <strong>ins_code_failure</strong>@AS
 </p>
-
-<h3>DG (Distanze Geografiche)</h3>
-
+</div>
+### DG (Distanze Geografiche)
+<div id="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, DG) =<br />
 ( 1 ; 1 )<br />
@@ -354,8 +353,10 @@ proj(<strong>AcquistoOfferta</strong>, DG) =<br />
 + 1<br />
 = ( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS ) ; ( <strong>calc_dist</strong></span>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS )<sup>*</sup> ) + 1
 </p>
+</div>
 
-<h3>PP (Provider dei Pagamenti)</h3>
+### PP (Provider dei Pagamenti)
+<div id="projections">
 
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PP) =<br />
@@ -426,8 +427,10 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 + 1<br />
 = ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS )
 </p>
+</div>
 
-<h3>PG (ProntoGram)</h3>
+### PG (ProntoGram)
+<div id="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PG) =<br />
 ( 1 ; 1 )<br />
@@ -497,8 +500,10 @@ proj(<strong>AcquistoOfferta</strong>, PG) =<br />
 + 1<br />
 = 1
 </p>
+</div>
 
-<h3>CT<sub><em>j</em></sub> (Compagnia Trasporti)</h3>
+### CT<sub><em>j</em></sub> (Compagnia Trasporti)
+<div id="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ; 1 )<br />
@@ -568,8 +573,11 @@ proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
 + 1<br />
 = ( <strong>pren_trs</strong></span>@AS; <span style="text-decoration: overline"><strong>pren_trs_res</strong></span>@AS )
 </p>
+</div>
 
-<h3>CA<sub><em>i</em></sub> (Compagnia Aerea)</h3>
+### CA<sub><em>i</em></sub> (Compagnia Aerea)
+
+<div id="projections">
 <p>
 proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br />
 ( 1 ; 1 )<br />
