@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 <style>
     div.choreographies ul li,
     div.projections ul li {

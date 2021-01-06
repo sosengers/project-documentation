@@ -3,6 +3,7 @@ site_author: Marco Ferrati, Tommaso Azzalin
 site_description: Documentazione del progetto "ACMESky" del corso di Ingegneria del Software Orientata ai Servizi della LM Informatica presso Università di Bologna, A.A. 2020/2021.
 repo_name: sosengers/project-documentation
 repo_url: https://github.com/sosengers/project-documentation
+copyright: Documentazione del progetto ACMESky realizzato da Marco Ferrati e Tommaso Azzalin, Università di Bologna.
 theme:
   name: material
   language: it
@@ -10,7 +11,6 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.expand
-    - toc.integrate
 markdown_extensions:
   - abbr
   - admonition

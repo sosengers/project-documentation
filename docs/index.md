@@ -1,3 +1,7 @@
+---
+hide:
+  - navigation
+---
 # ACMESky - Documentazione progetto
 
 Il seguente sito web descrive i processi che hanno portato alla realizzazione del progetto didattico del corso Ingegneria del Software Orientata ai Servizi della L.M Informatica dell'Università di Bologna svolto da Marco Ferrati e Tommaso Azzalin nell' A.A. 2020/21.
