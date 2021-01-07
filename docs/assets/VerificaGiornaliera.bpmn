@@ -43,7 +43,7 @@
       <bpmn:sequenceFlow id="Flow_1kuz36e" sourceRef="Activity_01ofpig" targetRef="Activity_1msjmyw" />
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_0o4f9ie" sourceRef="Activity_1y3t9f8" targetRef="Activity_0yp3vi0" />
-    <bpmn:subProcess id="Activity_0yp3vi0" name="Notificare presenza offerte agli utenti">
+    <bpmn:subProcess id="Activity_0yp3vi0" name="Notifica presenza offerte agli utenti">
       <bpmn:incoming>Flow_0o4f9ie</bpmn:incoming>
       <bpmn:outgoing>Flow_1p1ilzm</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics />

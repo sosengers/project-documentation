@@ -17,7 +17,7 @@
     <bpmn:endEvent id="Event_096bi7u">
       <bpmn:incoming>Flow_091r9gv</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:subProcess id="Activity_058igjb" name="Notificare presenza offerte agli utenti">
+    <bpmn:subProcess id="Activity_058igjb" name="Notifica presenza offerte agli utenti">
       <bpmn:incoming>Flow_00a8ojl</bpmn:incoming>
       <bpmn:outgoing>Flow_091r9gv</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics />
@@ -81,9 +81,6 @@
       <bpmndi:BPMNShape id="Event_096bi7u_di" bpmnElement="Event_096bi7u">
         <dc:Bounds x="1352" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1wvb2n1_di" bpmnElement="Activity_0k07k8u">
-        <dc:Bounds x="390" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_058igjb_di" bpmnElement="Activity_058igjb" isExpanded="true">
         <dc:Bounds x="570" y="77" width="630" height="200" />
       </bpmndi:BPMNShape>
@@ -132,6 +129,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00c4pz5_di" bpmnElement="Activity_0hkmgby">
         <dc:Bounds x="700" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wvb2n1_di" bpmnElement="Activity_0k07k8u">
+        <dc:Bounds x="390" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0l2oyz5_di" bpmnElement="Participant_0l2oyz5" isHorizontal="true">
         <dc:Bounds x="160" y="430" width="440" height="60" />
