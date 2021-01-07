@@ -151,10 +151,6 @@
       <bpmn:outgoing>Flow_1gt4jb1</bpmn:outgoing>
     </bpmn:sendTask>
     <bpmn:sequenceFlow id="Flow_1gt4jb1" sourceRef="Activity_0udpzev" targetRef="Activity_1sb8qh3" />
-    <bpmn:serviceTask id="Activity_0qoqoyx" name="Verifica validità codice offerta">
-      <bpmn:incoming>Flow_0mfetfx</bpmn:incoming>
-      <bpmn:outgoing>Flow_11ce09u</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_0q8j48t" name="Verifica esito pagamento">
       <bpmn:incoming>Flow_1szi7rj</bpmn:incoming>
       <bpmn:outgoing>Flow_08utbi2</bpmn:outgoing>
@@ -166,6 +162,10 @@
     <bpmn:serviceTask id="Activity_1rf5epx" name="Verifica condizione prezzo per prenotazione navetta">
       <bpmn:incoming>Flow_1aighra</bpmn:incoming>
       <bpmn:outgoing>Flow_1nsoyt1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0qoqoyx" name="Verifica validità codice offerta">
+      <bpmn:incoming>Flow_0mfetfx</bpmn:incoming>
+      <bpmn:outgoing>Flow_11ce09u</bpmn:outgoing>
     </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -372,9 +372,6 @@
       <bpmndi:BPMNShape id="Activity_16yd00m_di" bpmnElement="Activity_0udpzev">
         <dc:Bounds x="3220" y="510" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_126cs8m_di" bpmnElement="Activity_0qoqoyx">
-        <dc:Bounds x="390" y="660" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0zqcvwz_di" bpmnElement="Activity_0q8j48t">
         <dc:Bounds x="1130" y="310" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -383,6 +380,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0lzxprl_di" bpmnElement="Activity_1rf5epx">
         <dc:Bounds x="1800" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0f7edh0_di" bpmnElement="Activity_0qoqoyx">
+        <dc:Bounds x="390" y="660" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0tg0lpy_di" bpmnElement="Participant_027ovit" isHorizontal="true">
         <dc:Bounds x="160" y="1040" width="2930" height="60" />
