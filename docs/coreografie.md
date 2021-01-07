@@ -24,7 +24,7 @@ hide:
 - PG: ProntoGram
 - PP: Provider dei Pagamenti
 - DG: servizio per il calcolo delle Distanze Geografiche
-- UT: UTente
+- UT<sub>*k*</sub>: UTente (il range in cui *k* varia dipende dagli utenti che attualmente hanno registrato interessi presso ACMESky)
 
 ### Nomenclature per le interazioni fra ruoli
 - **reg**: registrazione dell'interesse di un utente per un viaggio;
@@ -57,7 +57,7 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 
 <p>
 <strong>RegistrazioneInteresseUtente</strong> ::=<br />
-(<strong>reg</strong>: UT -> AS; <strong>reg_res</strong>: AS -> UT)
+(<strong>reg</strong>: UT<sub><em>k</em></sub> -> AS; <strong>reg_res</strong>: AS -> UT<sub><em>k</em></sub>)
 </p>
 
 <p>
@@ -94,10 +94,10 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 
 <p>
 <strong>AcquistoOfferta</strong> ::=  <br />
-( <strong>ins_code</strong>: UT -> AS ) ;<br />  
+( <strong>ins_code</strong>: UT<sub><em>k</em></sub> -> AS ) ;<br />  
 (  
 <ul>
-    <li>( <strong>req_pay</strong>: AS -> PP ; <strong>pay_offer</strong>: PP -> UT ; <strong>pay_offer_res</strong>: UT -> PP ; <strong>req_pay_res</strong>: PP -> AS ) ;</li>
+    <li>( <strong>req_pay</strong>: AS -> PP ; <strong>pay_offer</strong>: PP -> UT<sub><em>k</em></sub> ; <strong>pay_offer_res</strong>: UT<sub><em>k</em></sub> -> PP ; <strong>req_pay_res</strong>: PP -> AS ) ;</li>
     <li>( </li>
     <li><ul>
     	<li>( <strong>buy_flights</strong>: AS -> CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>: CA<sub><em>i</em></sub> -> AS ) ;</li>  
@@ -120,19 +120,19 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
             <li>+ 1</li>
         </ul></li>
         <li>);</li>    
-        <li><strong>send_tickets</strong>: AS -> UT </li>
+        <li><strong>send_tickets</strong>: AS -> UT<sub><em>k</em></sub> </li>
     </ul></li>
     <li>) </li>  
-    <li> + <strong>payment_failure</strong>: AS -> UT </li>
+    <li> + <strong>payment_failure</strong>: AS -> UT<sub><em>k</em></sub> </li>
 </ul>
 )<br />
-+ <strong>ins_code_failure</strong>: AS -> UT
++ <strong>ins_code_failure</strong>: AS -> UT<sub><em>k</em></sub>
 </p>
 </div>
 
 ### Verifica della connectedness delle coreografie
 - **RegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
-- **VerificaGiornaliera**: la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate. Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni ( **control** ; **control_res** ) fra AS e i vari CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione dei **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di ogni **notify** è AS. Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT<sub>*i*</sub>. Essendo AS il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito. Come nell'interazione fra AS e le varie CA<sub>*i*</sub>, le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non hanno condizioni per verificare la connectedness e quindi non viene verificata.
+- **VerificaGiornaliera**: la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate. Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni ( **control** ; **control_res** ) fra AS e i vari CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione dei **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di ogni **notify** è AS. Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT<sub>*k*</sub>. Essendo AS il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito. Come nell'interazione fra AS e le varie CA<sub>*i*</sub>, le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non hanno condizioni per verificare la connectedness e quindi non viene verificata.
 - **NotificaVoliLastMinute** è connessa in modo non dissimile a quanto avviene in **VerificaGiornaliera**. AS è ricevente in **last_minute** e mittente in **notify**, dopodiché PG è ricevente in **notify** e mittente in **message**. Da notare che **notify** e **message**, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, ProntoGram resterebbe in attesa ma non sarebbe un problema poiché è il suo compito. Come nella precedente coreografia, per le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non può essere verificata la connectedness;
 - **AcquistoOfferta** è connessa perché:
     - il ricevente di **ins_code** è il mittente di **req_pay** e di **ins_code_failure** (quest'ultimo termina la coreografia);
@@ -157,7 +157,7 @@ Seguono le proiezioni delle coreografie, divise per ruolo.
 <div class="projections">
 <p>
 proj(<strong>RegistrazioneInteresseUtente</strong>, AS) =<br />
-( <strong>reg</strong>@UT ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT )
+( <strong>reg</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT<sub><em>k</em></sub> )
 </p>
 
 <p>
@@ -188,7 +188,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, AS) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, AS) =<br />
-( <strong>ins_code</strong>@UT ) ;<br />
+( <strong>ins_code</strong>@UT<sub><em>k</em></sub> ) ;<br />
 (<br />
 <ul>
 <li>( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; 1 ; 1 ; <strong>req_pay_res</strong>@AS ) ;</li>
@@ -212,24 +212,24 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 		<li>+ 1</li>
 </ul></li>
 	<li>);</li>
-	<li><span style="text-decoration: overline"><strong>send_tickets</strong></span>@UT</li>
+	<li><span style="text-decoration: overline"><strong>send_tickets</strong></span>@UT<sub><em>k</em></sub></li>
 </ul></li>
 <li>)</li>
-<li>+ <span style="text-decoration: overline"><strong>payment_failure</strong></span>@UT</li>
+<li>+ <span style="text-decoration: overline"><strong>payment_failure</strong></span>@UT<sub><em>k</em></sub></li>
 </ul>
 )<br />
-+ <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT
++ <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT<sub><em>k</em></sub>
 </p>
 </div>
-### UT (UTente)
+### UT<sub><em>k</em></sub> (UTente)
 <div class="projections">
 <p>
-proj(<strong>RegistrazioneInteresseUtente</strong>, UT) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, UT<sub><em>k</em></sub>) =<br />
 ( <span style="text-decoration: overline"><strong>reg</strong></span>@AS ; <strong>reg_res</strong>@AS )
 </p>
 
 <p>
-proj(<strong>VerificaGiornaliera</strong>, UT) =<br />
+proj(<strong>VerificaGiornaliera</strong>, UT<sub><em>k</em></sub>) =<br />
 (<br />
 <ul>
 <li> ( 1 ; 1 ) |</li>  
@@ -246,7 +246,7 @@ proj(<strong>VerificaGiornaliera</strong>, UT) =<br />
 </p>
 
 <p>
-proj(<strong>NotificaVoliLastMinute</strong>, UT) =<br />
+proj(<strong>NotificaVoliLastMinute</strong>, UT<sub><em>k</em></sub>) =<br />
 ( 1 ) ;<br />
 (
 <ul>
@@ -257,7 +257,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, UT) =<br />
 </p>
 
 <p>
-proj(<strong>AcquistoOfferta</strong>, UT) =<br />
+proj(<strong>AcquistoOfferta</strong>, UT<sub><em>k</em></sub>) =<br />
 ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ;<br />
 (
 <ul>
@@ -406,7 +406,7 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 ( 1 ) ; <br/>
 (
 <ul>
-<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ) ;</li>  
+<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT<sub><em>k</em></sub> ; <strong>pay_offer_res</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ) ;</li>  
 <li>(</li>
 <li><ul>
 	<li>( 1 ; 1 ) ;</li>  
@@ -434,7 +434,7 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 </ul>
 )<br/>
 + 1<br />
-= ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT ; <strong>pay_offer_res</strong>@UT ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS )
+= ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT<sub><em>k</em></sub> ; <strong>pay_offer_res</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS )
 </p>
 </div>
 
@@ -457,10 +457,10 @@ proj(<strong>VerificaGiornaliera</strong>, PG) =<br />
 ) ;<br />
 (
 <ul>
-    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT ) + 1</li>
+    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) + 1</li>
 </ul>
 )<br />
-= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT )  
+= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> )  
 </p>
 
 <p>
@@ -468,10 +468,10 @@ proj(<strong>NotificaVoliLastMinute</strong>, PG) =<br />
 ( 1 ) ;<br />
 (
 <ul>
-    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT ) + 1</li>
+    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) + 1</li>
 </ul>
 )<br />
-= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT )
+= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> )
 </p>
 
 <p>
