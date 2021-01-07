@@ -56,7 +56,7 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 <div class="choreographies">
 
 <p>
-<strong>ProcessoRegistrazioneInteresseUtente</strong> ::=<br />
+<strong>RegistrazioneInteresseUtente</strong> ::=<br />
 (<strong>reg</strong>: UT -> AS; <strong>reg_res</strong>: AS -> UT)
 </p>
 
@@ -131,7 +131,7 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 </div>
 
 ### Verifica della connectedness delle coreografie
-- **ProcessoRegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
+- **RegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
 - **VerificaGiornaliera**: la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate. Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni ( **control** ; **control_res** ) fra AS e i vari CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione dei **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di ogni **notify** è AS. Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT<sub>*i*</sub>. Essendo AS il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito. Come nell'interazione fra AS e le varie CA<sub>*i*</sub>, le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non hanno condizioni per verificare la connectedness e quindi non viene verificata.
 - **NotificaVoliLastMinute** è connessa in modo non dissimile a quanto avviene in **VerificaGiornaliera**. AS è ricevente in **last_minute** e mittente in **notify**, dopodiché PG è ricevente in **notify** e mittente in **message**. Da notare che **notify** e **message**, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, ProntoGram resterebbe in attesa ma non sarebbe un problema poiché è il suo compito. Come nella precedente coreografia, per le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non può essere verificata la connectedness;
 - **AcquistoOfferta** è connessa perché:
@@ -156,7 +156,7 @@ Seguono le proiezioni delle coreografie, divise per ruolo.
 ### AS (ACMESky)
 <div class="projections">
 <p>
-proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, AS) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, AS) =<br />
 ( <strong>reg</strong>@UT ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT )
 </p>
 
@@ -224,7 +224,7 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 ### UT (UTente)
 <div class="projections">
 <p>
-proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, UT) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, UT) =<br />
 ( <span style="text-decoration: overline"><strong>reg</strong></span>@AS ; <strong>reg_res</strong>@AS )
 </p>
 
@@ -295,7 +295,7 @@ proj(<strong>AcquistoOfferta</strong>, UT) =<br />
 ### DG (Distanze Geografiche)
 <div class="projections">
 <p>
-proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, DG) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, DG) =<br />
 ( 1 ; 1 )<br />
 = 1
 </p>
@@ -368,7 +368,7 @@ proj(<strong>AcquistoOfferta</strong>, DG) =<br />
 <div class="projections">
 
 <p>
-proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PP) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, PP) =<br />
 ( 1 ; 1 )<br />
 = 1
 </p>
@@ -441,7 +441,7 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 ### PG (ProntoGram)
 <div class="projections">
 <p>
-proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, PG) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, PG) =<br />
 ( 1 ; 1 )<br />
 = 1
 </p>
@@ -514,7 +514,7 @@ proj(<strong>AcquistoOfferta</strong>, PG) =<br />
 ### CT<sub><em>j</em></sub> (Compagnia Trasporti)
 <div class="projections">
 <p>
-proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ; 1 )<br />
 = 1
 </p>
@@ -588,7 +588,7 @@ proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
 
 <div class="projections">
 <p>
-proj(<strong>ProcessoRegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br />
+proj(<strong>RegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br />
 ( 1 ; 1 )<br />
 = 1
 </p>
