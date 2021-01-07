@@ -171,7 +171,9 @@ proj(</strong><strong>VerificaGiornaliera</strong>, AS) =<br />
 ) ;<br />
 (
 <ul>
-<li>( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1</li>
+    <li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 )</li>
 </ul>
 )
 </p>
@@ -181,7 +183,9 @@ proj(<strong>NotificaVoliLastMinute</strong>, AS) =<br />
 ( <strong>last_minute</strong>@CA<sub><em>i</em></sub> ) ;<br />
 (
 <ul>
-<li>( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1</li>
+    <li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 )</li>
 </ul>
 )
 </p>
@@ -239,7 +243,11 @@ proj(<strong>VerificaGiornaliera</strong>, UT<sub><em>k</em></sub>) =<br />
 ) ;  <br />
 (<br />
 <ul>
-<li> ( 1 ; <strong>message</strong>@PG ) + 1</li>  
+    <li> ( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li> ( ( 1 ; <strong>message</strong>@PG ) + 1) |</li>
+    <li>... |</li>
+    <li> ( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = <strong>message</strong>@PG
@@ -250,7 +258,11 @@ proj(<strong>NotificaVoliLastMinute</strong>, UT<sub><em>k</em></sub>) =<br />
 ( 1 ) ;<br />
 (
 <ul>
-<li>( 1 ; <strong>message</strong>@PG ) + 1</li>  
+    <li> ( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li> ( ( 1 ; <strong>message</strong>@PG ) + 1) |</li>
+    <li>... |</li>
+    <li> ( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = <strong>message</strong>@PG
@@ -308,9 +320,12 @@ proj(<strong>VerificaGiornaliera</strong>, DG) =<br />
 <li>... |</li>   
 <li>( 1 ; 1 )</li>  
 </ul>
-) ;  
+) ;<br />
+(
 <ul>
-<li>( 1 ; 1 ) + 1</li>  
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = 1
@@ -321,7 +336,9 @@ proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br />
 ( 1 ) ;<br />  
 (
 <ul>
-<li>( 1 ; 1 ) + 1</li>  
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = 1
@@ -384,7 +401,9 @@ proj(<strong>VerificaGiornaliera</strong>, PP) =<br />
 ) ;<br/>  
 (
 <ul>
-<li>( 1 ; 1 ) + 1</li>  
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = 1
@@ -395,7 +414,9 @@ proj(<strong>NotificaVoliLastMinute</strong>, PP) =<br />
 ( 1 ) ;<br/>  
 (
 <ul>
-<li>( 1 ; 1 ) + 1</li>  
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = 1
@@ -457,10 +478,12 @@ proj(<strong>VerificaGiornaliera</strong>, PG) =<br />
 ) ;<br />
 (
 <ul>
-    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) + 1</li>
+    <li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 )</li>
 </ul>
 )<br />
-= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> )  
+= ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) | ... | ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) | ... | ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 ) 
 </p>
 
 <p>
@@ -468,10 +491,12 @@ proj(<strong>NotificaVoliLastMinute</strong>, PG) =<br />
 ( 1 ) ;<br />
 (
 <ul>
-    <li>( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) + 1</li>
+    <li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 )</li>
 </ul>
 )<br />
-= ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> )
+= ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) | ... | ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) | ... | ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 ) 
 </p>
 
 <p>
@@ -530,7 +555,9 @@ proj(<strong>VerificaGiornaliera</strong>, CT<sub><em>j</em></sub>) =<br />
 ) ;<br />
 (
 <ul>
-    <li>( 1 ; 1 ) + 1</li>
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = 1
@@ -541,7 +568,9 @@ proj(<strong>NotificaVoliLastMinute</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ) ;<br />
 (
 <ul>
-    <li>( 1 ; 1 ) + 1</li>
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = 1
@@ -606,7 +635,9 @@ proj(<strong>VerificaGiornaliera</strong>, CA<sub><em>i</em></sub>) =<br />
 ) ;<br /> 
 (
 <ul>
-    <li>( 1 ; 1 ) + 1 </li>
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS )
@@ -617,7 +648,9 @@ proj(<strong>NotificaVoliLastMinute</strong>, CA<sub><em>i</em></sub>) =<br />
 ( <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS ) ;<br />
 (
 <ul>
-    <li>( 1 ; 1 ) + 1</li>
+    <li>( ( 1 ; 1 ) + 1 ) |</li>
+    <li>... |</li>
+    <li>( ( 1 ; 1 ) + 1 )</li>
 </ul>
 )<br />
 = <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS
