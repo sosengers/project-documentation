@@ -66,12 +66,14 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 <ul>
     <li> ( <strong>control</strong>: AS -> CA<sub><em>1</em></sub> ; <strong>control_res</strong>: CA<sub><em>1</em></sub> -> AS ) | </li>
     <li> ... |</li>
-    <li> ( <strong>control</strong>: AS -> CA<sub><em>N</em></sub> ; <strong>control_res</strong>: CA<sub><em>N</em></sub> -> AS ) </li>
+    <li> ( <strong>control</strong>: AS -> CA<sub><em>N</em></sub> ; <strong>control_res</strong>: CA<sub><em>N</em></sub> -> AS )</li>
 </ul>
 ) ;<br />
 (
 <ul>
-    <li> ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>
+    <li> ( ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT<sub><em>1</em></sub> ) + 1 ) |</li>
+    <li> ... |</li>
+    <li> ( ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT<sub><em>N</em></sub> ) + 1 ) </li>
 </ul>
 )
 
@@ -82,7 +84,9 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
 ( <strong>last_minute</strong>: CA<sub><em>i</em></sub> -> AS ) ;<br />
 (  
 <ul>
-    <li>( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT ) + 1</li>  
+    <li> ( ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT<sub><em>1</em></sub> ) + 1 ) |</li>
+    <li> ... |</li>
+    <li> ( ( <strong>notify</strong>: AS -> PG ; <strong>message</strong>: PG -> UT<sub><em>N</em></sub> ) + 1 ) </li>
 </ul>
 )
 
@@ -100,8 +104,8 @@ Le interazioni che non comprendono AS come mittente o destinatario sono molto se
     	<li>(</li>
         <li><ul>
             <li>(</li>  
-            <!-- Calcolo distanza aeroporto/casa -->
             <li><ul>
+                <!-- Calcolo distanza aeroporto/casa -->
                 <li>( <strong>calc_dist</strong>: AS -> DG ; <strong>calc_dist_res</strong>: DG -> AS ) ;</li>  
                 <li>(</li>
                 <li><ul>
