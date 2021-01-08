@@ -14,7 +14,7 @@ paths:
       responses:
         '200':
           description: OK
-      description: Creates a payment request to a user.
+      description: Creates a payment request for a user.
       requestBody:
         content:
           application/json:

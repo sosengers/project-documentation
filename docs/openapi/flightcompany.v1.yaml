@@ -10,16 +10,18 @@ paths:
     parameters: []
     post:
       summary: buyFlight
-      operationId: buyFlight
+      operationId: buyFlights
       responses:
         '200':
           description: OK
-      description: Buys the flight with the given purchase details.
+      description: Buys the flights with the given purchase details.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PurchaseDetails'
+              type: array
+              items:
+                $ref: '#/components/schemas/FlightToPurchase'
         description: ''
   /flights/offers:
     get:
@@ -67,8 +69,8 @@ components:
         - cost
         - departure_datetime
         - arrival_datetime
-    PurchaseDetails:
-      title: PurchaseDetails
+    FlightToPurchase:
+      title: FlightToPurchase
       type: object
       properties:
         flight_id:

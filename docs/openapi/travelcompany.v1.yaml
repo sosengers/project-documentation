@@ -9,7 +9,7 @@ paths:
   /transfers/buy:
     post:
       summary: buyTransfer
-      operationId: buyTransfer
+      operationId: buyTransfers
       responses:
         '200':
           description: OK
@@ -18,7 +18,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PurchaseDetails'
-      description: Buys the car transfer with the given purchase details.
+      description: Buys the car transfers with the given purchase details.
     parameters: []
 components:
   schemas:
