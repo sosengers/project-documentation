@@ -24,11 +24,11 @@
       <bpmn:incoming>Flow_1i460k5</bpmn:incoming>
       <bpmn:outgoing>Flow_0o4f9ie</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics />
-      <bpmn:startEvent id="Event_1gjmsb5">
+      <bpmn:startEvent id="Event_1gjmsb5" name="Recupero offerrte della i-esima compagnia aerea">
         <bpmn:outgoing>Flow_1usn7dn</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="Flow_1usn7dn" sourceRef="Event_1gjmsb5" targetRef="Activity_01ofpig" />
-      <bpmn:endEvent id="Event_0gfxkwx">
+      <bpmn:endEvent id="Event_0gfxkwx" name="Offerte della i-esima compagnia aerea recuperate">
         <bpmn:incoming>Flow_0185oav</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="Flow_0185oav" sourceRef="Activity_1msjmyw" targetRef="Event_0gfxkwx" />
@@ -47,7 +47,7 @@
       <bpmn:incoming>Flow_0o4f9ie</bpmn:incoming>
       <bpmn:outgoing>Flow_1p1ilzm</bpmn:outgoing>
       <bpmn:multiInstanceLoopCharacteristics />
-      <bpmn:startEvent id="Event_1jdw9sq">
+      <bpmn:startEvent id="Event_1jdw9sq" name="Verifica offerte per il k-esimo utente">
         <bpmn:outgoing>Flow_17g0zdb</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:exclusiveGateway id="Gateway_1ubu1lj" name="Ci sono offerte per l&#39;utente">
@@ -62,7 +62,7 @@
       <bpmn:sequenceFlow id="Flow_17g0zdb" sourceRef="Event_1jdw9sq" targetRef="Activity_1lsgara" />
       <bpmn:sequenceFlow id="Flow_1biu0lw" sourceRef="Activity_1lsgara" targetRef="Gateway_1ubu1lj" />
       <bpmn:sequenceFlow id="Flow_034g0p4" name="Sì" sourceRef="Gateway_1ubu1lj" targetRef="Activity_19x7hcv" />
-      <bpmn:endEvent id="Event_0nraod7">
+      <bpmn:endEvent id="Event_0nraod7" name="Effettuata la verifica per il k-esimo utente">
         <bpmn:incoming>Flow_0nhr33c</bpmn:incoming>
         <bpmn:incoming>Flow_14n3tiu</bpmn:incoming>
       </bpmn:endEvent>
@@ -74,7 +74,7 @@
       </bpmn:serviceTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="Flow_1p1ilzm" sourceRef="Activity_0yp3vi0" targetRef="Event_1oa2aah" />
-    <bpmn:endEvent id="Event_1oa2aah">
+    <bpmn:endEvent id="Event_1oa2aah" name="Verifica offerte quotidiana completata">
       <bpmn:incoming>Flow_1p1ilzm</bpmn:incoming>
     </bpmn:endEvent>
   </bpmn:process>
@@ -118,9 +118,15 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_1gjmsb5_di" bpmnElement="Event_1gjmsb5">
         <dc:Bounds x="330" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="305" y="202" width="86" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0gfxkwx_di" bpmnElement="Event_0gfxkwx">
         <dc:Bounds x="842" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="817" y="202" width="87" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0hm89lt_di" bpmnElement="Activity_1msjmyw">
         <dc:Bounds x="680" y="137" width="100" height="80" />
@@ -161,6 +167,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_1jdw9sq_di" bpmnElement="Event_1jdw9sq">
         <dc:Bounds x="1150" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1133" y="202" width="71" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1ubu1lj_di" bpmnElement="Gateway_1ubu1lj" isMarkerVisible="true">
         <dc:Bounds x="1405" y="152" width="50" height="50" />
@@ -173,12 +182,18 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0nraod7_di" bpmnElement="Event_0nraod7">
         <dc:Bounds x="1672" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1653" y="202" width="74" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_11pkq9u_di" bpmnElement="Activity_1lsgara">
         <dc:Bounds x="1240" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1oa2aah_di" bpmnElement="Event_1oa2aah">
         <dc:Bounds x="1882" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1865" y="202" width="71" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_1r905vi_di" bpmnElement="Participant_1re2xdy" isHorizontal="true">
         <dc:Bounds x="129" y="330" width="691" height="60" />
