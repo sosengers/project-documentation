@@ -14,6 +14,8 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Bad Request
       description: |-
         Creates a payment request for a user.
         API for: ACMESky
@@ -31,6 +33,12 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       description: |-
         Sends the payment data for paying a request.
         API for: User
@@ -86,3 +94,12 @@ components:
         - cvv
         - expiration_date
         - owner_name
+    Error:
+      title: Error
+      type: object
+      properties:
+        description:
+          type: string
+          minLength: 1
+      required:
+        - description

@@ -19,6 +19,8 @@ paths:
                 type: number
                 format: double
                 minimum: 0
+        '400':
+          description: Bad Request
       requestBody:
         content:
           application/json:

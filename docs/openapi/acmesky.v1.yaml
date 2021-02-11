@@ -13,6 +13,8 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Bad Request
       description: |-
         Allows flight companies to notify ACMESky of the presence of new last minute offers.
         API for: Flight Company
@@ -29,8 +31,12 @@ paths:
       summary: buyOffer
       operationId: buyOffer
       responses:
-        '200':
-          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       description: |-
         Requires to start the buying process of the offer with the given offer code.
         API for: User
@@ -52,6 +58,8 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Bad Request
       description: |-
         Sends the information received by the user for verification purposes.
         API for: Payment Provider
@@ -68,6 +76,12 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       requestBody:
         content:
           application/json:
@@ -189,3 +203,12 @@ components:
         - max_comeback_date
         - max_price
         - prontogram_username
+    Error:
+      title: Error
+      type: object
+      properties:
+        description:
+          type: string
+          minLength: 1
+      required:
+        - description
