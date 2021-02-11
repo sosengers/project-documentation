@@ -9,6 +9,7 @@
     <bpmn:messageFlow id="Flow_04pf6g6" sourceRef="Activity_19x7hcv" targetRef="Participant_0oqe90y" />
     <bpmn:messageFlow id="Flow_0ffffvv" name="Messaggio con codice offerta" sourceRef="Participant_0oqe90y" targetRef="Participant_1ue5nwa" />
     <bpmn:messageFlow id="Flow_0axyq7n" sourceRef="Participant_1re2xdy" targetRef="Activity_01ofpig" />
+    <bpmn:messageFlow id="Flow_1t9mukd" sourceRef="Participant_0oqe90y" targetRef="Activity_19x7hcv" />
     <bpmn:textAnnotation id="TextAnnotation_054purg">
       <bpmn:text>Ogni compagnia aerea restituisce tutte le offerte che ha a disposizione nella giornata.</bpmn:text>
     </bpmn:textAnnotation>
@@ -216,8 +217,8 @@
         <di:waypoint x="440" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_04pf6g6_di" bpmnElement="Flow_04pf6g6">
-        <di:waypoint x="1560" y="217" />
-        <di:waypoint x="1560" y="330" />
+        <di:waypoint x="1540" y="217" />
+        <di:waypoint x="1540" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ffffvv_di" bpmnElement="Flow_0ffffvv">
         <di:waypoint x="1370" y="390" />
@@ -229,6 +230,10 @@
       <bpmndi:BPMNEdge id="Flow_0axyq7n_di" bpmnElement="Flow_0axyq7n">
         <di:waypoint x="500" y="330" />
         <di:waypoint x="500" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1t9mukd_di" bpmnElement="Flow_1t9mukd">
+        <di:waypoint x="1580" y="330" />
+        <di:waypoint x="1580" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -8,6 +8,7 @@
     <bpmn:messageFlow id="Flow_0fc3s5k" sourceRef="Participant_0l2oyz5" targetRef="StartEvent_1" />
     <bpmn:messageFlow id="Flow_0b5j9qq" name="Messaggio con codice offerta" sourceRef="Participant_02ntikb" targetRef="Participant_0gh4wad" />
     <bpmn:messageFlow id="Flow_02eal55" sourceRef="Activity_0hemxla" targetRef="Participant_02ntikb" />
+    <bpmn:messageFlow id="Flow_11n6kti" sourceRef="Participant_02ntikb" targetRef="Activity_0hemxla" />
   </bpmn:collaboration>
   <bpmn:process id="Process_04n2qcf" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Ricezione offerte last minute">
@@ -33,7 +34,7 @@
         <bpmn:outgoing>Flow_0dt1vhx</bpmn:outgoing>
         <bpmn:outgoing>Flow_03zklof</bpmn:outgoing>
       </bpmn:exclusiveGateway>
-      <bpmn:endEvent id="Event_1doc52o" name="Effettuata òa verifica per il k-esimo utente">
+      <bpmn:endEvent id="Event_1doc52o" name="Effettuata la verifica per il k-esimo utente">
         <bpmn:incoming>Flow_1lu6og9</bpmn:incoming>
         <bpmn:incoming>Flow_03zklof</bpmn:incoming>
       </bpmn:endEvent>
@@ -163,8 +164,12 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02eal55_di" bpmnElement="Flow_02eal55">
-        <di:waypoint x="1020" y="217" />
-        <di:waypoint x="1020" y="430" />
+        <di:waypoint x="1000" y="217" />
+        <di:waypoint x="1000" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11n6kti_di" bpmnElement="Flow_11n6kti">
+        <di:waypoint x="1040" y="430" />
+        <di:waypoint x="1040" y="217" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
