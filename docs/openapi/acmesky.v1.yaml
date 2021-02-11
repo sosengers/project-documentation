@@ -13,7 +13,9 @@ paths:
       responses:
         '200':
           description: OK
-      description: Allows flight companies to notify ACMESky of the presence of new last minute offers.
+      description: |-
+        Allows flight companies to notify ACMESky of the presence of new last minute offers.
+        API for: Flight Company
       requestBody:
         content:
           application/json:
@@ -24,19 +26,25 @@ paths:
     parameters: []
   /offers/buy:
     post:
-      summary: ''
+      summary: buyOffer
       operationId: buyOffer
       responses:
         '200':
           description: OK
-      description: Requires to start the buying process of the offer with the given offer code.
+      description: |-
+        Requires to start the buying process of the offer with the given offer code.
+        API for: User
       parameters: []
       requestBody:
         content:
           application/json:
             schema:
+              $ref: '#/components/schemas/OfferPurchaseData'
+          application/xml:
+            schema:
               type: object
               properties: {}
+        description: ''
   /payments:
     post:
       summary: sendPaymentInformation
@@ -44,7 +52,9 @@ paths:
       responses:
         '200':
           description: OK
-      description: Sends the information received by the user for verification purposes.
+      description: |-
+        Sends the information received by the user for verification purposes.
+        API for: Payment Provider
       requestBody:
         content:
           application/json:
@@ -63,7 +73,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Interest'
-      description: Register the user interest for roundtrip flights.
+      description: |-
+        Register the user interest for roundtrip flights.
+        API for: User
 components:
   schemas:
     Flight:
@@ -104,8 +116,17 @@ components:
           minLength: 1
         address:
           $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          minLength: 1
+        surname:
+          type: string
+          minLength: 1
       required:
         - offer_code
+        - address
+        - name
+        - surname
     Address:
       title: Address
       type: object

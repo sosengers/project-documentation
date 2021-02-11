@@ -25,7 +25,9 @@ paths:
             schema:
               $ref: '#/components/schemas/Locations'
         description: ''
-      description: Calculates the distance between the given locations. The distance is returned in meters.
+      description: |-
+        Calculates the distance between the given locations. The distance is returned in meters.
+        API for: ACMESky
 components:
   schemas:
     Locations:

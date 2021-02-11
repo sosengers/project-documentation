@@ -14,7 +14,9 @@ paths:
       responses:
         '200':
           description: OK
-      description: Creates a payment request for a user.
+      description: |-
+        Creates a payment request for a user.
+        API for: ACMESky
       requestBody:
         content:
           application/json:
@@ -29,7 +31,9 @@ paths:
       responses:
         '200':
           description: OK
-      description: Sends the payment data for paying a request
+      description: |-
+        Sends the payment data for paying a request.
+        API for: User
       requestBody:
         content:
           application/json:
@@ -55,7 +59,9 @@ components:
           format: uuid
       required:
         - amount
+        - description
         - payment_receiver
+        - transaction_id
     PaymentData:
       title: PaymentData
       type: object

@@ -18,7 +18,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PurchaseDetails'
-      description: Buys the car transfers with the given purchase details.
+      description: |-
+        Buys the car transfers with the given purchase details.
+        API for: ACMESky
     parameters: []
 components:
   schemas:
