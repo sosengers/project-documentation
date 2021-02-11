@@ -22,8 +22,22 @@ Inoltre, dal diagramma BPMN è emersa anche un'altra capability, questa volta re
 ## Verifica giornaliera delle offerte
 ![!Diagramma UML che descrive come vengono implementati i task del processo di verifica giornaliera delle offerte delle compagnie aree e notifica degli utenti](assets/uml/VerificaGiornaliera.png){: loading=lazy}
 
+Nel diagramma sovrastante sono evidenziate le capability emerse dall'analisi del diagramma BPMN "Verifica giornaliere delle offerte" e le interfacce che le espongono.
+
+Le capability emerse, per il ruolo di ACMESky sono: _DailyOffersCheck_ e _Offer_. Queste due capability sono esposte mediante tre interfacce e la capability _DailyOffersCheck_ dipende dalle interfacce _OfferSaving_ e _OfferFinding_ che espongono la capability _Offer_. Queste due capability permettono al sistema di memorizzare le offerte delle compagnie aeree e successivamente verificare se esse sono coerenti con gli interessi dichiarati dai suoi utenti.
+_DailyOffersCheck_ dipende inoltre da un'altra capability, _FlightOffersRetrieval_ di Flight Company (una compagnia aerea), per ricevere le offerte di voli delle compagnie.
+La capability _Offer_, invece, dipende dalla capability di invio messaggi di ProntoGram, _Message_, esposta attraverso un'interfaccia.
+
+Infine, per contattare l'utente, la capability _Message_ di ProntoGram dipende da un ulteriore capability _MessagePublishing_ con la quale notificare l'utente della presenza di nuovi messaggi a lui indirizzati.
+
 ## Ricezione offerte last minute
 ![!Diagramma UML che descrive come vengono implementati i task del processo di ricezione di offerte dalle compagnie aree e notifica degli utenti](assets/uml/NotificaVoliLastMinute.png){: loading=lazy}
+
+Nel diagramma sovrastante sono evidenziate le capability emerse dall'analisi del diagramma BPMN "Acquisto offerta da un utente" e le interfacce che le espongono.
+
+Le capability emerse, per il ruolo di ACMESky sono: _LastMinuteOffersPublishing_ e _Offer_. Queste due capability sono esposte mediante tre interfacce e la capability _LastMinuteOffersPublishing_ dipende dalle interfacce _OfferSaving_ e _OfferFinding_ che espongono la capability _Offer_. Queste due capability permettono al sistema di memorizzare le offerte last-minute ricevute direttamente dalle compagnie aeree e successivamente verificare se esse sono coerenti con gli interessi dichiarati dai suoi utenti.
+
+Le capability _Offer_, _Message_, _MessagePublishing_ e relative interfacce sono le stesse che sono illustrate nella precedente sezione.
 
 ## Acquisto offerta da un utente
 ![!Diagramma UML che descrive come vengono implementati i task del processo di acquisto di un'offerta](assets/uml/AcquistoOfferta.png){: loading=lazy}
