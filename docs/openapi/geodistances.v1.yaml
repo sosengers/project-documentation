@@ -40,7 +40,6 @@ components:
       properties:
         address_1:
           type: string
-          format: double
           minLength: 1
         address_2:
           type: string
