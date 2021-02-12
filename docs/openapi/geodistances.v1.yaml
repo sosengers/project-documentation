@@ -19,6 +19,7 @@ paths:
                 type: number
                 format: double
                 minimum: 0
+                description: Distance between the two addresses.
         '400':
           description: Bad Request
       requestBody:
@@ -28,33 +29,22 @@ paths:
               $ref: '#/components/schemas/Locations'
         description: ''
       description: |-
-        Calculates the distance between the given locations. The distance is returned in meters.
+        Calculates the distance between the given locations. Given addresses are first transformed into coordinates via geocoding, then the distance is computed and returned in kilometers.
         API for: ACMESky
 components:
   schemas:
     Locations:
       title: Locations
       type: object
-      description: ''
+      description: 'Represents the two addresses to compute their distance. They are not coordinates, they are addresses.'
       properties:
-        latitude_1:
-          type: number
+        address_1:
+          type: string
           format: double
-          minimum: 0
-        longitude_1:
-          type: number
-          format: double
-          minimum: 0
-        latitude_2:
-          type: number
-          format: double
-          minimum: 0
-        longitude_2:
-          type: number
-          format: double
-          minimum: 0
+          minLength: 1
+        address_2:
+          type: string
+          minLength: 1
       required:
-        - latitude_1
-        - longitude_1
-        - latitude_2
-        - longitude_2
+        - address_1
+        - address_2
