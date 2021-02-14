@@ -23,9 +23,7 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/FlightToPurchase'
+              $ref: '#/components/schemas/FlightsToPurchase'
         description: ''
   /flights/offers:
     get:
@@ -37,9 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Flight'
+                $ref: '#/components/schemas/Flights'
       operationId: getFlightOffers
       description: |-
         Returns the daily flight offers of the company.
