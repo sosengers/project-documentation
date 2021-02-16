@@ -13,12 +13,6 @@ paths:
       responses:
         '200':
           description: OK
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
       description: |-
         Sends the message to ProntoGram for being dispatched to the actual user.
         API for: ACMESky
@@ -42,6 +36,9 @@ components:
         body:
           type: string
           minLength: 1
+        send_time:
+          type: string
+          format: date-time
       required:
         - sender
         - receiver
