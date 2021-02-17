@@ -52,6 +52,39 @@ paths:
             schema:
               $ref: '#/components/schemas/PaymentData'
         description: ''
+  '/payments/{transaction_id}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequest'
+        '404':
+          description: Not Found
+      operationId: getPaymentDetails
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: path
+          required: true
+          description: ID of transaction
+          name: transaction_id
+      description: |-
+        Gets the information for the payment request for a user.
+        API for: User
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: transaction_id
+        in: path
+        required: true
+        description: ID of the transaction
 components:
   schemas:
     PaymentRequest:
@@ -66,14 +99,10 @@ components:
           type: string
         payment_receiver:
           type: string
-        transaction_id:
-          type: string
-          format: uuid
       required:
         - amount
         - description
         - payment_receiver
-        - transaction_id
     PaymentData:
       title: PaymentData
       type: object
@@ -114,5 +143,9 @@ components:
         redirect_page:
           type: string
           minLength: 1
+        transaction_id:
+          type: string
+          format: uuid
       required:
         - redirect_page
+        - transaction_id
