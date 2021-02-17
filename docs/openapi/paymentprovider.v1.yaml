@@ -14,6 +14,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentCreationResponse'
         '400':
           description: Bad Request
       description: |-
@@ -103,3 +107,12 @@ components:
           minLength: 1
       required:
         - description
+    PaymentCreationResponse:
+      title: PaymentCreationResponse
+      type: object
+      properties:
+        redirect_page:
+          type: string
+          minLength: 1
+      required:
+        - redirect_page
