@@ -54,7 +54,7 @@ paths:
         description: ''
   '/payments/{transaction_id}':
     get:
-      summary: Your GET endpoint
+      summary: getPaymentDetails
       tags: []
       responses:
         '200':
