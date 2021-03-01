@@ -31,6 +31,12 @@ paths:
       summary: buyOffer
       operationId: buyOffer
       responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuyOfferResponse'
         '400':
           description: Bad Request
           content:
@@ -212,3 +218,12 @@ components:
           minLength: 1
       required:
         - description
+    BuyOfferResponse:
+      title: BuyOfferResponse
+      type: object
+      properties:
+        pay_offer_url:
+          type: string
+          minLength: 1
+      required:
+        - pay_offer_url
