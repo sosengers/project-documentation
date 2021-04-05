@@ -25,6 +25,13 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Flight'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: company_name
+          description: Name of the flight company
+          required: true
     parameters: []
   /offers/buy:
     post:
@@ -222,8 +229,8 @@ components:
       title: BuyOfferResponse
       type: object
       properties:
-        pay_offer_url:
+        communication_code:
           type: string
           minLength: 1
       required:
-        - pay_offer_url
+        - communication_code
