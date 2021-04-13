@@ -23,4 +23,12 @@ nav:
   - Coreografie: "coreografie.md"
   - BPMN: "bpmn.md"
   - UML: "uml.md"
+  - Servizi web:
+    - "": "serviziweb.md"
+    - ACMESky: "serviziweb/acmesky/acmesky.md"
+    - Flight Company: "serviziweb/flightcompany/flightcompany.md"
+    - Geographical Distances: "serviziweb/geodistances/geodistances.md"
+    - Payment Provider: "serviziweb/paymentprovider/paymentprovider.md"
+    - ProntoGram: "serviziweb/prontogram/prontogram.md"
+    - Travel Company: "serviziweb/travelcompany/travelcompany.md"
   - Implementazione: "implementazione.md"
