@@ -3,7 +3,8 @@
 <a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3000*
+Inside the Docker `acmesky-network`, all URIs are relative to *http://acmesky_backend:8080*.  
+From outside Docker, the port for reaching it is *9000*.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,10 +17,10 @@ Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [Address](./Models/Address.md)
- - [BuyOfferResponse](./Models/BuyOfferResponse.md)
- - [Error](./Models/Error.md)
- - [Flight](./Models/Flight.md)
- - [Interest](./Models/Interest.md)
- - [OfferPurchaseData](./Models/OfferPurchaseData.md)
- - [PaymentInformation](./Models/PaymentInformation.md)
+ - [Address](Models/Address.md)
+ - [BuyOfferResponse](Models/BuyOfferResponse.md)
+ - [Error](Models/Error.md)
+ - [Flight](Models/Flight.md)
+ - [Interest](Models/Interest.md)
+ - [OfferPurchaseData](Models/OfferPurchaseData.md)
+ - [PaymentInformation](Models/PaymentInformation.md)

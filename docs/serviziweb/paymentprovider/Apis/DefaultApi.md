@@ -48,7 +48,7 @@ getPaymentDetails
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transaction\_id** | [**UUID**](../Models/.md)| ID of transaction | [default to null]
+ **transaction\_id** | **UUID** | ID of transaction | [default to null]
 
 ### Return type
 

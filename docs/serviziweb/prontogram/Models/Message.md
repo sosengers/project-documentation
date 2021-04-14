@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sender** | [**String**](string.md) |  | [default to null]
-**receiver** | [**String**](string.md) |  | [default to null]
-**body** | [**String**](string.md) |  | [default to null]
-**send\_time** | [**Date**](DateTime.md) |  | [optional] [default to null]
+**sender** | **String** |  | [default to null]
+**receiver** | **String** |  | [default to null]
+**body** | **String** |  | [default to null]
+**send\_time** | **DateTime** |  | [optional] [default to null]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

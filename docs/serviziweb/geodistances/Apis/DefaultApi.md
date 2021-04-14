@@ -23,7 +23,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Double**](../Models/double.md)
+**Double**
 
 ### Authorization
 
