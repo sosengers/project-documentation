@@ -16,7 +16,7 @@ Da fuori Docker, la porta per raggiungere il servizio è *9000*.
 
 <a name="buyOffer"></a>
 ### **POST** /offers/buy
-Requires to start the buying process of the offer with the given offer code.
+Richiede l'avvio di un processo di acquisto dell'offerta con il codice offerta passato come argomento.
 
 #### Parametri
 
@@ -36,7 +36,7 @@ Requires to start the buying process of the offer with the given offer code.
 
 <a name="publishLastMinuteOffer"></a>
 ### **POST** /offers/lastminute
-Allows flight companies to notify ACMESky of the presence of new last minute offers.
+Permette alle compagnie aeree di notificare ACMESky della presenza di nuove offerte last minute.
 
 #### Parametri
 
@@ -57,7 +57,7 @@ Allows flight companies to notify ACMESky of the presence of new last minute off
 
 <a name="registerInterest"></a>
 ### **POST** /interests
-Register the user interest for roundtrip flights.
+Registra l'interesse di un utente per la ricezione di offerte di volo A/R.
 
 #### Parametri
 
@@ -76,7 +76,7 @@ Register the user interest for roundtrip flights.
 
 <a name="sendPaymentInformation"></a>
 ### **POST** /payments
-Sends the information received by the user for verification purposes.
+Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 
 #### Parametri
 

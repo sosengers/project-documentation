@@ -20,7 +20,7 @@ Da fuori Docker, le porte per raggiungere i servizi sono respectively *7001*, *7
 
 <a name="buyFlights"></a>
 ### **POST** /flights/buy
-Buys the flights with the given purchase details.
+Acquista i voli richiesti e passati come argomento.
 
 #### Parametri
 
@@ -40,10 +40,10 @@ Buys the flights with the given purchase details.
 
 <a name="getFlightOffers"></a>
 ### **GET** /flights/offers
-Returns the daily flight offers of the company.
+Ritorna le offerte giornaliere della compagnia aerea.
 
 #### Parametri
-This endpoint does not need any parameter.
+Questo endpoint non richiede alcun parametro.
 
 #### Tipo di ritorno
 

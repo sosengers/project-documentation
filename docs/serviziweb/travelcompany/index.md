@@ -11,13 +11,13 @@ Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a:
 
 Da fuori Docker, le porte per raggiungere i servizi sono respectively *6001*, *6002*, *6003*.
 
-| Method                        | Description                                                                                 | API for |
-|-------------------------------|---------------------------------------------------------------------------------------------|---------|
-| [buyTransfers](#buytransfers) | Acquista il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto. | ACMESky |
+| Method                        | Description                                                                                               | API for |
+|-------------------------------|-----------------------------------------------------------------------------------------------------------|---------|
+| [buyTransfers](#buytransfers) | Permette di acquistare il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto. | ACMESky |
 
 <a name="buyTransfers"></a>
 ### buyTransfers
-Buys the car transfers with the given purchase details.
+Permette di acquistare il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto.
 
 #### Parametri
 

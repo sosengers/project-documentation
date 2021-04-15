@@ -15,7 +15,7 @@ Da fuori Docker, la porta per raggiungere il servizio è *4001*.
 
 <a name="createPaymentRequest"></a>
 ### **POST** /payments/request
-Creates a payment request for a user.
+Crea una richiesta di pagamento per un utente. 
 
 #### Parametri
 
@@ -35,7 +35,7 @@ Creates a payment request for a user.
 
 <a name="getPaymentDetails"></a>
 ### **GET** /payments/{transaction_id}
-Gets the information for the payment request for a user.
+Ritorna le informazioni relative alla richiesta di pagamento da parte di utente.
 
 #### Parametri
 
@@ -55,7 +55,7 @@ Gets the information for the payment request for a user.
 
 <a name="sendPayment"></a>
 ### **POST** /payments/pay
-Sends the payment data for paying a request.
+Permette l'invio delle informazioni di pagamento per pagare un offerta.
 
 #### Parametri
 

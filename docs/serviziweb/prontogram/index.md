@@ -5,15 +5,15 @@
 Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a *http://prontogram_backend:8080*.  
 Da fuori Docker, la porta per raggiungere il servizio è *5001*.
 
-| Method                             | Description                                                              | API for |
-|------------------------------------|--------------------------------------------------------------------------|---------|
-| [**POST** /messages](#sendmessage) | Sends the message to ProntoGram for being dispatched to the actual user. | ACMESky |
+| Method                             | Description                                                                                | API for |
+|------------------------------------|--------------------------------------------------------------------------------------------|---------|
+| [**POST** /messages](#sendmessage) | Permette di inviare il messaggio a ProntoGram per essere inoltrato all'utente specificato. | ACMESky |
 
 ## Richieste
 
 <a name="sendMessage"></a>
 ### **POST** /messages
-Sends the message to ProntoGram for being dispatched to the actual user.
+Permette di inviare il messaggio a ProntoGram per essere inoltrato all'utente specificato.
 
 #### Parametri
 
