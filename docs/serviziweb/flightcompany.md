@@ -9,12 +9,12 @@ Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a:
 - *http://flight_company_3:8080* for Flight Company 3.
 
 
-Da fuori Docker, le porte per raggiungere i servizi sono respectively *7001*, *7002*, *7003*.
+Da fuori Docker, le porte per raggiungere i servizi sono rispettivamente *7001*, *7002*, *7003*.
 
-| Method                                      | Description                                           | API for |
-|---------------------------------------------|-------------------------------------------------------|---------|
-| [**POST** /flights/buy](#buyflights)        | Acquista i voli richiesti e passati come argomento.   | ACMESky |
-| [**GET** /flights/offers](#getflightoffers) | Ritorna le offerte giornaliere della compagnia aerea. | ACMESky |
+| Risorsa                                     | Descrizione                                           | Risorsa per |
+|---------------------------------------------|-------------------------------------------------------|-------------|
+| [**POST** /flights/buy](#buyflights)        | Acquista i voli richiesti e passati come argomento.   | ACMESky     |
+| [**GET** /flights/offers](#getflightoffers) | Ritorna le offerte giornaliere della compagnia aerea. | ACMESky     |
 
 ## Richieste
 
@@ -24,8 +24,8 @@ Acquista i voli richiesti e passati come argomento.
 
 #### Parametri
 
-| Name                  | Type                                                 |
-|-----------------------|------------------------------------------------------|
+| Nome                  | Tipo                                        |
+|-----------------------|---------------------------------------------|
 | **FlightsToPurchase** | [**FlightsToPurchase**](#flightstopurchase) |
 
 #### Tipo di ritorno
@@ -59,7 +59,7 @@ Questo endpoint non richiede alcun parametro.
 <a name="flight"></a>
 ### Flight
 
-| Name                         | Type         |
+| Nome                         | Tipo         |
 |------------------------------|--------------|
 | **flight\_id**               | **String**   |
 | **departure\_airport\_code** | **String**   |
@@ -71,21 +71,21 @@ Questo endpoint non richiede alcun parametro.
 <a name="flightstopurchase"></a>
 ### FlightsToPurchase
 
-| Name                 | Type                                              |
-|----------------------|---------------------------------------------------|
+| Nome                 | Tipo                                            |
+|----------------------|-------------------------------------------------|
 | **flight\_requests** | [**List<FlightToPurchase>**](#flighttopurchase) |
 
 <a name="flights"></a>
 ### Flights
 
-| Name        | Type                          |
-|-------------|-------------------------------|
+| Nome        | Tipo                        |
+|-------------|-----------------------------|
 | **flights** | [**List<Flight>**](#flight) |
 
 <a name="flighttopurchase"></a>
 ### FlightToPurchase
 
-| Name           | Type       |
+| Nome           | Tipo       |
 |----------------|------------|
 | **flight\_id** | **String** |
 | **date**       | **Date**   |

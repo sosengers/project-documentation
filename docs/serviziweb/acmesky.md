@@ -5,11 +5,11 @@
 Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a *http://acmesky_backend:8080*.  
 Da fuori Docker, la porta per raggiungere il servizio è *9000*.
 
-| Method                                                 | Description                                                                                            | API for          |
-|--------------------------------------------------------|--------------------------------------------------------------------------------------------------------|------------------|
-| [**POST** /offers/buy](#buyoffer)                      | Richiede l'avvio di un processo di acquisto dell'offerta con il codice offerta passato come argomento. | User             |
+| Risorsa | Descrizione | Risorsa per |
+|---------|-------------|-------------|
+| [**POST** /offers/buy](#buyoffer)                      | Richiede l'avvio di un processo di acquisto dell'offerta con il codice offerta passato come argomento. | Utente finale             |
 | [**POST** /offers/lastminute](#publishlastminuteoffer) | Permette alle compagnie aeree di notificare ACMESky della presenza di nuove offerte last minute.       | Flight Company   |
-| [**POST** /interests](#registerinterest)               | Registra l'interesse di un utente per la ricezione di offerte di volo A/R.                             | User             |
+| [**POST** /interests](#registerinterest)               | Registra l'interesse di un utente per la ricezione di offerte di volo A/R.                             | Utente finale             |
 | [**POST** /payments](#sendpaymentinformation)          | Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.                            | Payment Provider |
 
 ## Richieste
@@ -20,7 +20,7 @@ Richiede l'avvio di un processo di acquisto dell'offerta con il codice offerta p
 
 #### Parametri
 
-| Name                  | Type                                                 |
+| Nome                  | Tipo                                                 |
 |-----------------------|------------------------------------------------------|
 | **OfferPurchaseData** | [**OfferPurchaseData**](#offerpurchasedata) |
 
@@ -40,7 +40,7 @@ Permette alle compagnie aeree di notificare ACMESky della presenza di nuove offe
 
 #### Parametri
 
-| Name              | Type                         |
+| Nome              | Tipo                         |
 |-------------------|------------------------------|
 | **company\_name** | **String**                   |
 | **Flight**        | [**List<Flight>**](#flight) |
@@ -61,7 +61,7 @@ Registra l'interesse di un utente per la ricezione di offerte di volo A/R.
 
 #### Parametri
 
-| Name         | Type                               |
+| Nome         | Tipo                               |
 |--------------|------------------------------------|
 | **Interest** | [**Interest**](#interest) |
 
@@ -80,7 +80,7 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 
 #### Parametri
 
-| Name                   | Type                                                   |
+| Nome                   | Tipo                                                   |
 |------------------------|--------------------------------------------------------|
 | **PaymentInformation** | [**PaymentInformation**](#paymentinformation) |
 
@@ -99,7 +99,7 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 <a name="address"></a>
 ### Address
 
-| Name          | Type       |
+| Nome          | Tipo       |
 |---------------|------------|
 | **street**    | **String** |
 | **number**    | **String** |
@@ -110,21 +110,21 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 <a name="buyofferresponse"></a>
 ### BuyOfferResponse
 
-| Name                    | Type       |
+| Nome                    | Tipo       |
 |-------------------------|------------|
 | **communication\_code** | **String** |
 
 <a name="error"></a>
 ### Error
 
-| Name            | Type       |
+| Nome            | Tipo       |
 |-----------------|------------|
-| **description** | **String** |
+| **Descrizione** | **String** |
 
 <a name="flight"></a>
 ### Flight
 
-| Name                         | Type         |
+| Nome                         | Tipo         |
 |------------------------------|--------------|
 | **flight\_id**               | **String**   |
 | **departure\_airport\_code** | **String**   |
@@ -136,7 +136,7 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 <a name="interest"></a>
 ### Interest
 
-| Name                         | Type       |
+| Nome                         | Tipo       |
 |------------------------------|------------|
 | **departure\_airport\_code** | **String** |
 | **arrival\_airport\_code**   | **String** |
@@ -148,7 +148,7 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 <a name="offerpurchasedata"></a>
 ### OfferPurchaseData
 
-| Name            | Type                      |
+| Nome            | Tipo                      |
 |-----------------|---------------------------|
 | **offer\_code** | **String**                |
 | **address**     | [**Address**](#address) |
@@ -158,7 +158,7 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 <a name="paymentinformation"></a>
 ### PaymentInformation
 
-| Name                | Type         |
+| Nome                | Tipo         |
 |---------------------|--------------|
 | **transaction\_id** | **UUID**     |
 | **status**          | **Boolean**) |

@@ -9,10 +9,10 @@ Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a:
 - *http://travel_company_3:8080* for Travel Company 3.
 
 
-Da fuori Docker, le porte per raggiungere i servizi sono respectively *6001*, *6002*, *6003*.
+Da fuori Docker, le porte per raggiungere i servizi sono rispettivamente *6001*, *6002*, *6003*.
 
-| Method                        | Description                                                                                               | API for |
-|-------------------------------|-----------------------------------------------------------------------------------------------------------|---------|
+| Risorsa | Descrizione | Risorsa per |
+|---------|-------------|-------------|
 | [buyTransfers](#buytransfers) | Permette di acquistare il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto. | ACMESky |
 
 <a name="buyTransfers"></a>
@@ -21,8 +21,8 @@ Permette di acquistare il trasferimento verso l'aeroporto passando come argoment
 
 #### Parametri
 
-| Name                | Type                                             |
-|---------------------|--------------------------------------------------|
+| Nome                | Tipo                                    |
+|---------------------|-----------------------------------------|
 | **PurchaseDetails** | [**PurchaseDetails**](#purchasedetails) |
 
 #### Tipi di ritorno
@@ -41,14 +41,14 @@ Permette di acquistare il trasferimento verso l'aeroporto passando come argoment
 <a name="error"></a>
 ### Error
 
-| Name            | Type       |
+| Nome            | Tipo       |
 |-----------------|------------|
-| **description** | **String** |
+| **Descrizione** | **String** |
 
 <a name="purchasedetails"></a>
 ### PurchaseDetails
 
-| Name                              | Type         |
+| Nome                              | Tipo         |
 |-----------------------------------|--------------|
 | **customer\_address**             | **String**   |
 | **airport\_code**                 | **String**   |
@@ -59,6 +59,6 @@ Permette di acquistare il trasferimento verso l'aeroporto passando come argoment
 <a name="response"></a>
 ### Response
 
-| Name         | Type       |
+| Nome         | Tipo       |
 |--------------|------------|
 | **response** | **String** |

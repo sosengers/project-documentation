@@ -5,11 +5,11 @@
 Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a *http://payment_provider_backend:8080*.  
 Da fuori Docker, la porta per raggiungere il servizio è *4001*.
 
-| Method                                                   | Description                                                                      | API for |
-|----------------------------------------------------------|----------------------------------------------------------------------------------|---------|
-| [**POST** /payments/request](#createpaymentrequest)      | Crea una richiesta di pagamento per un utente.                                   | ACMESky |
-| [**GET** /payments/{transaction_id}](#getpaymentdetails) | Ritorna le informazioni relative alla richiesta di pagamento da parte di utente. | User    |
-| [**POST** /payments/pay](#sendpayment)                   | Permette l'invio delle informazioni di pagamento per pagare un offerta.          | User    |
+| Risorsa | Descrizione | Risorsa per |
+|---------|-------------|-------------|
+| [**POST** /payments/request](#createpaymentrequest) | Crea una richiesta di pagamento per un utente. | ACMESky |
+| [**GET** /payments/{transaction_id}](#getpaymentdetails) | Ritorna le informazioni relative alla richiesta di pagamento da parte di utente. | Utente finale |
+| [**POST** /payments/pay](#sendpayment) | Permette l'invio delle informazioni di pagamento per pagare un offerta. | Utente finale |
 
 ## Richieste
 
@@ -19,7 +19,7 @@ Crea una richiesta di pagamento per un utente.
 
 #### Parametri
 
-| Name               | Type                                           |
+| Nome               | Tipo                                           |
 |--------------------|------------------------------------------------|
 | **PaymentRequest** | [**PaymentRequest**](#paymentrequest) |
 
@@ -39,7 +39,7 @@ Ritorna le informazioni relative alla richiesta di pagamento da parte di utente.
 
 #### Parametri
 
-| Name                | Type     |
+| Nome                | Tipo     |
 |---------------------|----------|
 | **transaction\_id** | **UUID** |
 
@@ -59,7 +59,7 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 
 #### Parametri
 
-| Name            | Type                                     |
+| Nome            | Tipo                                     |
 |-----------------|------------------------------------------|
 | **PaymentData** | [**PaymentData**](#paymentdata) |
 
@@ -79,14 +79,14 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 <a name="error"></a>
 ### Error
 
-| Name            | Type       |
+| Nome            | Tipo       |
 |-----------------|------------|
-| **description** | **String** |
+| **Descrizione** | **String** |
 
 <a name="paymentcreationresponse"></a>
 ### PaymentCreationResponse
 
-| Name                | Type       |
+| Nome                | Tipo       |
 |---------------------|------------|
 | **redirect\_page**  | **String** |
 | **transaction\_id** | **UUID**   |
@@ -94,7 +94,7 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 <a name="paymentdata"></a>
 ### PaymentData
 
-| Name                     | Type       |
+| Nome                     | Tipo       |
 |--------------------------|------------|
 | **transaction\_id**      | **UUID**   |
 | **credit\_cart\_number** | **String** |
@@ -105,8 +105,8 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 <a name="paymentrequest"></a>
 ### PaymentRequest
 
-| Name                  | Type       |
+| Nome                  | Tipo       |
 |-----------------------|------------|
 | **amount**            | **Double** |
-| **description**       | **String** |
+| **Descrizione**       | **String** |
 | **payment\_receiver** | **String** |
