@@ -6,8 +6,8 @@ info:
 servers:
   - url: 'http://payment_provider_backend:8080'
     description: Inside the Docker network
-  - url: 'http://{url}:4001'
-    description: Outside the Docker network
+  - url: 'http://chosen_url:4001'
+    description: Outside the Docker network (chosen_url is a placeholder)
 paths:
   /payments/request:
     parameters: []

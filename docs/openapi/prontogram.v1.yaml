@@ -6,8 +6,8 @@ info:
 servers:
   - url: 'http://prontogram_backend:8080'
     description: Inside the Docker network
-  - url: 'http://{url}:5001'
-    description: Outside the Docker network
+  - url: 'http://chosen_url:5001'
+    description: Outside the Docker network (chosen_url is a placeholder)
 paths:
   /messages:
     post:

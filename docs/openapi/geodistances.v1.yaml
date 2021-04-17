@@ -6,8 +6,8 @@ info:
 servers:
   - url: 'http://geographical_distances:8080'
     description: Inside the Docker network
-  - url: 'http://{url}:5000'
-    description: Outside the Docker network
+  - url: 'http://chosen_url:5000'
+    description: Outside the Docker network (chosen_url is a placeholder)
 paths:
   /distance:
     post:

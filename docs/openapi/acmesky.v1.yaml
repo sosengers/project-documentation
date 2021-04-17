@@ -6,8 +6,8 @@ info:
 servers:
   - url: 'http://acmesky_backend:8080'
     description: Inside the docker network
-  - url: 'http://{url}:9000'
-    description: Outside the docker network
+  - url: 'http://chosen_url:9000'
+    description: Outside the Docker network (chosen_url is a placeholder)
 paths:
   /offers/lastminute:
     post:

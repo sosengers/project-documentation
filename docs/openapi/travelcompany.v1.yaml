@@ -5,17 +5,17 @@ info:
   description: Interface that models the operations available for a travel company that offers car transfers from the customers' house and the airports in ACMESky.
 servers:
   - url: 'http://travel_company_1:8080'
-    description: Inside the Docker network
-  - url: 'http://travel_company_1:8080'
-    description: Inside the Docker network
-  - url: 'http://travel_company_1:8080'
-    description: Inside the Docker network
-  - url: 'http://{url}:6001'
-    description: Outside the Docker network
-  - url: 'http://{url}:6002'
-    description: Outside the Docker network
-  - url: 'http://{url}:6003'
-    description: Outside the Docker network
+    description: Inside the Docker network (for Travel Company 1)
+  - url: 'http://travel_company_2:8080'
+    description: Inside the Docker network (for Travel Company 2)
+  - url: 'http://travel_company_3:8080'
+    description: Inside the Docker network (for Travel Company 3)
+  - url: 'http://chosen_url:6001'
+    description: Outside the Docker network (for Travel Company 1, chosen_url is a placeholder)
+  - url: 'http://chosen_url:6002'
+    description: Outside the Docker network (for Travel Company 2, chosen_url is a placeholder)
+  - url: 'http://chosen_url:6003'
+    description: Outside the Docker network (for Travel Company 3, chosen_url is a placeholder)
 paths:
   /transfers/buy:
     post:

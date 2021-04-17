@@ -5,17 +5,17 @@ info:
   description: Interface that models the operations available for a flight company in ACMESky.
 servers:
   - url: 'http://flight_company_1:8080'
-    description: Inside the Docker network
+    description: Inside the Docker network (for Flight Company 1)
   - url: 'http://flight_company_2:8080'
-    description: Inside the Docker network
+    description: Inside the Docker network (for Flight Company 2)
   - url: 'http://flight_company_3:8080'
-    description: Inside the Docker network
-  - description: Outside the Docker network
-    url: 'http://{url}:7001'
-  - url: 'http://{url}:7002'
-    description: Outside the Docker network
-  - url: 'http://{url}:7003'
-    description: Outside the Docker network
+    description: Inside the Docker network (for Flight Company 3)
+  - url: 'http://chosen_url:7001' 
+    description: Outside the Docker network (for Flight Company 1, chosen_url is a placeholder)
+  - url: 'http://chosen_url:7002'
+    description: Outside the Docker network (for Flight Company 2, chosen_url is a placeholder)
+  - url: 'http://chosen_url:7003'
+    description: Outside the Docker network (for Flight Company 3, chosen_url is a placeholder)
 paths:
   /flights/buy:
     parameters: []
