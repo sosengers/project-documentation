@@ -4,7 +4,10 @@ info:
   version: '1.0'
   description: Interface that models the operations available for the Payment Provider that supports payments by customers in ACMESky.
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'http://payment_provider_backend:8080'
+    description: Inside the Docker network
+  - url: 'http://{url}:4001'
+    description: Outside the Docker network
 paths:
   /payments/request:
     parameters: []

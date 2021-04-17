@@ -4,7 +4,10 @@ info:
   version: '1.0'
   description: Interface that models the operations for ACMESky.
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'http://acmesky_backend:8080'
+    description: Inside the docker network
+  - url: 'http://{url}:9000'
+    description: Outside the docker network
 paths:
   /offers/lastminute:
     post:
