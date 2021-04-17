@@ -14,6 +14,10 @@ theme:
     - navigation.expand
 extra_css:
   - stylesheets/extra.css
+plugins:
+  - search
+  - mermaid2:
+      version: 8.8.0
 markdown_extensions:
   - abbr
   - admonition
@@ -22,7 +26,11 @@ markdown_extensions:
   - lightgallery
   - pymdownx.details
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
 nav:
   - Home: "index.md"
   - Coreografie: "coreografie.md"

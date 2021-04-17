@@ -1,5 +1,22 @@
 Torna a [Implementazione](../implementazione.md)
 
+## Panoramica
+
+```mermaid
+graph LR
+subgraph Frontend
+UI[Interfaccia utente] -->|Fetch| WebSocket 
+Flask[Web server] -->|Push| WebSocket
+end
+
+Flask[Web server] -->|Subscribe| MQ[RabbitMQ]
+
+ACMESky -->|POST /messages| PG[ProntoGram API]
+subgraph Backend
+PG[ProntoGram API] -->|Publish| MQ[RabbitMQ]
+end
+```
+
 ProntoGram è il servizio che permette agli utenti di ricevere i codici offerta sotto forma di messaggio testuale.
 Gli utenti ricevono un messaggio ogni qual volta ACMESky trova per loro degli interessi di viaggi di cui avevano fatto richiesta.
 
@@ -15,9 +32,5 @@ Il funzionamento di ProntoGram dipende in larga parte dalla decisione di utilizz
 - ACMESky, quando ha un'offerta da comunicare ad un utente, invia un messaggio contattando l'endpoint delle API RESTful di ProntoGram ([POST /messages](../serviziweb/prontogram.md#sendmessage));
 - ricevuta la richiesta di ACMESky, internamente ProntoGram pubblica il messaggio in una coda (*messaging queue*) fornita dal software **RabbitMQ**, avente come identificatore il ricevente indicato nel messaggio ricevuto (parte *Publish* del pattern);
 - se l'utente ha avuto accesso alla pagina web di ProntoGram e sta visualizzando la propria lista di messaggi allora è aperta una WebSocket (implementata attraverso il software **Socket.IO**) collegata alla coda in RabbitMQ, conseguentemente il contenuto della pagina web si aggiorna automaticamente consumando il messaggio pubblicato nella WebSocket il quale, precedentemente, lo aveva consumato dalla coda RabbitMQ (parte *Subscribe* del pattern); se l'utente non ha avuto accesso allora il messaggio persiste nella coda di RabbitMQ fino al suo consumo, come descritto in precedenza.
-
-## Backend
-
-## Frontend
 
 Torna a [Implementazione](../implementazione.md)

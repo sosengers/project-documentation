@@ -12,5 +12,6 @@ jobs:
         with:
           python-version: 3.8
       - run: pip install mkdocs-material
+      - run: pip install mkdocs-mermaid2-plugin
       - run: cd lightgallery-markdown && python setup.py install
       - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.yml
