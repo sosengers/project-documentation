@@ -31,4 +31,11 @@ nav:
     - Payment Provider: "serviziweb/paymentprovider.md"
     - ProntoGram: "serviziweb/prontogram.md"
     - Travel Company: "serviziweb/travelcompany.md"
-  - Implementazione: "implementazione.md"
+  - Implementazione:
+    - "": "implementazione.md"
+    - ACMESky: "implementazione/acmesky.md"
+    - Flight Company: "implementazione/flightcompany.md"
+    - Geographical Distances: "implementazione/geodistances.md"
+    - Payment Provider: "implementazione/paymentprovider.md"
+    - ProntoGram: "implementazione/prontogram.md"
+    - Travel Company: "implementazione/travelcompany.md"

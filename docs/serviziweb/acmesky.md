@@ -1,4 +1,4 @@
-# ACMESky - API RESTful
+Torna a [Servizi web](../serviziweb.md).
 
 ## Panoramica
 
@@ -162,3 +162,5 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 |---------------------|--------------|
 | **transaction\_id** | **UUID**     |
 | **status**          | **Boolean** |
+
+Torna a [Servizi web](../serviziweb.md).

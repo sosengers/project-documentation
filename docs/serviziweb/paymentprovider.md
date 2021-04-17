@@ -1,5 +1,4 @@
-# Payment Provider - API RESTful
-
+Torna a [Servizi web](../serviziweb.md).
 ## Panoramica
 
 Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a *http://payment_provider_backend:8080*.  
@@ -110,3 +109,5 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 | **amount**            | **Double** |
 | **description**       | **String** |
 | **payment\_receiver** | **String** |
+
+Torna a [Servizi web](../serviziweb.md).

@@ -1,5 +1,4 @@
-# Geographical Distances - API RESTful
-
+Torna a [Servizi web](../serviziweb.md).
 ## Panoramica
 
 Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a *http://geographical_distances:8080*.  
@@ -40,3 +39,5 @@ Calcola la distanza fra i dati indirizzi. Gli indirizzi vengono prima trasformat
 |----------------|------------|
 | **address\_1** | **String** |
 | **address\_2** | **String** |
+
+Torna a [Servizi web](../serviziweb.md).
