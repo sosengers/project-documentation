@@ -6,7 +6,7 @@ Da fuori Docker, la porta per raggiungere il servizio è *5000*.
 
 | Risorsa | Descrizione | Risorsa per |
 |---------|-------------|-------------|
-| [**POST** /distance](#calculatedistance) | Calcola la distanza fra i dati indirizzi. Gli indirizzi vengono prima trasformati in coordinate GPS tramite *geocoding* (è richiesto che gli indirizzi siano il più possibile precisi, altrimenti il sistema trova le coordinate relative a un luogo il cui indirizzo meglio assomiglia a quello passato come argomento), successivamente la distanza viene calcolata mediante la [formula di Haversine [EN]](https://en.wikipedia.org/wiki/Haversine_formula) e ritornata in kilometri. | ACMESky |
+| [**POST** /distance](#calculateDistance) | Calcola la distanza fra i dati indirizzi. Gli indirizzi vengono prima trasformati in coordinate GPS tramite *geocoding* (è richiesto che gli indirizzi siano il più possibile precisi, altrimenti il sistema trova le coordinate relative a un luogo il cui indirizzo meglio assomiglia a quello passato come argomento), successivamente la distanza viene calcolata mediante la [formula di Haversine [EN]](https://en.wikipedia.org/wiki/Haversine_formula) e ritornata in kilometri. | ACMESky |
 
 ## Richieste
 
