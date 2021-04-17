@@ -12,8 +12,8 @@ Da fuori Docker, le porte per raggiungere i servizi sono rispettivamente *7001*,
 
 | Risorsa                                     | Descrizione                                           | Risorsa per |
 |---------------------------------------------|-------------------------------------------------------|-------------|
-| [**POST** /flights/buy](#buyflights)        | Acquista i voli richiesti e passati come argomento.   | ACMESky     |
-| [**GET** /flights/offers](#getflightoffers) | Ritorna le offerte giornaliere della compagnia aerea. | ACMESky     |
+| [**POST** /flights/buy](#buyFlights)        | Acquista i voli richiesti e passati come argomento.   | ACMESky     |
+| [**GET** /flights/offers](#getFlightOffers) | Ritorna le offerte giornaliere della compagnia aerea. | ACMESky     |
 
 ## Richieste
 
