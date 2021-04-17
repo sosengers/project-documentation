@@ -3,6 +3,7 @@
 Nella seguente sezione vengono illustrate le interfacce con cui i vari partecipanti coinvolti nel funzionamento di ACMESky permettono di essere contattati e fornire dei servizi ai loro utilizzatori.
 
 È stato scelto di utilizzare due modalità differenti per rendere disponibili tali servizi, mediante:
+
 - **API RESTful**;
 - **API SOAP**.
 
