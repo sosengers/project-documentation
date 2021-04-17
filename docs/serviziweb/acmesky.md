@@ -161,4 +161,4 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 | Nome                | Tipo         |
 |---------------------|--------------|
 | **transaction\_id** | **UUID**     |
-| **status**          | **Boolean**) |
+| **status**          | **Boolean** |

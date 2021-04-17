@@ -81,7 +81,7 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 
 | Nome            | Tipo       |
 |-----------------|------------|
-| **Descrizione** | **String** |
+| **description** | **String** |
 
 <a name="paymentcreationresponse"></a>
 ### PaymentCreationResponse
@@ -108,5 +108,5 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 | Nome                  | Tipo       |
 |-----------------------|------------|
 | **amount**            | **Double** |
-| **Descrizione**       | **String** |
+| **description**       | **String** |
 | **payment\_receiver** | **String** |

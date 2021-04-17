@@ -43,7 +43,7 @@ Permette di acquistare il trasferimento verso l'aeroporto passando come argoment
 
 | Nome            | Tipo       |
 |-----------------|------------|
-| **Descrizione** | **String** |
+| **description** | **String** |
 
 <a name="purchasedetails"></a>
 ### PurchaseDetails
