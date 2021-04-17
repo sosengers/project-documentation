@@ -42,4 +42,13 @@ Permette di inviare il messaggio a ProntoGram per essere inoltrato all'utente sp
 | **body**       | **String**   |
 | **send\_time** | **DateTime** |
 
+## Interfaccia OpenAPI
+
+Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da ProntoGram.
+
+??? openapi "OpenAPI"
+    ```yaml
+    --8<-- "docs/openapi/prontogram.v1.yaml"
+    ```
+
 Torna a [Servizi web](../serviziweb.md).

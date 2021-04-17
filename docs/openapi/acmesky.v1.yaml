@@ -59,10 +59,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OfferPurchaseData'
-          application/xml:
-            schema:
-              type: object
-              properties: {}
         description: ''
   /payments:
     post:

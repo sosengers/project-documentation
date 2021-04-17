@@ -110,4 +110,13 @@ Permette l'invio delle informazioni di pagamento per pagare un offerta.
 | **description**       | **String** |
 | **payment\_receiver** | **String** |
 
+## Interfaccia OpenAPI
+
+Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da Payment Provider.
+
+??? openapi "OpenAPI"
+    ```yaml
+    --8<-- "docs/openapi/paymentprovider.v1.yaml"
+    ```
+
 Torna a [Servizi web](../serviziweb.md).

@@ -89,4 +89,13 @@ Questo endpoint non richiede alcun parametro.
 | **flight\_id** | **String** |
 | **date**       | **Date**   |
 
+## Interfaccia OpenAPI
+
+Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da Flight Company.
+
+??? openapi "OpenAPI"
+    ```yaml
+    --8<-- "docs/openapi/flightcompany.v1.yaml"
+    ```
+
 Torna a [Servizi web](../serviziweb.md).

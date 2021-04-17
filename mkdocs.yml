@@ -12,12 +12,17 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.expand
+extra_css:
+  - stylesheets/extra.css
 markdown_extensions:
   - abbr
   - admonition
   - footnotes
   - attr_list
   - lightgallery
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.superfences
 nav:
   - Home: "index.md"
   - Coreografie: "coreografie.md"

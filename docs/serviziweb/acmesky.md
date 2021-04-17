@@ -163,4 +163,13 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 | **transaction\_id** | **UUID**     |
 | **status**          | **Boolean** |
 
+## Interfaccia OpenAPI
+
+Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da ACMESky.
+
+??? openapi "OpenAPI"
+    ```yaml
+    --8<-- "docs/openapi/acmesky.v1.yaml"
+    ```
+
 Torna a [Servizi web](../serviziweb.md).

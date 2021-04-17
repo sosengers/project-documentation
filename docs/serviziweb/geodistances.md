@@ -40,4 +40,13 @@ Calcola la distanza fra i dati indirizzi. Gli indirizzi vengono prima trasformat
 | **address\_1** | **String** |
 | **address\_2** | **String** |
 
+## Interfaccia OpenAPI
+
+Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da Geographical Distances.
+
+??? openapi "OpenAPI"
+    ```yaml
+    --8<-- "docs/openapi/geodistances.v1.yaml"
+    ```
+
 Torna a [Servizi web](../serviziweb.md).
