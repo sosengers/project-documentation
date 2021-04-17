@@ -6,7 +6,7 @@ Da fuori Docker, la porta per raggiungere il servizio è *5001*.
 
 | Risorsa | Descrizione | Risorsa per |
 |---------|-------------|-------------|
-| [**POST** /messages](#sendmessage) | Permette di inviare il messaggio a ProntoGram per essere inoltrato all'utente specificato. | ACMESky |
+| [**POST** /messages](#sendMessage) | Permette di inviare il messaggio a ProntoGram per essere inoltrato all'utente specificato. | ACMESky |
 
 ## Richieste
 

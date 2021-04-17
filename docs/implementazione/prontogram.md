@@ -29,7 +29,7 @@ In particolare, l'utente tramite questa implementazione, ha la possibilità di:
 
 Il funzionamento di ProntoGram dipende in larga parte dalla decisione di utilizzo del design pattern **Publish/Subscribe** e delle cosiddette **WebSocket**:
 
-- ACMESky, quando ha un'offerta da comunicare ad un utente, invia un messaggio contattando l'endpoint delle API RESTful di ProntoGram ([POST /messages](../serviziweb/prontogram.md#sendmessage));
+- ACMESky, quando ha un'offerta da comunicare ad un utente, invia un messaggio contattando l'endpoint delle API RESTful di ProntoGram ([POST /messages](../serviziweb/prontogram.md#sendMessage));
 - ricevuta la richiesta di ACMESky, internamente ProntoGram pubblica il messaggio in una coda (*messaging queue*) fornita dal software **RabbitMQ**, avente come identificatore il ricevente indicato nel messaggio ricevuto (parte *Publish* del pattern);
 - se l'utente ha avuto accesso alla pagina web di ProntoGram e sta visualizzando la propria lista di messaggi allora è aperta una WebSocket (implementata attraverso il software **Socket.IO**) collegata alla coda in RabbitMQ, conseguentemente il contenuto della pagina web si aggiorna automaticamente consumando il messaggio pubblicato nella WebSocket il quale, precedentemente, lo aveva consumato dalla coda RabbitMQ (parte *Subscribe* del pattern); se l'utente non ha avuto accesso allora il messaggio persiste nella coda di RabbitMQ fino al suo consumo, come descritto in precedenza.
 
