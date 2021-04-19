@@ -173,7 +173,44 @@ style Camunda-Workers fill:#90EE90
 ACMESky utilizza il servizio per il calcolo delle distanze geografiche per calcolare la distanza tra due indirizzi. Il servizio è contattato due volte: quando c'è da calcolare la distanza tra la casa del cliente e l'aeroporto e per trovare la compagnia di trasporto più vicina alla casa del cliente.
 
 #### Payment Provider
+```mermaid
+graph TD
+CW1 <-->|POST /payment/request| PP[Payment Provider]
+CW1 -->|Publish payment URL|R
+PP[Payment Provider] <-->|POST /payments| BE
+BE -->|Send correlate message| C
+CW2 -->|Polling for new task| C
+subgraph ACMESky
+BE[Backend]
+C[Camunda]
+R[RabbitMQ]
+subgraph Camunda-Workers[Camunda Workers]
+CW1[Payment request]
+CW2[Verify payment status]
+end
+end
+
+style Camunda-Workers fill:#90EE90
+```
+
+Quando un utente inserisce un codice offerta valido, il worker `payment-request` contatta il Payment Provider che genera una nuova istanza di pagamento e restituisce al worker il link al quale l'utente può eseguire il pagamento. Il worker pubblica il link sulla coda di RabbitMQ in modo che il Frontend possa ottenere il link da mostrare all'utente. 
+
+Quando l'utente effettua il pagamento sul sito del payment provider, il suo esito viene mandato al Backend di ACMESky all'URL indicato al momento della creazione della richiesta di pagamento; quando il backend riceve l'esito del pagamento crea un nuovo messaggio che manda a Camunda che si occuperà di far avanzare il processo in modo che il worker `verify-payment-status` possa valutare l'esito del  pagamento appena effettuato.
 
 #### ProntoGram
+```mermaid
+graph TD
+CW1 <-->|POST /messages| PG[ProntoGram]
+
+subgraph ACMESky
+subgraph Camunda-Workers[Camunda Workers]
+CW1[Notify user via ProntoGram]
+end
+end
+
+style Camunda-Workers fill:#90EE90
+```
+
+Quando viene trovata un'offerta che combacia con l'interesse da parte di un utente viene generato un "codice offerta" che viene mandato a ProntoGram indicando il nome utente al quale va recapitato.
 
 Torna a [Implementazione](../implementazione.md).
