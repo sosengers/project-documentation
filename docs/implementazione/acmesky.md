@@ -97,4 +97,83 @@ PG[ProntoGram]
 end
 ```
 
+Per interagire con i servizi RESTful esterni è stata utilizzata la libreria [Requests](https://pypi.org/project/requests/) che permette in maniera molto semplice di soddisfare la necessità di fare chiamate HTTP `POST` e `GET`
+
+```
+get_response = requests.get(url)
+post_response = requests.post(url, json=dict_representing_the_json)
+```
+
+#### Flight Company
+```mermaid
+graph TD
+CW1 <-->|POST /flights/buy| FC[Flight Company]
+CW2 <-->|GET /flights/offers| FC[Flight Company]
+
+subgraph ACMESky
+subgraph Camunda-Workers[Camunda Workers]
+CW1[Buy flights]
+CW2[Get flight offers]
+end
+end
+
+style Camunda-Workers fill:#90EE90
+```
+
+ACMESky comunica con le Flight Company tramite chiamate HTTP. Quando devo effettuare l'acquisto di uno o più voli invia un JSON all'endpoint `POST /flights/buy` mentre, una volta al giorno contatta l'endpoint `GET /flights/offers` per ottenere la lista di voli aggiunti nelle ultime 24h.
+
+#### Travel Company
+
+```mermaid
+graph TD
+CW1 <-->|Retrieve travelcompany.wsdl| TCf
+CW1 <-->|SOAP bookTransfer| TC
+
+subgraph ACMESky
+subgraph Camunda-Workers[Camunda Workers]
+CW1[Book transfer]
+end
+end
+
+subgraph TCs[Travel company]
+TC[Travel Company service]
+TCf[Travel Company file provider]
+end
+style Camunda-Workers fill:#90EE90
+```
+
+Quando ACMESky deve prenotare il trasferimento da/verso casa dell'utente e aeroporto utilizza la libreria [Zeep](https://docs.python-zeep.org/en/master/index.html) che è in grado di generare un client SOAP a partire dal file WSDL che descrive il servizio.
+
+```
+soap_client = Client(wsdl=wsdl_url)
+soap_response = soap_client.service.buyTransfers(
+            departure_transfer_datetime=outbound_departure_transfer_datetime.strftime("%Y-%m-%dT%H:%M:%S"),
+            customer_address=str(offer_purchase_data.address),
+            airport_code=offer_match.outbound_flight.departure_airport_code,
+            customer_name=f"{offer_purchase_data.name} {offer_purchase_data.surname}",
+            arrival_transfer_datetime=comeback_arrival_transfer_datetime.strftime("%Y-%m-%dT%H:%M:%S"))
+```
+
+#### Geographical distances
+```mermaid
+graph TD
+CW1 <-->|POST /distance| GD[Geographical distances]
+CW2 <-->|POST /distance| GD[Geographical distances]
+
+subgraph ACMESky
+subgraph Camunda-Workers[Camunda Workers]
+CW1[Check distance house airport]
+CW2[Get min distance house travel company]
+end
+end
+
+style Camunda-Workers fill:#90EE90
+```
+
+ACMESky utilizza il servizio per il calcolo delle distanze geografiche per calcolare la distanza tra due indirizzi. Il servizio è contattato due volte: quando c'è da calcolare la distanza tra la casa del cliente e l'aeroporto e per trovare la compagnia di trasporto più vicina alla casa del cliente.
+
+#### Payment Provider
+
+#### ProntoGram
+
 Torna a [Implementazione](../implementazione.md).
