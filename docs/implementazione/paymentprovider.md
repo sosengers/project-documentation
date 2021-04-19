@@ -46,4 +46,6 @@ Dal punto di vista dell'utente, il Payment Provider permette di:
 - verificare il codice della carta di credito mediante la **formula di Luhn**;
 - generare un errore nel pagamento nel caso il CVV inserito sia *456* (non è ovviamente né realistico né una funzionalità di interesse per l'utente, è solo un modo per permettere la generazione di errori in maniera controllata e verificare il corretto funzionamento del sistema anche in queste situazioni).
 
+![!Pagamento tramite Payment Provider](../assets/implementazione/paymentprovider_pagamento.png)
+
 Torna a [Implementazione](../implementazione.md).
