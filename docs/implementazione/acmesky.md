@@ -61,13 +61,15 @@ Un utente per aggiungere il proprio interesse inserisce i dati richiesti e preme
 
 Quando un utente riceve il codice offerta tramite ProntoGram si può recare su questa pagine e, riempiendo il form con i dati richiesti, avviare il processo di acquisto di un'offerta. Il frontend contatta il backend passandogli i dati inseriti dall'utente e, a sua volta, invia un messaggio a Camunda che avvia una nuova istanza del processo di business [Acquisto offerta da un utente](../bpmn.md#buyOffer). Il backend risponde con il codice che verrà usato per la comunicazione tra frontend e middleware tramite WebSocket. Quando un worker deve comunicare con il frontend, pubblica un messaggio sulla coda RabbitMQ utilizzando lo stesso codice comunicato al frontend. Il middleware, essendosi sottoscritto alla stessa coda, utilizza il WebSocket per comunicare il messaggio al giusto utente.
 
-In questo modo è possibile comunicare errori:
+In questo modo è possibile:
+
+- comunicare errori:
 ![!Comunicazione errori al Frontend](../assets/implementazione/acmesky_error.png)
 
-Richiedere il pagamento da parte dell'utente:
+- richiedere il pagamento da parte dell'utente:
 ![!Richiesta pagamento](../assets/implementazione/acmesky_pagamento.png)
 
-E mostrare l'offerta acquistata:
+- mostrare l'offerta acquistata:
 ![!Biglietti acquistati](../assets/implementazione/acmesky_biglietti.png)
 
 ## Interazioni ACMESky e servizi esterni
