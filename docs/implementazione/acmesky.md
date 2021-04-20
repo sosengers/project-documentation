@@ -74,7 +74,7 @@ In questo modo è possibile:
 
 ## Interazioni ACMESky e servizi esterni
 
-Per poter compiere i diversi task, i worker contattano dei servizi che sono esterni ad ACMESky
+Per poter compiere i diversi task, i worker contattano dei servizi che sono esterni ad ACMESky.
 
 ```mermaid
 graph LR 
@@ -83,11 +83,9 @@ CW <--> TC[Travel Company]
 CW <--> GD[Geographical distances]
 CW <--> PP[Payment Provider]
 CW <--> PG[ProntoGram]
-CW <--> R
 
 subgraph ACMESky
-CW[Camunda workers]
-R[RabbitMQ]
+CW[Camunda Workers]
 end
 
 subgraph OS[Servizi esterni]
@@ -99,7 +97,7 @@ PG[ProntoGram]
 end
 ```
 
-Per interagire con i servizi RESTful esterni è stata utilizzata la libreria [Requests](https://pypi.org/project/requests/) che permette in maniera molto semplice di soddisfare la necessità di fare chiamate HTTP `POST` e `GET`
+Per interagire con i servizi RESTful esterni è stata utilizzata la libreria [Requests](https://pypi.org/project/requests/) di Python che permette in maniera molto semplice di soddisfare la necessità di fare chiamate HTTP `POST` e `GET`:
 
 ```
 get_response = requests.get(url)
@@ -111,8 +109,10 @@ post_response = requests.post(url, json=dict_representing_the_json)
 graph TD
 CW1 <-->|POST /flights/buy| FC[Flight Company]
 CW2 <-->|GET /flights/offers| FC[Flight Company]
+FC[Flight Company] <-->|POST /offers/lastminute|B
 
 subgraph ACMESky
+B[Backend]
 subgraph Camunda-Workers[Camunda Workers]
 CW1[Buy flights]
 CW2[Get flight offers]
@@ -122,14 +122,16 @@ end
 style Camunda-Workers fill:#90EE90
 ```
 
-ACMESky comunica con le Flight Company tramite chiamate HTTP. Quando devo effettuare l'acquisto di uno o più voli invia un JSON all'endpoint `POST /flights/buy` mentre, una volta al giorno contatta l'endpoint `GET /flights/offers` per ottenere la lista di voli aggiunti nelle ultime 24h.
+ACMESky comunica con le Flight Company tramite chiamate HTTP. Quando devo effettuare l'acquisto di uno o più voli invia un documento in formato JSON come corpo della richiesta all'endpoint [POST /flights/buy](../serviziweb/flightcompany.md#buyFlights) mentre, una volta al giorno contatta l'endpoint [GET /flights/offers](../serviziweb/flightcompany.md#getFlightOffers) per ottenere la lista di voli aggiunti nelle ultime 24h, ovvero quando Camunda avvia il business process [Verifica giornaliera delle offerte](../bpmn.md#dailyCheck)
+
+Quando un nuovo volo viene aggiunto ad una compagnia aerea, questo viene, a sua volta, inviato anche ad ACMESky tramite l'endopoint [POST /offers/lastminute](../serviziweb/acmesky.md#publishLastMinuteOffer)
 
 ### Travel Company
 
 ```mermaid
 graph TD
 CW1 <-->|Retrieve travelcompany.wsdl| TCf
-CW1 <-->|SOAP bookTransfer| TC
+CW1 <-->|SOAP buyTransfer| TC
 
 subgraph ACMESky
 subgraph Camunda-Workers[Camunda Workers]
@@ -138,7 +140,7 @@ end
 end
 
 subgraph TCs[Travel company]
-TC[Travel Company service]
+TC[Jolie service]
 TCf[Travel Company file provider]
 end
 style Camunda-Workers fill:#90EE90
@@ -149,18 +151,19 @@ Quando ACMESky deve prenotare il trasferimento da/verso casa dell'utente e aerop
 ```
 soap_client = Client(wsdl=wsdl_url)
 soap_response = soap_client.service.buyTransfers(
-            departure_transfer_datetime=outbound_departure_transfer_datetime.strftime("%Y-%m-%dT%H:%M:%S"),
-            customer_address=str(offer_purchase_data.address),
-            airport_code=offer_match.outbound_flight.departure_airport_code,
-            customer_name=f"{offer_purchase_data.name} {offer_purchase_data.surname}",
-            arrival_transfer_datetime=comeback_arrival_transfer_datetime.strftime("%Y-%m-%dT%H:%M:%S"))
+    departure_transfer_datetime=outbound_departure_transfer_datetime.strftime("%Y-%m-%dT%H:%M:%S"),
+    customer_address=str(offer_purchase_data.address),
+    airport_code=offer_match.outbound_flight.departure_airport_code,
+    customer_name=f"{offer_purchase_data.name} {offer_purchase_data.surname}",
+    arrival_transfer_datetime=comeback_arrival_transfer_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+)
 ```
 
 ### Geographical distances
 ```mermaid
 graph TD
-CW1 <-->|POST /distance| GD[Geographical distances]
-CW2 <-->|POST /distance| GD[Geographical distances]
+CW1 <-->|POST /distance| GD[Geographical Distances]
+CW2 <-->|POST /distance| GD[Geographical Distances]
 
 subgraph ACMESky
 subgraph Camunda-Workers[Camunda Workers]
@@ -177,7 +180,7 @@ ACMESky utilizza il servizio per il calcolo delle distanze geografiche per calco
 ### Payment Provider
 ```mermaid
 graph TD
-CW1 <-->|POST /payment/request| PP[Payment Provider]
+CW1 <-->|POST /payments/request| PP[Payment Provider]
 CW1 -->|Publish payment URL|R
 PP[Payment Provider] <-->|POST /payments| BE
 BE -->|Send correlate message| C
@@ -195,9 +198,9 @@ end
 style Camunda-Workers fill:#90EE90
 ```
 
-Quando un utente inserisce un codice offerta valido, il worker `payment-request` contatta il Payment Provider che genera una nuova istanza di pagamento e restituisce al worker il link al quale l'utente può eseguire il pagamento. Il worker pubblica il link sulla coda di RabbitMQ in modo che il Frontend possa ottenere il link da mostrare all'utente. 
+Quando un utente inserisce un codice offerta valido, il worker `payment-request` contatta il Payment Provider che genera una nuova istanza di pagamento e restituisce al worker il link al quale l'utente può pagare l'offerta. Il worker pubblica il link sulla coda di RabbitMQ in modo che il frontend possa ottenere il link da mostrare all'utente. 
 
-Quando l'utente effettua il pagamento sul sito del payment provider, il suo esito viene mandato al Backend di ACMESky all'URL indicato al momento della creazione della richiesta di pagamento; quando il backend riceve l'esito del pagamento crea un nuovo messaggio che manda a Camunda che si occuperà di far avanzare il processo in modo che il worker `verify-payment-status` possa valutare l'esito del  pagamento appena effettuato.
+Quando l'utente effettua il pagamento sul sito del Payment Provider, il suo esito viene mandato al backend di ACMESky all'URL indicato al momento della creazione della richiesta di pagamento; quando il backend riceve l'esito del pagamento crea un nuovo messaggio che manda a Camunda, che si occuperà di far avanzare il processo in modo che il worker `verify-payment-status` possa valutare l'esito del  pagamento appena effettuato.
 
 ### ProntoGram
 ```mermaid

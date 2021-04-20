@@ -11,6 +11,7 @@ In questa sezione vengono rappresentati sotto forma di diagrammi BPMN le coreogr
 
 Il diagramma descrive il processo di registrazione nel Portale Web di ACMESky dell'interesse, da parte di utente, a un pacchetto di viaggio A/R, con un massimo budget e un range di date entro cui effettuare entrambe le tratte. Il processo inizia con la ricezione da parte di ACMESky di questi dati. Questi dati vengono memorizzati da ACMESky per i successivi controlli. Sia che l'operazione avvenga correttamente, sia che essa fallisca, viene comunicato all'utente l'esito di quest'ultima. Il processo può quindi terminare.
 
+<a name="dailyCheck"></a>
 ## Verifica giornaliera delle offerte
 ![!BPMN processo verifica giornaliera delle offerte](assets/bpmn/VerificaGiornaliera.png){: loading=lazy}
 
