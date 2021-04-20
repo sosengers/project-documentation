@@ -29,7 +29,7 @@ end
 Payment Provider è il servizio che permette:
 
 - ad ACMESky di avere un intermediario per la gestione dei pagamenti delle offerte da parte dei suoi utenti;
-- all'utente di pagare tali offerte tramite di carta di credito.
+- all'utente di pagare tali offerte tramite carta di credito.
 
 È stato implementato in maniera semplice ma, al tempo stesso, esaustiva e il più possibile realistica, emulando quanto avviene in altri intermediari di pagamento commerciali.
 

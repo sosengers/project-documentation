@@ -26,7 +26,7 @@ In particolare, l'utente tramite questa implementazione, ha la possibilità di:
 - accedere, tramite una pagina web, al servizio di messaggistica e autenticarsi mediante un **nome utente** (non vi è alcuna password richiesta);
     ![!Pagina di login di ProntoGram](../assets/implementazione/homepage_prontogram.png)
 
-- una volta acceduto attraverso di un nome utente, può visualizzare tutti i messaggi che sono stati ricevuti quando non era connesso e visualizzarli in tempo reale se ACMESky dovesse inviargliene alcuni mentre è collegato;
+- una volta che l'utente ha avuto accesso, può visualizzare tutti i messaggi che sono stati ricevuti quando non era connesso e visualizzarli in tempo reale se ACMESky dovesse inviargliene alcuni mentre è collegato;
 - i messaggi hanno una durata temporale limitata e non vengono più memorizzati una volta visualizzati (la persistenza del messaggio dura fino alla sua visualizzazione e, da quel momento, esso viene cancellato dal supporto persistente).
 
 ![!Ricezione messaggio](../assets/implementazione/prontogram_message.png)

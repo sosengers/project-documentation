@@ -5,7 +5,7 @@ Torna a [Implementazione](../implementazione.md).
 ```mermaid
 graph TD
 CW <--> DBs
-CW <--> OS[Other Services]
+CW <--> OS[Altri servizi]
 CW <--> C
 CW <--> R
 BE --> C
@@ -15,8 +15,8 @@ Utente <--> FE
 MW --> R
 
 subgraph ACMESky
-DBs[(Databases)]
-CW[Camunda workers]
+DBs[(Database)]
+CW[Camunda Workers]
 C[Camunda]
 BE[Backend]
 R[RabbitMQ]
@@ -25,14 +25,14 @@ MW[Middleware]
 end
 ```
 
-ACMESky è quell'insieme di componenti che permettono ad un utente di inserire un proprio interesse all'interno del sistema e di acquistare i voli per un viaggio.
+ACMESky è l'insiemi di servizi che permettono ad un utente di inserire un proprio interesse all'interno del sistema e di acquistare i voli per un viaggio.
 
-### Interazioni Utente e ACMESky
+## Interazioni Utente e ACMESky
 ```mermaid
-graph TD
+graph LR
 BE -->|Correlate messages| C
-FE <-->|POST /buy/offers| BE
-FE <-->|POST /register_interest| BE
+FE <-->|POST /offers/buy| BE
+FE <-->|POST /interests| BE
 FE <-->|WebSocket| MW
 Utente <--> FE
 MW -->|Subscribe| R
@@ -46,16 +46,16 @@ MW[Middleware]
 end
 ```
 
-L'utente interagisce con l'interfaccia Web messa a disposizione dal Frontend. Il Frontend mette a disposizione due funzionalità, l'aggiunta di un nuovo interesse e l'acquisto di un viaggio. Queste due operazioni sono permesse da due chiamate HTTP al Backend di ACMESky: `POST /registe/interest` e `POST /buy/offers`.
+L'utente interagisce con l'interfaccia web messa a disposizione dal Frontend. Il Frontend mette a disposizione due funzionalità, l'aggiunta di un nuovo interesse e l'acquisto di un viaggio. Queste due operazioni sono permesse da due chiamate HTTP al Backend di ACMESky: [POST /interests](../serviziweb/acmesky.md#registerInterest) e [POST /offers/buy](../serviziweb/acmesky.md#buyOffer).
 ![!Homepage ACMESky](../assets/implementazione/homepage_acmesky.png)
 
-#### Aggiunta di un nuovo interesse
+### Aggiunta di un nuovo interesse
 
 ![!Aggiunta di un nuovo interesse](../assets/implementazione/registrazione_interesse.png)
 
 Un utente per aggiungere il proprio interesse inserisce i dati richiesti e preme il pulsante "Conferma". Il backend a sua volta manda un messaggio a Camunda contenente i dati inseriti dall'utente avviando così un nuovo processo nell'engine i cui task verranno svolti da alcuni worker. Un task aggiunge l'interesse all'interno di mongoDB, questo database verrà riconttato quando verranno controllati gli interessi non ancora soddisfatti alla ricerca di offerte che matchano i requisiti salvati.
 
-#### Acquisto di un'offerta
+### Acquisto di un'offerta
 
 ![!Inserimento dati acquisto offerta](../assets/implementazione/acmesky_inserimento_dati_offerta.png)
 
@@ -70,7 +70,7 @@ Richiedere il pagamento da parte dell'utente:
 E mostrare l'offerta acquistata:
 ![!Biglietti acquistati](../assets/implementazione/acmesky_biglietti.png)
 
-### Interazioni ACMESky e servizi esterni
+## Interazioni ACMESky e servizi esterni
 
 Per poter compiere i diversi task, i worker contattano dei servizi che sono esterni ad ACMESky
 
@@ -104,7 +104,7 @@ get_response = requests.get(url)
 post_response = requests.post(url, json=dict_representing_the_json)
 ```
 
-#### Flight Company
+### Flight Company
 ```mermaid
 graph TD
 CW1 <-->|POST /flights/buy| FC[Flight Company]
@@ -122,7 +122,7 @@ style Camunda-Workers fill:#90EE90
 
 ACMESky comunica con le Flight Company tramite chiamate HTTP. Quando devo effettuare l'acquisto di uno o più voli invia un JSON all'endpoint `POST /flights/buy` mentre, una volta al giorno contatta l'endpoint `GET /flights/offers` per ottenere la lista di voli aggiunti nelle ultime 24h.
 
-#### Travel Company
+### Travel Company
 
 ```mermaid
 graph TD
@@ -154,7 +154,7 @@ soap_response = soap_client.service.buyTransfers(
             arrival_transfer_datetime=comeback_arrival_transfer_datetime.strftime("%Y-%m-%dT%H:%M:%S"))
 ```
 
-#### Geographical distances
+### Geographical distances
 ```mermaid
 graph TD
 CW1 <-->|POST /distance| GD[Geographical distances]
@@ -172,7 +172,7 @@ style Camunda-Workers fill:#90EE90
 
 ACMESky utilizza il servizio per il calcolo delle distanze geografiche per calcolare la distanza tra due indirizzi. Il servizio è contattato due volte: quando c'è da calcolare la distanza tra la casa del cliente e l'aeroporto e per trovare la compagnia di trasporto più vicina alla casa del cliente.
 
-#### Payment Provider
+### Payment Provider
 ```mermaid
 graph TD
 CW1 <-->|POST /payment/request| PP[Payment Provider]
@@ -197,7 +197,7 @@ Quando un utente inserisce un codice offerta valido, il worker `payment-request`
 
 Quando l'utente effettua il pagamento sul sito del payment provider, il suo esito viene mandato al Backend di ACMESky all'URL indicato al momento della creazione della richiesta di pagamento; quando il backend riceve l'esito del pagamento crea un nuovo messaggio che manda a Camunda che si occuperà di far avanzare il processo in modo che il worker `verify-payment-status` possa valutare l'esito del  pagamento appena effettuato.
 
-#### ProntoGram
+### ProntoGram
 ```mermaid
 graph TD
 CW1 <-->|POST /messages| PG[ProntoGram]
