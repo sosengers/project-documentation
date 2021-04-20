@@ -53,13 +53,13 @@ L'utente interagisce con l'interfaccia web messa a disposizione dal Frontend. Il
 
 ![!Aggiunta di un nuovo interesse](../assets/implementazione/registrazione_interesse.png)
 
-Un utente per aggiungere il proprio interesse inserisce i dati richiesti e preme il pulsante "Conferma". Il backend a sua volta manda un messaggio a Camunda contenente i dati inseriti dall'utente avviando così un nuovo processo nell'engine i cui task verranno svolti da alcuni worker. Un task aggiunge l'interesse all'interno di mongoDB, questo database verrà riconttato quando verranno controllati gli interessi non ancora soddisfatti alla ricerca di offerte che matchano i requisiti salvati.
+Un utente per aggiungere il proprio interesse inserisce i dati richiesti e preme il pulsante "Conferma". I dati del modulo vengono inviati al backend che, a sua volta, li invia a Camunda, avviando così una nuova istanza del business process [Registrazione interesse utente](../bpmn.md#registerInterest) nell'engine; i cui task verranno svolti dai worker assegnati, tra i quali il worker `register-interest`, che  aggiunge l'interesse all'interno di MongoDB. Verrà fatto nuovamente riferimento a questo database quando verranno controllati gli interessi non ancora soddisfatti alla ricerca di offerte che soddisfano i requisiti salvati.
 
 ### Acquisto di un'offerta
 
 ![!Inserimento dati acquisto offerta](../assets/implementazione/acmesky_inserimento_dati_offerta.png)
 
-Quando un utente riceve il codice offerta tramite ProntoGram si può recare su questa pagine e, riempiendo il form con i dati richiesti avviare il processo di acquisto di un'offerta. Il Frontend contatta il Backend passandogli i dati inseriti dall'utente e, a sua volta, invia un messaggio a Camunda che avvia un nuovo processo. Il backend risponde con il codice che verrà usato per la comunicazione tra Frontend e Middleware tramite WebSocket. Quando un worker deve comunicare con il frontend pubblica un messaggio sulla coda RabbitMQ utilizzando lo stesso codice comunicato al Frontend e il Middleware, essendosi sottoscritto alla stessa coda utilizza il WebSocket per comunicare il messaggio al giusto utente.
+Quando un utente riceve il codice offerta tramite ProntoGram si può recare su questa pagine e, riempiendo il form con i dati richiesti, avviare il processo di acquisto di un'offerta. Il frontend contatta il backend passandogli i dati inseriti dall'utente e, a sua volta, invia un messaggio a Camunda che avvia una nuova istanza del processo di business [Acquisto offerta da un utente](../bpmn.md#buyOffer). Il backend risponde con il codice che verrà usato per la comunicazione tra frontend e middleware tramite WebSocket. Quando un worker deve comunicare con il frontend, pubblica un messaggio sulla coda RabbitMQ utilizzando lo stesso codice comunicato al frontend. Il middleware, essendosi sottoscritto alla stessa coda, utilizza il WebSocket per comunicare il messaggio al giusto utente.
 
 In questo modo è possibile comunicare errori:
 ![!Comunicazione errori al Frontend](../assets/implementazione/acmesky_error.png)
