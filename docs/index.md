@@ -4,7 +4,7 @@ hide:
 ---
 # ACMESky - Documentazione progetto
 
-Il seguente sito web descrive i processi che hanno portato alla realizzazione del progetto didattico del corso Ingegneria del Software Orientata ai Servizi della L.M Informatica dell'Università di Bologna svolto da Marco Ferrati e Tommaso Azzalin nell' A.A. 2020/21.
+Il seguente sito web descrive i processi che hanno portato alla realizzazione del progetto didattico del corso Ingegneria del Software Orientata ai Servizi della LM Informatica dell'Università di Bologna svolto da Marco Ferrati e Tommaso Azzalin nell' A.A. 2020/21.
 
 ## Descrizione del progetto
 Realizzare una Service Oriented Architecture (SOA) che rappresenti la realtà di una compagnia chiamata ACMESky, la quale fornisce ai propri utenti la possibiltà di venire notificati e acquistare offerte di voli a/r in determinate date e al di sotto di una certa soglia di prezzo, da loro scelte in precedenza.
