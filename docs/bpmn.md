@@ -7,13 +7,13 @@ In questa sezione vengono rappresentati sotto forma di diagrammi BPMN le coreogr
 
 <a name="registerInterest"></a>
 ## Registrazione interesse di un utente
-![!BPMN processo registrazione utente](assets/bpmn/RegistrazioneInteresseUtente.png){: loading=lazy}
+![!BPMN processo registrazione utente](assets/bpmn/bpmn-scopo-documentativo/RegistrazioneInteresseUtente.png){: loading=lazy}
 
 Il diagramma descrive il processo di registrazione nel Portale Web di ACMESky dell'interesse, da parte di utente, a un pacchetto di viaggio A/R, con un massimo budget e un range di date entro cui effettuare entrambe le tratte. Il processo inizia con la ricezione da parte di ACMESky di questi dati. Questi dati vengono memorizzati da ACMESky per i successivi controlli. Sia che l'operazione avvenga correttamente, sia che essa fallisca, viene comunicato all'utente l'esito di quest'ultima. Il processo può quindi terminare.
 
 <a name="dailyCheck"></a>
 ## Verifica giornaliera delle offerte
-![!BPMN processo verifica giornaliera delle offerte](assets/bpmn/VerificaGiornaliera.png){: loading=lazy}
+![!BPMN processo verifica giornaliera delle offerte](assets/bpmn/bpmn-scopo-documentativo/VerificaGiornaliera.png){: loading=lazy}
 
 Il diagramma descrive il processo di verifica quotidiana della presenza di offerte che possano soddisfare gli interessi registrati degli utenti di ACMESky. Questo processo si avvia sistematicamente ogni 24 ore.
 
@@ -29,7 +29,7 @@ Per ogni interesse registrato da parte di un utente viene avviato, in parallelo,
 Terminate tutte le istanze parallele di `Notifica presenza offerte agli utenti`, il processo termina.
 
 ## Ricezione offerte last minute
-![!BPMN processo ricezione offerte last minute](assets/bpmn/NotificaVoliLastMinute.png){: loading=lazy}
+![!BPMN processo ricezione offerte last minute](assets/bpmn/bpmn-scopo-documentativo/NotificaVoliLastMinute.png){: loading=lazy}
 
 Il diagramma descrive il processo di ricezione da parte di ACMESky di un'offerta last minute di una compagnia aerea e la conseguente verifica della presenza di utenti che hanno segnalato il loro interesse verso quel tipo di offerta. Il processo si avvia automaticamente alla ricezione dell'offerta.
 
@@ -41,7 +41,7 @@ Terminate tutte le istanze parallele di `Notifica presenza offerte agli utenti`,
 
 <a name="buyOffer"></a>
 ## Acquisto offerta da un utente
-![!Diagramma BPMN che descrive l'acquisto di un'offerta](assets/bpmn/AcquistoOfferta.png){: loading=lazy}
+![!Diagramma BPMN che descrive l'acquisto di un'offerta](assets/bpmn/bpmn-scopo-documentativo/AcquistoOfferta.png){: loading=lazy}
 
 Il diagramma descrive il processo di acquisto di un offerta da parte di un utente.
 
