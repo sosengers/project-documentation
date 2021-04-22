@@ -103,10 +103,10 @@ Le interazioni hanno il seguente significato:
 
 <p>
 <strong>AcquistoOfferta</strong> ::=  <br />
-( <strong>ins_code</strong>: UT<sub><em>k</em></sub> -> AS ) ;<br />  
+( <strong>ins_code</strong>: UT<sub><em>k</em></sub> -> AS ; <strong>ins_code_res</strong>: AS -> UT<sub><em>k</em></sub>) ;<br />  
 (  
 <ul>
-    <li>( <strong>req_pay</strong>: AS -> PP ; <strong>pay_offer</strong>: PP -> UT<sub><em>k</em></sub> ; <strong>pay_offer_res</strong>: UT<sub><em>k</em></sub> -> PP ; <strong>req_pay_res</strong>: PP -> AS ) ;</li>
+    <li>( <strong>req_pay</strong>: AS -> PP ; <strong>req_pay_res</strong>: PP -> AS ;  <strong>send_payment_ref</strong>: AS -> UT<sub><em>k</em></sub> ; <strong>pay_offer</strong>: UT<sub><em>k</em></sub> -> PP ; ( <strong>pay_offer_res</strong> PP -> UT<sub><em>k</em></sub> | <strong>send_payment_status</strong>: PP -> AS ) ) ;</li>
     <li>( </li>
     <li><ul>
     	<li>( <strong>buy_flights</strong>: AS -> CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>: CA<sub><em>i</em></sub> -> AS ) ;</li>  
