@@ -34,6 +34,7 @@ markdown_extensions:
 nav:
   - Home: "index.md"
   - Coreografie: "coreografie.md"
+  - Coreografie BPMN: "coreografiebpmn.md"
   - BPMN: "bpmn.md"
   - UML: "uml.md"
   - Servizi web:
