@@ -142,10 +142,13 @@ Le interazioni hanno il seguente significato:
 Le interazioni hanno il seguente significato:
 
 - **ins_code**: utente inserisce il codice ricevuto via ProntoGram sul portale;
+- **ins_code_res**: risposta all'interazione **ins_code**;
 - **req_pay**: ACMESky richiede il pagamento al Provider dei Pagamenti;
-- **pay_offer**: il Provider dei Pagamenti, ricevuta la richiesta da ACMESky, inoltra all'utente la richiesta di pagamento, il quale dovrà soddisfarla per procedere;
-- **pay_offer_res**: risposta all'interazione **pay_offer** (invio dati carta per il pagamento);
-- **req_pay_res**: risposta all'interazione **req_pay** (il Provider dei Pagamenti comunica ad ACMESky l'esito del pagamento);
+- **req_pay_res**: risposta all'interazione **req_pay** (inoltro riferimento per il pagamento dell'offerta);
+- **send_payment_ref**: ACMESky invia all'utente il riferimento per poter pagare l'offerta tramite il Provider dei Pagamenti;
+- **pay_offer**: l'utente invia i dati per il pagamento al Provider dei Pagamenti;
+- **pay_offer_res**: risposta all'interazione **pay_offer** (invio esito del pagamento);
+- **send_payment_status**: il Provider dei Pagamenti comunica ad ACMESky l'esito del pagamento;
 - **buy_flights**: ACMESky compra per conto dell'utente il biglietto per il volo A/R da lui/lei scelto presso la compagnia aerea CA<sub>*i*</sub> che fornisce i due voli che soddisfano il bisogno;
 - **buy_flights_res**: risposta all'interazione **buy_flights** (CA<sub>*i*</sub> conferma ad ACMESky la disponibilità del volo e inoltra il biglietto);
 - **calc_dist**: ACMESky richiede il calcolo della distanza al servizio esterno per il calcolo delle distanze geografiche;
