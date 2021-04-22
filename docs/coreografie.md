@@ -187,7 +187,7 @@ proj(<strong>RegistrazioneInteresseUtente</strong>, AS) =<br />
 </p>
 
 <p>
-proj(</strong><strong>VerificaGiornaliera</strong>, AS) =<br /> 
+proj(<strong>VerificaGiornaliera</strong>, AS) =<br /> 
 (
 <ul>
 <li>(<span style="text-decoration: overline"><strong>control</strong></span>@CA<sub><em>1</em></sub> ; <strong>control_res</strong>@CA<sub><em>1</em></sub> ) |</li>
