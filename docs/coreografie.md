@@ -221,7 +221,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, AS) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, AS) =<br />
-( <strong>ins_code</strong>@UT<sub><em>k</em></sub> ) ;<br />
+( <strong>ins_code</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>ins_code_res</strong></span>@UT<sub><em>k</em></sub>) ;<br />
 (<br />
 <ul>
 <li>( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; 1 ; 1 ; <strong>req_pay_res</strong>@AS ) ;</li>
@@ -299,7 +299,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, UT<sub><em>k</em></sub>) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, UT<sub><em>k</em></sub>) =<br />
-( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ;<br />
+( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ; <strong>ins_code_res</strong>@AS ) ;<br />
 (
 <ul>
 <li>( 1 ; <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ; 1 ) ;</li>  
@@ -375,7 +375,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, DG) =<br />
-( 1 ) ;<br />
+( 1 ; 1 ) ;<br />
 (
 <ul>
 <li>( 1 ; 1 ; 1 ; 1 ) ;</li>  
@@ -453,7 +453,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, PP) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, PP) =<br />
-( 1 ) ; <br/>
+( 1 ; 1 ) ; <br/>
 (
 <ul>
 <li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT<sub><em>k</em></sub> ; <strong>pay_offer_res</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ) ;</li>  
@@ -530,7 +530,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, PG) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, PG) =<br />
-( 1 ) ;<br />
+( 1 ; 1 ) ;<br />
 (
 <ul>
     <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
@@ -607,7 +607,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, CT<sub><em>j</em></sub>) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
-( 1 ) ;<br /> 
+( 1 ; 1 ) ;<br /> 
 (
 <ul>
     <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
@@ -687,7 +687,7 @@ proj(<strong>NotificaVoliLastMinute</strong>, CA<sub><em>i</em></sub>) =<br />
 
 <p>
 proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
-( 1 ) ;<br />
+( 1 ; 1 ) ;<br />
 (
 <ul>
     <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
