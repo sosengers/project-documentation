@@ -224,7 +224,7 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 ( <strong>ins_code</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>ins_code_res</strong></span>@UT<sub><em>k</em></sub>) ;<br />
 (<br />
 <ul>
-<li>( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; 1 ; 1 ; <strong>req_pay_res</strong>@AS ) ;</li>
+<li>( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; <strong>req_pay_res</strong>@PP ; <span style="text-decoration: overline"><strong>send_payment_ref</strong></span>@UT<sub><em>k</em></sub> ; 1 ; ( 1 | <strong>send_payment_status</strong>@PP ) ;</li>
 <li>( </li>
 <li><ul>
 	<li>( <span style="text-decoration: overline"><strong>buy_flights</strong></span>@CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>@CA<sub><em>i</em></sub> ) ;</li>
@@ -302,7 +302,7 @@ proj(<strong>AcquistoOfferta</strong>, UT<sub><em>k</em></sub>) =<br />
 ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ; <strong>ins_code_res</strong>@AS ) ;<br />
 (
 <ul>
-<li>( 1 ; <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ; 1 ) ;</li>  
+<li>( 1 ; 1 ; <strong>send_payment_ref</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@PP ; ( <strong>pay_offer_res</strong>@PP | 1 ) ) ;</li>  
 <li>(</li>
 <li><ul>
 	<li> ( 1 ; 1 ) ;</li>  
@@ -378,7 +378,7 @@ proj(<strong>AcquistoOfferta</strong>, DG) =<br />
 ( 1 ; 1 ) ;<br />
 (
 <ul>
-<li>( 1 ; 1 ; 1 ; 1 ) ;</li>  
+<li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1 ) ) ;</li>  
 <li>(</li>
 <li><ul>
 	<li>( 1 ; 1 ) ;</li>  
@@ -456,7 +456,7 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 ( 1 ; 1 ) ; <br/>
 (
 <ul>
-<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT<sub><em>k</em></sub> ; <strong>pay_offer_res</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ) ;</li>  
+<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ; 1 ; <strong>pay_offer</strong>@UT<sub><em>k</em></sub> ; ( <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@UT<sub><em>k</em></sub> | <span style="text-decoration: overline"><strong>send_payment_status</strong></span>@AS ) ) ;</li>  
 <li>(</li>
 <li><ul>
 	<li>( 1 ; 1 ) ;</li>  
@@ -484,7 +484,8 @@ proj(<strong>AcquistoOfferta</strong>, PP) =<br />
 </ul>
 )<br/>
 + 1<br />
-= ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@UT<sub><em>k</em></sub> ; <strong>pay_offer_res</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS )
+
+= ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ; <strong>pay_offer</strong>@UT<sub><em>k</em></sub> ; ( <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@UT<sub><em>k</em></sub> | <span style="text-decoration: overline"><strong>send_payment_status</strong></span>@AS ) )
 </p>
 </div>
 
@@ -533,7 +534,7 @@ proj(<strong>AcquistoOfferta</strong>, PG) =<br />
 ( 1 ; 1 ) ;<br />
 (
 <ul>
-    <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
+    <li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1 ) ) ;</li>
     <li>(</li>
     <li><ul>
         <li>( 1 ; 1 ) ;</li>
@@ -610,7 +611,7 @@ proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br />
 ( 1 ; 1 ) ;<br /> 
 (
 <ul>
-    <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
+    <li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1 ) ;</li>
     <li>(</li>
     <li><ul>
 		<li>( 1 ; 1 ) ;</li>
@@ -690,7 +691,7 @@ proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br />
 ( 1 ; 1 ) ;<br />
 (
 <ul>
-    <li>( 1 ; 1 ; 1 ; 1 ) ;</li>
+    <li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1  )) ;</li>
     <li>(</li>
     <li><ul>
         <li>( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA ) ;</li>
