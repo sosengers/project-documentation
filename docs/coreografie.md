@@ -254,6 +254,7 @@ proj(<strong>AcquistoOfferta</strong>, AS) =<br />
 + <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT<sub><em>k</em></sub>
 </p>
 </div>
+
 ### UT<sub><em>k</em></sub> (UTente)
 <div class="projections">
 <p>
@@ -330,7 +331,7 @@ proj(<strong>AcquistoOfferta</strong>, UT<sub><em>k</em></sub>) =<br />
 </ul>
 )<br/>
 + <strong>ins_code_failure</strong>@AS<br />
-= ( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ) ; ( ( <strong>pay_offer</strong>@PP ; <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@PP ) ; <strong>send_tickets</strong>@AS + <strong>payment_failure</strong>@AS ) + <strong>ins_code_failure</strong>@AS
+= (  <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ; <strong>ins_code_res</strong>@AS ) ; ( <strong>send_payment_ref</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@PP ; <strong>pay_offer_res</strong>@PP ) ;
 </p>
 </div>
 ### DG (Distanze Geografiche)
