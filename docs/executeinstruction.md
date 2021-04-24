@@ -2,6 +2,13 @@
 hide:
   - navigation
 ---
+Il progetto è stato testato su due macchine:
+
+- MacBook Pro 2019, Intel Core i9 2,3GHz, 16GB RAM;
+- Computer di Tommaso
+
+Entrambi con Docker versione 20.10.5, build 55c4c88 e docker-compose versione 1.29.0, build 07737305
+
 ## 1. Clonare il repository
 Il progetto è diviso in due macro-repository:
 
