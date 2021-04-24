@@ -65,7 +65,7 @@ const prontogramSocket = 'http://0.0.0.0:8000';
 ```
 - `PaymentProvider-Backend/.env`
 ```bash
-PAYMENT_PROVIDER_FRONTEND="http://localhost:4002"
+PAYMENT_PROVIDER_FRONTEND="http://127.0.0.1:4002"
 ```
 - `PaymentProvider-Frontend/src/environments/environment.ts`
 ```typescript
@@ -153,7 +153,7 @@ docker exec -it flight_companies_db psql -U flight_company_admin -d flightcompan
 ```
 
 !!! warning "Nota sui comandi precedenti"
-Se si è modificato la variabile d'ambiente `POSTGRES_USER` definita nel file [`flight-company/.env`](#fc) allora è necessario modificare il nome utente passato dopo il parametro `-U` nei tre comandi precedenti.
+  Se si è modificato la variabile d'ambiente `POSTGRES_USER` definita nel file [`flight-company/.env`](#fc) allora è necessario modificare il nome utente passato dopo il parametro `-U` nei tre comandi precedenti.
 
 ## 5. Accesso ai servizi
 Se i punti precedenti sono stati seguiti correttamente e tutti i servizi sono attivi, è possibile accedere:
