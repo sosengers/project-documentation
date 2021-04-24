@@ -124,7 +124,7 @@ style Camunda-Workers fill:#90EE90
 
 ACMESky comunica con le Flight Company tramite chiamate HTTP. Quando devo effettuare l'acquisto di uno o più voli invia un documento in formato JSON come corpo della richiesta all'endpoint [POST /flights/buy](../serviziweb/flightcompany.md#buyFlights) mentre, una volta al giorno contatta l'endpoint [GET /flights/offers](../serviziweb/flightcompany.md#getFlightOffers) per ottenere la lista di voli aggiunti nelle ultime 24h, ovvero quando Camunda avvia il business process [Verifica giornaliera delle offerte](../bpmn.md#dailyCheck)
 
-Quando un nuovo volo viene aggiunto ad una compagnia aerea, questo viene, a sua volta, inviato anche ad ACMESky tramite l'endopoint [POST /offers/lastminute](../serviziweb/acmesky.md#publishLastMinuteOffer)
+Quando un nuovo volo viene aggiunto ad una compagnia aerea, questo viene, a sua volta, inviato anche ad ACMESky tramite l'endpoint [POST /offers/lastminute](../serviziweb/acmesky.md#publishLastMinuteOffer)
 
 ### Travel Company
 

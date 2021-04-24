@@ -7,12 +7,12 @@ hide:
 Il seguente sito web descrive i processi che hanno portato alla realizzazione del progetto didattico del corso Ingegneria del Software Orientata ai Servizi della LM Informatica dell'Università di Bologna svolto da Marco Ferrati e Tommaso Azzalin nell' A.A. 2020/21.
 
 ## Descrizione del progetto
-Realizzare una Service Oriented Architecture (SOA) che rappresenti la realtà di una compagnia chiamata ACMESky, la quale fornisce ai propri utenti la possibiltà di venire notificati e acquistare offerte di voli a/r in determinate date e al di sotto di una certa soglia di prezzo, da loro scelte in precedenza.
+Realizzare una Service Oriented Architecture (SOA) che rappresenti la realtà di una compagnia chiamata ACMESky, la quale fornisce ai propri utenti la possibilità di venire notificati e acquistare offerte di voli a/r in determinate date e al di sotto di una certa soglia di prezzo, da loro scelte in precedenza.
 
 ACMESky si relaziona con diversi servizi esterni all'organizzazione:
 
 - Le compagnie aeree per il controllo della presenza di offerte e l'acquisto dei voli;
-- Le compagnie di noleggio con autista da noi rinominate "Compagnie di trasporto" per la prenotazione del trasporto gratuito degli utenti da casa all'aereoporto;
+- Le compagnie di noleggio con autista da noi rinominate "Compagnie di trasporto" per la prenotazione del trasporto gratuito degli utenti da casa all'aeroporto;
 - Il servizio per il calcolo delle distanze geografiche;
 - Il sistema bancario da noi rinominato "Provider di pagamenti" che si occupa di gestire i pagamenti per l'acquisto dei voli da parte degli utenti;
 - Il servizio ProntoGram, con il quale contattare gli utenti per comunicar loro i codici delle offerte.

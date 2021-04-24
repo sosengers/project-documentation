@@ -7,7 +7,7 @@ Il progetto è stato testato su due macchine:
 - macOS Big Sur 11.2.3, Intel Core i9-9880H 2.30 GHz CPU, 16 GB RAM;
 - Windows 10 20H2 build 19042.928, Intel Core i5-3550 3.30 GHz CPU, 16 GB RAM.
 
-Entrambi con Docker versione 20.10.5, build 55c4c88 e docker-compose versione 1.29.0, build 07737305
+Entrambi con Docker versione 20.10.5, build 55c4c88 e docker-compose versione 1.29.0, build 07737305.
 
 ## 1. Clonare il repository
 Il progetto è diviso in due macro-repository:
@@ -129,7 +129,7 @@ make geographical_distances
 make prontogram
 ```
 
-Di default i log di alcuni servzi sono disabilitati per avere un output più chiaro e pulito. Per riabilitarli è sufficiente commentare (`#`) le righe nel file `docker-compose.yaml` in cui il driver per il log viene definte come `none`:
+Di default i log di alcuni servizi sono disabilitati per avere un output più chiaro e pulito. Per riabilitarli è sufficiente commentare (`#`) le righe nel file `docker-compose.yaml` in cui il driver per il log viene definite come `none`:
 ```yaml
 logging:
   driver: none
@@ -153,7 +153,7 @@ docker exec -it flight_companies_db psql -U flight_company_admin -d flightcompan
 ```
 
 !!! warning "Nota sui comandi precedenti"
-  Se si è modificato la variabile d'ambiente `POSTGRES_USER` definita nel file [`flight-company/.env`](#fc) allora è necessario modificare il nome utente passato dopo il parametro `-U` nei tre comandi precedenti.
+    Se si è modificato la variabile d'ambiente `POSTGRES_USER` definita nel file [`flight-company/.env`](#fc) allora è necessario modificare il nome utente passato dopo il parametro `-U` nei tre comandi precedenti.
 
 ## 5. Accesso ai servizi
 Se i punti precedenti sono stati seguiti correttamente e tutti i servizi sono attivi, è possibile accedere:
