@@ -70,15 +70,15 @@ PAYMENT_PROVIDER_FRONTEND="http://127.0.0.1:4002"
 - `PaymentProvider-Frontend/src/environments/environment.ts`
 ```typescript
 export const environment = {
-  paymentProviderBackend: "http://0.0.0.0:4001",
+  paymentProviderBackend: "http://127.0.0.1:4001",
   production: true
 };
 ```
 - `ACMESky-Frontend/src/environments/environment.ts`
 ```typescript
 export const environment = {
-  acmeskyBackend: "http://0.0.0.0:9000",
-  acmeskyMiddleware: "http://0.0.0.0:9001",
+  acmeskyBackend: "http://127.0.0.1:9000",
+  acmeskyMiddleware: "http://127.0.0.1:9001",
   production: true
 };
 ```
