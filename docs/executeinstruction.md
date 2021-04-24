@@ -4,8 +4,8 @@ hide:
 ---
 Il progetto è stato testato su due macchine:
 
-- MacBook Pro 2019, Intel Core i9 2,3GHz, 16GB RAM;
-- Computer di Tommaso
+- macOS Big Sur 11.2.3, Intel Core i9-9880H 2.30 GHz CPU, 16 GB RAM;
+- Windows 10 20H2 build 19042.928, Intel Core i5-3550 3.30 GHz CPU, 16 GB RAM.
 
 Entrambi con Docker versione 20.10.5, build 55c4c88 e docker-compose versione 1.29.0, build 07737305
 
@@ -27,7 +27,7 @@ git clone --recurse-submodules git@github.com:sosengers/project-sources.git
 Per poter funzionare correttamente, alcuni servizi hanno bisogno che alcune variabili d'ambiente siano impostate prima della loro esecuzione. Per far questo è necessario creare dei file di *environment* in specifiche cartelle. Questi file contengono password, API KEY e URL che cambiano da macchina a macchina.
 Di seguito vengono presentati i contenuti dei file environment sufficienti per far funzionare il sistema nel suo intero:
 
-- `flight-company/.env`
+- `flight-company/.env`<a name="fc"></a>
 ```bash
 POSTGRES_USER="flight_company_admin"
 POSTGRES_PASSWORD="password"
@@ -95,7 +95,8 @@ docker-compose up
 - `-d` per lanciare i container in modalità *detached*, liberando il terminale una volta lanciati tutti quanti.
 
 Per spegnere tutti i servizi:
-- se si è usato solo il comando `docker-compose up`, è sufficiente premere <kbd>CTRL</kbd> + <kbd>C</kbd>;
+
+- se si è usato solo il comando `docker-compose up`, è sufficiente premere <kbd>CTRL</kbd> + <kbd>C</kbd> ;
 - se si è avviato in modalità *detached* è possibile invocare il comando:
 ```bash
 docker-compose down
@@ -133,3 +134,30 @@ Di default i log di alcuni servzi sono disabilitati per avere un output più chi
 logging:
   driver: none
 ```
+
+## 4. Caricamento dei dati di esempio
+Per poter testare il sistema è necessario caricare dei dati di esempio dei voli delle compagnie aeree.  
+Il container del database delle compagnie aeree (`flight_companies_db`) ha già dei dataset precaricati, è sufficiente importarli all'interno delle tabelle dei database. Questo è possibile farlo mediante i seguenti tre (perché tre sono le compagnie aeree di esempio) comandi:
+
+- per `Flight Company 1`
+```bash
+docker exec -it flight_companies_db psql -U flight_company_admin -d flightcompany1 -c "COPY flights(flight_id, departure_airport_code, arrival_airport_code, cost, departure_datetime, arrival_datetime) FROM '/example_data/Flight company 1-FC 1.csv' DELIMITER ';' CSV HEADER;"
+```
+- per `Flight Company 2`
+```bash
+docker exec -it flight_companies_db psql -U flight_company_admin -d flightcompany2 -c "COPY flights(flight_id, departure_airport_code, arrival_airport_code, cost, departure_datetime, arrival_datetime) FROM '/example_data/Flight company 2-FC 2.csv' DELIMITER ';' CSV HEADER;"
+```
+- per `Flight Company 3`
+```bash
+docker exec -it flight_companies_db psql -U flight_company_admin -d flightcompany3 -c "COPY flights(flight_id, departure_airport_code, arrival_airport_code, cost, departure_datetime, arrival_datetime) FROM '/example_data/Flight company 3-FC 3.csv' DELIMITER ';' CSV HEADER;"
+```
+
+!!! warning "Nota sui comandi precedenti"
+Se si è modificato la variabile d'ambiente `POSTGRES_USER` definita nel file [`flight-company/.env`](#fc) allora è necessario modificare il nome utente passato dopo il parametro `-U` nei tre comandi precedenti.
+
+## 5. Accesso ai servizi
+Se i punti precedenti sono stati seguiti correttamente e tutti i servizi sono attivi, è possibile accedere:
+
+- ad ACMESky all'indirizzo [http://127.0.0.1:5002](http://127.0.0.1:5002);
+- a ProntoGram all'indirizzo [http://127.0.0.1:8000](http://127.0.0.1:8000);
+- alla dashboard di Camunda (accedendo con username *demo* e password *demo*) [http://127.0.0.1:10000/camunda/](http://127.0.0.1:10000/camunda/).
