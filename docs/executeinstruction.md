@@ -26,6 +26,7 @@ git clone --recurse-submodules git@github.com:sosengers/project-sources.git
 ## 2. Creare i file di environment necessari
 Per poter funzionare correttamente, alcuni servizi hanno bisogno che alcune variabili d'ambiente siano impostate prima della loro esecuzione. Per far questo è necessario creare dei file di *environment* in specifiche cartelle. Questi file contengono password, API KEY e URL che cambiano da macchina a macchina.
 Di seguito vengono presentati i contenuti dei file environment sufficienti per far funzionare il sistema nel suo intero:
+
 - `flight-company/.env`
 ```bash
 POSTGRES_USER="flight_company_admin"
@@ -33,9 +34,10 @@ POSTGRES_PASSWORD="password"
 ```
 - `geographical-distances/.env`
 ```bash
-  OPEN_CAGE_API_KEY="OpenCage API key"
+OPEN_CAGE_API_KEY="OpenCage API key"
 ```
 Al posto di `OpenCage API key` bisogna mettere una chiave di OpenCage valida, generabile creando un profilo tramite il sito [OpenCage](https://opencagedata.com/) e accedendo alla propria area utente.
+
 - `acmesky-middleware/.env`
 ```bash
 FLASK_SECRET="flasksecret"
@@ -82,10 +84,21 @@ export const environment = {
 ```
 
 ## 3. Eseguire i servizi
-Il file `docker-compose.yml` contiene le indicazioni per docker-compose su come debbano essere avviati i diversi servizi, 
+Il file `docker-compose.yaml` contiene le indicazioni per docker-compose su come debbano essere avviati i diversi servizi.
 Per eseguire tutti i servizi è sufficiente lanciare il comando:
 ```bash
-docker-compose up --build
+docker-compose up
+```
+È possibile aggiungere gli argomenti:
+
+- `--build` per forzare la compilazione (nel caso non sia la prima volta in cui si utilizza il comando `docker-compose` con questo file;
+- `-d` per lanciare i container in modalità *detached*, liberando il terminale una volta lanciati tutti quanti.
+
+Per spegnere tutti i servizi:
+- se si è usato solo il comando `docker-compose up`, è sufficiente premere <kbd>CTRL</kbd> + <kbd>C</kbd>;
+- se si è avviato in modalità *detached* è possibile invocare il comando:
+```bash
+docker-compose down
 ```
 
 Nel caso invece si vogliano eseguire i servizi solamente di alcuni ruoli, è stato creato un Makefile che ne semplifica la selezione 
@@ -115,7 +128,7 @@ make geographical_distances
 make prontogram
 ```
 
-Di default i log di alcuni servzi sono disabilitati per avere un output più chiaro e pulito. Per riabilitarli è sufficiente commentare (`#`) le righe nel file `docker-compose.yml` in cui il driver per il log viene definte come `none`:
+Di default i log di alcuni servzi sono disabilitati per avere un output più chiaro e pulito. Per riabilitarli è sufficiente commentare (`#`) le righe nel file `docker-compose.yaml` in cui il driver per il log viene definte come `none`:
 ```yaml
 logging:
   driver: none
