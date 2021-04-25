@@ -14,7 +14,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.yml
       - run: mkdir converted_mermaid_diagrams
-      - uses: maxheld83/pandoc@v2
+      - run: sudo apt install pandoc
       - run: markdown_mermaid_to_images -f docs/implementazione -o converted_mermaid_diagrams
       - run: cp converted_mermaid_diagrams/* docs/implementazione/
       - run: export ENABLE_PDF_EXPORT=1
