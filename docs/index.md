@@ -18,6 +18,15 @@ Realizzare una **Service Oriented Architecture** (**SOA**) che rappresenti la re
 - il sistema bancario, da noi rinominato in *provider di pagamenti* (o *Payment Provider*), che si occupa di gestire i pagamenti per l'acquisto dei voli da parte degli utenti;
 - il servizio *ProntoGram*, con il quale contattare gli utenti per comunicar loro i codici delle offerte.
 
+### Assunzioni e semplificazioni
+
+Essendo un progetto a scopo didattico sono state adottate alcune assunzioni e semplificazioni sul funzionamento dei vari servizi, che vengono elencati di seguito:
+
+- gli aspetti relativi alla sicurezza delle comunicazioni e dei dati sono stati ignorati mentre, ad esempio, sarebbe stato corretto utilizzare il protocollo HTTPS per le comunicazioni, gestire l'autenticazione degli utenti su *ProntoGram*, separare i dati in diverse tabelle e cifrare quelli personali;
+- i voli offerti dalle *compagnie aeree* sono tutti diretti e quando vengono assegnati ad un offerta *ACMESky* chiede di riservare un posto alle *compagnie aeree* in modo da evitare, al momento dell'acquisto, un errore dovuto alla mancanza di disponibilità di posti a sedere;
+- un'offerta di viaggio è composta di solo due voli di un'unica *compagnia aerea*, quelli con prezzo inferiore in tutto il range di date indicato dall'utente, questo non implica che sia la scelta ottima per i desideri dell'utente;
+- l'acquisto di un trasporto tramite una *compagnia di noleggio con autista* viene implementato in maniera molto basilare ed è sempre in grado di soddisfare le richieste di prenotazione da parte di *ACMESky*.
+
 ## Struttura del sito
 Il seguente sito è strutturato come segue:
 	

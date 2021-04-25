@@ -27,14 +27,14 @@ theme:
       primary: teal
       accent: blue
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/lightbulbc
         name: Passa a dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: teal
       accent: blue
       toggle:
-        icon: material/toggle-switch
+        icon: material/lightbulb-outline
         name: Passa a light mode
 extra_css:
   - stylesheets/extra.css
