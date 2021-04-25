@@ -19,12 +19,11 @@ plugins:
   - mermaid2:
       version: 8.8.0
   - with-pdf:
+      enable_if_env: ENABLE_PDF_EXPORT
       author: Azzalin Tommason, Ferrati Marco
       cover_title: ACMESky
       cover_subtitle: Documentazione progetto Ingengeria del Software orientata ai servizi - Alma Mater Studiorum Università di Bologna - A.A. 2020/21
       toc_title: Indice
-      render_js: true
-      headless_chrome_path: ./chromedriver
 markdown_extensions:
   - abbr
   - admonition
