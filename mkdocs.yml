@@ -47,6 +47,8 @@ plugins:
       cover_title: ACMESky
       cover_subtitle: Documentazione del progetto "ACMESky" del corso di Ingegneria del Software Orientata ai Servizi della LM Informatica presso Università di Bologna, A.A. 2020/2021.
       toc_title: Indice
+      copyright: Documentazione del progetto "ACMESky"
+      output_path: "pdf/AzzalinFerrati-ProjectReport.pdf"
 markdown_extensions:
   - abbr
   - admonition
