@@ -158,25 +158,37 @@ Le interazioni hanno il seguente significato:
 - **payment_failure**: *ACMESky* comunica all'utente che c'è stato un problema durante il pagamento;
 - **ins_code_failure**: *ACMESky* comunica all'utente che il codice inserito non è valido.
 
-### Verifica della connectedness delle coreografie
-- **RegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
-- **VerificaGiornaliera**: la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate. Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni ( **control** ; **control_res** ) fra AS e i vari CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione dei **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di ogni **notify** è AS. Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT<sub>*k*</sub>. Essendo AS il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito. Come nell'interazione fra AS e le varie CA<sub>*i*</sub>, le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non hanno condizioni per verificare la connectedness e quindi non viene verificata.
-- **NotificaVoliLastMinute** è connessa in modo non dissimile a quanto avviene in **VerificaGiornaliera**. AS è ricevente in **last_minute** e mittente in **notify**, dopodiché PG è ricevente in **notify** e mittente in **message**. Da notare che **notify** e **message**, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, ProntoGram resterebbe in attesa ma non sarebbe un problema poiché è il suo compito. Come nella precedente coreografia, per le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non può essere verificata la connectedness;
-- **AcquistoOfferta** è connessa perché:
-    - il ricevente di **ins_code** è il mittente di **req_pay** e di **ins_code_failure** (quest'ultimo termina la coreografia);
-    - il ricevente di **req_pay** è il mittente di  **pay_offer**
-    - il ricevente di **pay_offer** è il mittente di **pay_offer_res**;
-    - il ricevente di **pay_offer_res** è il mittente di **req_pay_res**;
-    - il ricevente di **req_pay_res** è il mittente di **buy_flights** e di **payment_failure** (quest'ultimo termina la coreografia);
-    - il ricevente di **buy_flights** è il mittente di **buy_flights_res**;
-    - il ricevente di **buy_flights_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
-    - il ricevente di **calc_dist** è il mittente di **calc_dist_res**;
-    - il ricevente di **calc_dist_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
-    - il ricevente di **calc_dist** è il mittente di **calc_dist_res** (prima parte della sequenza);
-    - il ricevente di **calc_dist_res** è il mittente di **calc_dist** (seconda parte della sequenza che quindi è connessa);
-    - il ricevente di **calc_dist_res** (l'ultimo della sequenza lunga almeno uno per ipotesi) è il mittente di **pren_trs**;
-    - il ricevente di **pren_trs** è il mittente di **pren_trs_res**;
-    - il ricevente di **pren_trs_res** è il mittente di **send_tickets** (quest'ultimo termina la coreografia).
+## Verifica della connectedness delle coreografie
+
+### Registrazione interesse di un utente
+**RegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
+
+### Verifica giornaliera delle offerte
+In **VerificaGiornaliera**, la singola comunicazione fra AS e un qualsiasi CA<sub>*i*</sub> è connessa come per la precedente coreografia, in quanto il ricevente in **control** è uguale al mittente in **control_res**. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate.  
+Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni ( **control** ; **control_res** ) fra AS e le varie CA<sub>*i*</sub>, e la seconda parte, in cui avviene l'interazione dei **notify** fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di ogni **notify** è AS.  
+Dopo **notify** nella sequenza c'è **message** che invia il messaggio ad UT<sub>*k*</sub>. Essendo PG il ricevente di **notify** e il mittente di **message**, la sequenza è connessa. Nel caso in cui non avvenga **notify** fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di **notify** ma è corretto poiché è il suo compito.  
+Come nell'interazione fra AS e le varie CA<sub>*i*</sub>, le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non hanno condizioni per verificare la connectedness e quindi non viene verificata.
+
+### Ricezione offerte last minute
+**NotificaVoliLastMinute** è connessa in modo non dissimile a quanto avviene in **VerificaGiornaliera**. AS è ricevente in **last_minute** e mittente in **notify**, dopodiché PG è ricevente in **notify** e mittente in **message**. Da notare che **notify** e **message**, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, *ProntoGram* resterebbe in attesa ma non sarebbe un problema poiché è il suo compito. Come nella precedente coreografia, per le interazioni parallele ( ( **notify** ; **message** ) + 1 ) non può essere verificata la connectedness.
+
+### Acquisto offerta da un utente
+**AcquistoOfferta** è connessa perché:
+
+- il ricevente di **ins_code** è il mittente di **req_pay** e di **ins_code_failure** (quest'ultimo termina la coreografia);
+- il ricevente di **req_pay** è il mittente di  **pay_offer**
+- il ricevente di **pay_offer** è il mittente di **pay_offer_res**;
+- il ricevente di **pay_offer_res** è il mittente di **req_pay_res**;
+- il ricevente di **req_pay_res** è il mittente di **buy_flights** e di **payment_failure** (quest'ultimo termina la coreografia);
+- il ricevente di **buy_flights** è il mittente di **buy_flights_res**;
+- il ricevente di **buy_flights_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
+- il ricevente di **calc_dist** è il mittente di **calc_dist_res**;
+- il ricevente di **calc_dist_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
+- il ricevente di **calc_dist** è il mittente di **calc_dist_res** (prima parte della sequenza);
+- il ricevente di **calc_dist_res** è il mittente di **calc_dist** (seconda parte della sequenza che quindi è connessa);
+- il ricevente di **calc_dist_res** (l'ultimo della sequenza lunga almeno uno per ipotesi) è il mittente di **pren_trs**;
+- il ricevente di **pren_trs** è il mittente di **pren_trs_res**;
+- il ricevente di **pren_trs_res** è il mittente di **send_tickets** (quest'ultimo termina la coreografia).
 
 ## Proiezioni
 Seguono le proiezioni delle coreografie, divise per ruolo.
