@@ -19,7 +19,7 @@ jobs:
       - run: mkdir converted_mermaid_diagrams
       - run: sudo apt install pandoc
       - run: sudo npm install -g mermaid.cli --allow-root --unsafe-perm=true
-      - run: markdown_mermaid_to_images -f docs/implementazione -o converted_mermaid_diagrams
+      - run: markdown_mermaid_to_images -l DEBUG -f docs/implementazione -o converted_mermaid_diagrams
       - run: cp converted_mermaid_diagrams/* docs/implementazione/
       - run: export ENABLE_PDF_EXPORT=1
       - run: mkdocs build
