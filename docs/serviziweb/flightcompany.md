@@ -8,7 +8,7 @@ Dentro la rete Docker `acmesky-network`, tutti gli URI sono relativi a:
 - *http://flight_company_3:8080* for Flight Company 3.
 
 
-Da fuori Docker, le porte per raggiungere i servizi sono rispettivamente *7001*, *7002*, *7003*.
+Da fuori Docker, le porte per raggiungere i servizi sono rispettivamente: *7001*, *7002*, *7003*.
 
 | Risorsa                                     | Descrizione                                           | Risorsa per |
 |---------------------------------------------|-------------------------------------------------------|-------------|
