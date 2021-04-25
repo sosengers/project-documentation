@@ -21,7 +21,7 @@ end
 AS3[Backend]
 end
 
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 Flight Company è il servizio che permette di acquistare il proprio biglietto per i voli della compagnia aerea, permette di ottenere una lista dei voli e notificare ad ACMESky la presenza di offerte last minute. L'utente non vi interagisce direttamente, in quanto qualsiasi contatto viene fatto in automatico da parte di ACMESky. In particolare, sono i worker `buy-flights`, `get-flight-offers` e `check-offers-presence` ad occuparsene.

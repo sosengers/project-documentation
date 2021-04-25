@@ -119,7 +119,7 @@ CW2[Get flight offers]
 end
 end
 
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 ACMESky comunica con le Flight Company tramite chiamate HTTP. Quando devo effettuare l'acquisto di uno o più voli invia un documento in formato JSON come corpo della richiesta all'endpoint [POST /flights/buy](../serviziweb/flightcompany.md#buyFlights) mentre, una volta al giorno contatta l'endpoint [GET /flights/offers](../serviziweb/flightcompany.md#getFlightOffers) per ottenere la lista di voli aggiunti nelle ultime 24h, ovvero quando Camunda avvia il business process [Verifica giornaliera delle offerte](../bpmn.md#dailyCheck)
@@ -143,7 +143,7 @@ subgraph Travel-Companies
 TC[Jolie service]
 TCf[Travel Company file provider]
 end
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 Quando ACMESky deve prenotare il trasferimento da/verso casa dell'utente e aeroporto utilizza la libreria [Zeep](https://docs.python-zeep.org/en/master/index.html) che è in grado di generare un client SOAP a partire dal file WSDL che descrive il servizio.
@@ -172,7 +172,7 @@ CW2[Get min distance house travel company]
 end
 end
 
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 ACMESky utilizza il servizio per il calcolo delle distanze geografiche per calcolare la distanza tra due indirizzi. Il servizio è contattato due volte: quando c'è da calcolare la distanza tra la casa del cliente e l'aeroporto e per trovare la compagnia di trasporto più vicina alla casa del cliente.
@@ -195,7 +195,7 @@ CW2[Verify payment status]
 end
 end
 
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 Quando un utente inserisce un codice offerta valido, il worker `payment-request` contatta il Payment Provider che genera una nuova istanza di pagamento e restituisce al worker il link al quale l'utente può pagare l'offerta. Il worker pubblica il link sulla coda di RabbitMQ in modo che il frontend possa ottenere il link da mostrare all'utente. 
@@ -213,7 +213,7 @@ CW1[Notify user via ProntoGram]
 end
 end
 
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 Quando viene trovata un'offerta che combacia con l'interesse da parte di un utente viene generato un "codice offerta" che viene mandato a ProntoGram indicando il nome utente al quale va recapitato.
