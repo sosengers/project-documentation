@@ -43,9 +43,9 @@ plugins:
       version: 8.8.0
   - with-pdf:
       enabled_if_env: ENABLE_PDF_EXPORT
-      author: Azzalin Tommason, Ferrati Marco
+      author: Marco Ferrati, Tommaso Azzalin
       cover_title: ACMESky
-      cover_subtitle: Documentazione progetto Ingengeria del Software orientata ai servizi - Alma Mater Studiorum Università di Bologna - A.A. 2020/21
+      cover_subtitle: Documentazione del progetto "ACMESky" del corso di Ingegneria del Software Orientata ai Servizi della LM Informatica presso Università di Bologna, A.A. 2020/2021.
       toc_title: Indice
 markdown_extensions:
   - abbr
