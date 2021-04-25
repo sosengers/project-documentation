@@ -16,3 +16,11 @@
     -webkit-mask-image: var(--md-admonition-icon--openapi);
             mask-image: var(--md-admonition-icon--openapi);
   }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-italic {
+    font-style: italic;
+  }
