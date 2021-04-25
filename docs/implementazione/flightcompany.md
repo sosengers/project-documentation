@@ -4,13 +4,13 @@ Torna a [Implementazione](../implementazione.md).
 ```mermaid
 graph TB
 FC1 -->|POST /offers| AS3
-AS1 <-->|POST /flights/buy| FC1
-AS2 <-->|POST /flights/offers| FC1
+AS1 -->|POST /flights/buy| FC1
+AS2 -->|POST /flights/offers| FC1
 
 subgraph TravelCompany
 FC1[Flight Company service]
-FC2[(Flight Company DB)]
-FC1 <--> FC2
+FC2(Flight Company DB)
+FC1 --> FC2
 end
 
 subgraph ACMESky
@@ -21,7 +21,7 @@ end
 AS3[Backend]
 end
 
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 Flight Company è il servizio che permette di acquistare il proprio biglietto per i voli della compagnia aerea, permette di ottenere una lista dei voli e notificare ad ACMESky la presenza di offerte last minute. L'utente non vi interagisce direttamente, in quanto qualsiasi contatto viene fatto in automatico da parte di ACMESky. In particolare, sono i worker `buy-flights`, `get-flight-offers` e `check-offers-presence` ad occuparsene.

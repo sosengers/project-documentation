@@ -4,8 +4,8 @@ Torna a [Implementazione](../implementazione.md).
 
 ```mermaid
 graph LR
-AS[Book Transfer] <-->|Get flightcompany.wsdl| TC1[WSDL file provider]
-AS[Book Transfer] <-->|SOAP request/response 'buyTransfer'| TC[Jolie service]
+AS[Book Transfer] -->|Get flightcompany.wsdl| TC1[WSDL file provider]
+AS[Book Transfer] -->|SOAP request/response 'buyTransfer'| TC[Jolie service]
 subgraph ACMESky
 subgraph Camunda-Workers
 AS[Book Transfer]
@@ -16,7 +16,7 @@ TC1[WSDL file  provider]
 TC[Jolie service]
 end
 
-style Camunda-Workers fill:#90EE90
+%%style Camunda-Workers fill:#90EE90
 ```
 
 Travel Company è il servizio che permette di prenotare il trasposto da/verso l'aeroporto e la casa del cliente. L'utente non vi interagisce direttamente in quanto qualsiasi contatto viene fatto in automatico da parte di ACMESky, in particolare è il worker `book-transfer` ad occuparsi di questo task. 
