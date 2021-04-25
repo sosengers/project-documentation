@@ -1,0 +1,23 @@
+name: ci
+on:
+  push:
+    branches:
+      - test-generazione-pdf
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - run: pip install -r requirements.txt
+      - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.yml
+      - run: markdown_mermaid_to_images -f docs/implementazione -o converted_mermaid_diagrams
+      - run: cp converted_mermaid_diagrams/* docs/implementazione/
+      - run: export ENABLE_PDF_EXPORT=1
+      - run: mkdocs build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: report.pdf
+          path: site/pdf/document.pdf
