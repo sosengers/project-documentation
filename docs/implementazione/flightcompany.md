@@ -4,13 +4,13 @@ Torna a [Implementazione](../implementazione.md).
 ```mermaid
 graph TB
 FC1 -->|POST /offers| AS3
-AS1 <-->|POST /flights/buy| FC1
-AS2 <-->|POST /flights/offers| FC1
+AS1 -->|POST /flights/buy| FC1
+AS2 -->|POST /flights/offers| FC1
 
 subgraph TravelCompany
 FC1[Flight Company service]
-FC2[(Flight Company DB)]
-FC1 <--> FC2
+FC2(Flight Company DB)
+FC1 --> FC2
 end
 
 subgraph ACMESky

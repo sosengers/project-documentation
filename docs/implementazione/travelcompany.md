@@ -4,8 +4,8 @@ Torna a [Implementazione](../implementazione.md).
 
 ```mermaid
 graph LR
-AS[Book Transfer] <-->|Get flightcompany.wsdl| TC1[WSDL file provider]
-AS[Book Transfer] <-->|SOAP request/response 'buyTransfer'| TC[Jolie service]
+AS[Book Transfer] -->|Get flightcompany.wsdl| TC1[WSDL file provider]
+AS[Book Transfer] -->|SOAP request/response 'buyTransfer'| TC[Jolie service]
 subgraph ACMESky
 subgraph Camunda-Workers
 AS[Book Transfer]

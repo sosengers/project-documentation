@@ -4,18 +4,18 @@ Torna a [Implementazione](../implementazione.md).
 
 ```mermaid
 graph TD
-CW <--> DBs
-CW <--> OS[Altri servizi]
-CW <--> C
-CW <--> R
+CW --> DBs
+CW --> OS[Altri servizi]
+CW --> C
+CW --> R
 BE --> C
-FE <--> BE
-FE <--> MW
-Utente <--> FE
+FE --> BE
+FE --> MW
+Utente --> FE
 MW --> R
 
 subgraph ACMESky
-DBs[(Database)]
+DBs(Database)
 CW[Camunda Workers]
 C[Camunda]
 BE[Backend]
@@ -31,10 +31,10 @@ ACMESky è l'insiemi di servizi che permettono ad un utente di inserire un propr
 ```mermaid
 graph LR
 BE -->|Correlate messages| C
-FE <-->|POST /offers/buy| BE
-FE <-->|POST /interests| BE
-FE <-->|WebSocket| MW
-Utente <--> FE
+FE -->|POST /offers/buy| BE
+FE -->|POST /interests| BE
+FE -->|WebSocket| MW
+Utente --> FE
 MW -->|Subscribe| R
 
 subgraph ACMESky
@@ -78,17 +78,17 @@ Per poter compiere i diversi task, i worker contattano dei servizi che sono este
 
 ```mermaid
 graph LR 
-CW <--> FC[Flight Company]
-CW <--> TC[Travel Company]
-CW <--> GD[Geographical distances]
-CW <--> PP[Payment Provider]
-CW <--> PG[ProntoGram]
+CW --> FC[Flight Company]
+CW --> TC[Travel Company]
+CW --> GD[Geographical distances]
+CW --> PP[Payment Provider]
+CW --> PG[ProntoGram]
 
 subgraph ACMESky
 CW[Camunda Workers]
 end
 
-subgraph OS[Servizi esterni]
+subgraph Servizi-Esterni
 FC[Flight Company]
 TC[Travel Company]
 GD[Geographical distances]
@@ -107,13 +107,13 @@ post_response = requests.post(url, json=dict_representing_the_json)
 ### Flight Company
 ```mermaid
 graph TD
-CW1 <-->|POST /flights/buy| FC[Flight Company]
-CW2 <-->|GET /flights/offers| FC[Flight Company]
-FC[Flight Company] <-->|POST /offers/lastminute|B
+CW1 -->|POST /flights/buy| FC[Flight Company]
+CW2 -->|GET /flights/offers| FC[Flight Company]
+FC[Flight Company] -->|POST /offers/lastminute|B
 
 subgraph ACMESky
 B[Backend]
-subgraph Camunda-Workers[Camunda Workers]
+subgraph Camunda-Workers
 CW1[Buy flights]
 CW2[Get flight offers]
 end
@@ -130,16 +130,16 @@ Quando un nuovo volo viene aggiunto ad una compagnia aerea, questo viene, a sua 
 
 ```mermaid
 graph TD
-CW1 <-->|Retrieve travelcompany.wsdl| TCf
-CW1 <-->|SOAP buyTransfer| TC
+CW1 -->|Retrieve travelcompany.wsdl| TCf
+CW1 -->|SOAP buyTransfer| TC
 
 subgraph ACMESky
-subgraph Camunda-Workers[Camunda Workers]
+subgraph Camunda-Workers
 CW1[Book transfer]
 end
 end
 
-subgraph TCs[Travel company]
+subgraph Travel-Companies
 TC[Jolie service]
 TCf[Travel Company file provider]
 end
@@ -162,11 +162,11 @@ soap_response = soap_client.service.buyTransfers(
 ### Geographical distances
 ```mermaid
 graph TD
-CW1 <-->|POST /distance| GD[Geographical Distances]
-CW2 <-->|POST /distance| GD[Geographical Distances]
+CW1 -->|POST /distance| GD[Geographical Distances]
+CW2 -->|POST /distance| GD[Geographical Distances]
 
 subgraph ACMESky
-subgraph Camunda-Workers[Camunda Workers]
+subgraph Camunda-Workers
 CW1[Check distance house airport]
 CW2[Get min distance house travel company]
 end
@@ -180,16 +180,16 @@ ACMESky utilizza il servizio per il calcolo delle distanze geografiche per calco
 ### Payment Provider
 ```mermaid
 graph TD
-CW1 <-->|POST /payments/request| PP[Payment Provider]
+CW1 -->|POST /payments/request| PP[Payment Provider]
 CW1 -->|Publish payment URL|R
-PP[Payment Provider] <-->|POST /payments| BE
+PP[Payment Provider] -->|POST /payments| BE
 BE -->|Send correlate message| C
 CW2 -->|Polling for new task| C
 subgraph ACMESky
 BE[Backend]
 C[Camunda]
 R[RabbitMQ]
-subgraph Camunda-Workers[Camunda Workers]
+subgraph Camunda-Workers
 CW1[Payment request]
 CW2[Verify payment status]
 end
@@ -205,10 +205,10 @@ Quando l'utente effettua il pagamento sul sito del Payment Provider, il suo esit
 ### ProntoGram
 ```mermaid
 graph TD
-CW1 <-->|POST /messages| PG[ProntoGram]
+CW1 -->|POST /messages| PG[ProntoGram]
 
 subgraph ACMESky
-subgraph Camunda-Workers[Camunda Workers]
+subgraph Camunda-Workers
 CW1[Notify user via ProntoGram]
 end
 end
