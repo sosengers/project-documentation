@@ -1,0 +1,1295 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta 2020="" 2021."="" a.a.="" acmesky"="" ai="" bologna,="" content="Documentazione del progetto " corso="" del="" della="" di="" informatica="" ingegneria="" lm="" name="description" orientata="" presso="" servizi="" software="" università=""/>
+<meta content="Marco Ferrati, Tommaso Azzalin" name="author"/>
+<link href="../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
+<title>Coreografie - ACMESky - Documentazione progetto | SOSENG</title>
+<link href="../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<link href="../css/lightgallery.min.css" rel="stylesheet"/>
+<script src="../js/lightgallery.min.js"></script>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:""}</style>
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="blue" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#coreografie-ruoli-e-proiezioni-delle-coreografie-sui-ruoli">
+          Vai al contenuto
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="ACMESky - Documentazione progetto | SOSENG" class="md-header__button md-logo" data-md-component="logo" href=".." title="ACMESky - Documentazione progetto | SOSENG">
+<img alt="logo" src="../assets/favicon.ico"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ACMESky - Documentazione progetto | SOSENG
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Coreografie
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Passa a dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"></path></svg>
+</label>
+<input class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Passa a light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Cerca" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Cerca" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sosengers/project-documentation" title="Apri repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    sosengers/project-documentation
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="./">
+      Coreografie
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../coreografiebpmn/">
+      Coreografie BPMN
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../bpmn/">
+      BPMN
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../uml/">
+      UML
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../serviziweb/">
+        Servizi web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../implementazione/">
+        Implementazione
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../executeinstruction/">
+      Istruzioni per l'esecuzione
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ACMESky - Documentazione progetto | SOSENG" class="md-nav__button md-logo" data-md-component="logo" href=".." title="ACMESky - Documentazione progetto | SOSENG">
+<img alt="logo" src="../assets/favicon.ico"/>
+</a>
+    ACMESky - Documentazione progetto | SOSENG
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sosengers/project-documentation" title="Apri repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    sosengers/project-documentation
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Coreografie
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Coreografie
+      </a>
+<nav aria-label="Indice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coreografie">
+    Coreografie
+  </a>
+<nav aria-label="Coreografie" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registrazione-interesse-di-un-utente">
+    Registrazione interesse di un utente
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verifica-giornaliera-delle-offerte">
+    Verifica giornaliera delle offerte
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ricezione-offerte-last-minute">
+    Ricezione offerte last minute
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#acquisto-offerta-da-un-utente">
+    Acquisto offerta da un utente
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verifica-della-connectedness-delle-coreografie">
+    Verifica della connectedness delle coreografie
+  </a>
+<nav aria-label="Verifica della connectedness delle coreografie" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registrazione-interesse-di-un-utente_1">
+    Registrazione interesse di un utente
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verifica-giornaliera-delle-offerte_1">
+    Verifica giornaliera delle offerte
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ricezione-offerte-last-minute_1">
+    Ricezione offerte last minute
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#acquisto-offerta-da-un-utente_1">
+    Acquisto offerta da un utente
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proiezioni">
+    Proiezioni
+  </a>
+<nav aria-label="Proiezioni" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#as-acmesky">
+    AS (ACMESky)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#utk-utente">
+    UTk (UTente)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dg-distanze-geografiche">
+    DG (Distanze Geografiche)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pp-provider-dei-pagamenti">
+    PP (Provider dei Pagamenti)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pg-prontogram">
+    PG (ProntoGram)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ctj-compagnia-trasporti">
+    CTj (Compagnia Trasporti)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cai-compagnia-aerea">
+    CAi (Compagnia Aerea)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../coreografiebpmn/">
+        Coreografie BPMN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../bpmn/">
+        BPMN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uml/">
+        UML
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+        Servizi web
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Servizi web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Servizi web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/acmesky/">
+        ACMESky
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/flightcompany/">
+        Flight Company
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/geodistances/">
+        Geographical Distances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/paymentprovider/">
+        Payment Provider
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/prontogram/">
+        ProntoGram
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/travelcompany/">
+        Travel Company
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7">
+        Implementazione
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Implementazione" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Implementazione
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/acmesky/">
+        ACMESky
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/flightcompany/">
+        Flight Company
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/geodistances/">
+        Geographical Distances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/paymentprovider/">
+        Payment Provider
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/prontogram/">
+        ProntoGram
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/travelcompany/">
+        Travel Company
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../executeinstruction/">
+        Istruzioni per l'esecuzione
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Indice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coreografie">
+    Coreografie
+  </a>
+<nav aria-label="Coreografie" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registrazione-interesse-di-un-utente">
+    Registrazione interesse di un utente
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verifica-giornaliera-delle-offerte">
+    Verifica giornaliera delle offerte
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ricezione-offerte-last-minute">
+    Ricezione offerte last minute
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#acquisto-offerta-da-un-utente">
+    Acquisto offerta da un utente
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verifica-della-connectedness-delle-coreografie">
+    Verifica della connectedness delle coreografie
+  </a>
+<nav aria-label="Verifica della connectedness delle coreografie" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registrazione-interesse-di-un-utente_1">
+    Registrazione interesse di un utente
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verifica-giornaliera-delle-offerte_1">
+    Verifica giornaliera delle offerte
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ricezione-offerte-last-minute_1">
+    Ricezione offerte last minute
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#acquisto-offerta-da-un-utente_1">
+    Acquisto offerta da un utente
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proiezioni">
+    Proiezioni
+  </a>
+<nav aria-label="Proiezioni" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#as-acmesky">
+    AS (ACMESky)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#utk-utente">
+    UTk (UTente)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dg-distanze-geografiche">
+    DG (Distanze Geografiche)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pp-provider-dei-pagamenti">
+    PP (Provider dei Pagamenti)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pg-prontogram">
+    PG (ProntoGram)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ctj-compagnia-trasporti">
+    CTj (Compagnia Trasporti)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cai-compagnia-aerea">
+    CAi (Compagnia Aerea)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+    div.choreographies ul li,
+    div.projections ul li {
+        list-style-type: none;
+    }
+
+    div.choreographies ul, div.projections ul {
+        margin: 0px;
+    }
+</style>
+<h1 id="coreografie-ruoli-e-proiezioni-delle-coreografie-sui-ruoli">Coreografie, ruoli e proiezioni delle coreografie sui ruoli</h1>
+<h2 id="coreografie">Coreografie</h2>
+<p>Le seguenti coreografie modellano tutti quanti i possibili processi che possono avvenire nel sistema che verrà implementato.<br/>
+Le interazioni che non comprendono <em>ACMESky</em> come mittente o destinatario sono molto semplificate, in quanto esterne ad essa e di cui non possiamo conoscere l'implementazione interna.</p>
+<p>Verranno utilizzate le seguenti sigle per i ruoli delle coreografie:</p>
+<ul>
+<li>AS: ACMESky;</li>
+<li>CA<sub><em>i</em></sub>: Compagnie Aerea <em>i</em>, con <em>i</em> ∈ {1..N};</li>
+<li>CT<sub><em>j</em></sub>: Compagnie Trasporto <em>j</em>, con <em>j</em> ∈ {1..M};</li>
+<li>PG: ProntoGram;</li>
+<li>PP: Provider dei Pagamenti;</li>
+<li>DG: servizio per il calcolo delle Distanze Geografiche;</li>
+<li>UT<sub><em>k</em></sub>: UTente (il range in cui <em>k</em> varia dipende dagli utenti che attualmente hanno registrato interessi presso ACMESky).</li>
+</ul>
+<h3 id="registrazione-interesse-di-un-utente">Registrazione interesse di un utente</h3>
+<div class="choreographies">
+<p>
+<strong>RegistrazioneInteresseUtente</strong> ::= (<strong>reg</strong>: UT<sub><em>k</em></sub> -&gt; AS; <strong>reg_res</strong>: AS -&gt; UT<sub><em>k</em></sub>)
+</p>
+</div>
+<p>Le interazioni hanno il seguente significato:</p>
+<ul>
+<li><strong>reg</strong>: registrazione dell'interesse di un utente per un viaggio;</li>
+<li><strong>reg_res</strong>: risposta all'interazione <strong>reg</strong> (conferma o smentita della registrazione).</li>
+</ul>
+<h3 id="verifica-giornaliera-delle-offerte">Verifica giornaliera delle offerte</h3>
+<div class="choreographies">
+<p>
+<strong>VerificaGiornaliera</strong> ::=<br/>
+(
+<ul>
+<li> ( <strong>control</strong>: AS -&gt; CA<sub><em>1</em></sub> ; <strong>control_res</strong>: CA<sub><em>1</em></sub> -&gt; AS ) | </li>
+<li> ... |</li>
+<li> ( <strong>control</strong>: AS -&gt; CA<sub><em>N</em></sub> ; <strong>control_res</strong>: CA<sub><em>N</em></sub> -&gt; AS )</li>
+</ul>
+) ;<br/>
+(
+<ul>
+<li> ( ( <strong>notify</strong>: AS -&gt; PG ; <strong>message</strong>: PG -&gt; UT<sub><em>1</em></sub> ) + 1 ) |</li>
+<li> ... |</li>
+<li> ( ( <strong>notify</strong>: AS -&gt; PG ; <strong>message</strong>: PG -&gt; UT<sub><em>N</em></sub> ) + 1 ) </li>
+</ul>
+)
+</p>
+</div>
+<p>Le interazioni hanno il seguente significato:</p>
+<ul>
+<li><strong>control</strong>: controllo giornaliero della presenza di offerte da parte della <em>compagnia aerea</em>;</li>
+<li><strong>control_res</strong>: risposta all'interazione <strong>control</strong> (inoltro delle nuove offerte disponibili);</li>
+<li><strong>notify</strong>: notifica della presenza di voli di interesse per l'utente tramite <em>ProntoGram</em> (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;</li>
+<li><strong>message</strong>: <em>ProntoGram</em> riferisce il messaggio all'utente (essendo un servizio esterno questa è una semplificazione).</li>
+</ul>
+<h3 id="ricezione-offerte-last-minute">Ricezione offerte last minute</h3>
+<div class="choreographies">
+<p>
+<strong>NotificaVoliLastMinute</strong> ::=<br/>
+( <strong>last_minute</strong>: CA<sub><em>i</em></sub> -&gt; AS ) ;<br/>
+(  
+<ul>
+<li> ( ( <strong>notify</strong>: AS -&gt; PG ; <strong>message</strong>: PG -&gt; UT<sub><em>1</em></sub> ) + 1 ) |</li>
+<li> ... |</li>
+<li> ( ( <strong>notify</strong>: AS -&gt; PG ; <strong>message</strong>: PG -&gt; UT<sub><em>N</em></sub> ) + 1 ) </li>
+</ul>
+)
+</p>
+</div>
+<p>Le interazioni hanno il seguente significato:</p>
+<ul>
+<li><strong>last_minute</strong>: la <em>compagnia aerea</em> notifica <em>ACMESky</em> della presenza di alcune offerte last minute, inviandogliele;</li>
+<li><strong>notify</strong>: notifica della presenza di voli di interesse per l'utente tramite <em>ProntoGram</em> (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;</li>
+<li><strong>message</strong>: <em>ProntoGram</em> riferisce il messaggio all'utente (essendo un servizio esterno questa è una semplificazione).</li>
+</ul>
+<h3 id="acquisto-offerta-da-un-utente">Acquisto offerta da un utente</h3>
+<div class="choreographies">
+<p>
+<strong>AcquistoOfferta</strong> ::=  <br/>
+( <strong>ins_code</strong>: UT<sub><em>k</em></sub> -&gt; AS ; <strong>ins_code_res</strong>: AS -&gt; UT<sub><em>k</em></sub>) ;<br/>  
+(  
+<ul>
+<li>( <strong>req_pay</strong>: AS -&gt; PP ; <strong>req_pay_res</strong>: PP -&gt; AS ;  <strong>send_payment_ref</strong>: AS -&gt; UT<sub><em>k</em></sub> ; <strong>pay_offer</strong>: UT<sub><em>k</em></sub> -&gt; PP ; ( <strong>pay_offer_res</strong> PP -&gt; UT<sub><em>k</em></sub> | <strong>send_payment_status</strong>: PP -&gt; AS ) ) ;</li>
+<li>( </li>
+<li><ul>
+<li>( <strong>buy_flights</strong>: AS -&gt; CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>: CA<sub><em>i</em></sub> -&gt; AS ) ;</li>
+<li>(</li>
+<li><ul>
+<li>(</li>
+<li><ul>
+<!-- Calcolo distanza aeroporto/casa -->
+<li>( <strong>calc_dist</strong>: AS -&gt; DG ; <strong>calc_dist_res</strong>: DG -&gt; AS ) ;</li>
+<li>(</li>
+<li><ul>
+<!-- Calcolo distanze per identificare la compagnia di trasporto più vicina -->
+<li> ( <strong>calc_dist</strong>: AS -&gt; DG ; <strong>calc_dist_res</strong>: DG -&gt; AS )<sup>*</sup> ;</li>
+<li> ( <strong>pren_trs</strong>: AS -&gt; CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>: CT<sub><em>j</em></sub> -&gt; AS)</li>
+</ul></li>
+<li>)</li>
+<li> + 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>);</li>
+<li><strong>send_tickets</strong>: AS -&gt; UT<sub><em>k</em></sub> </li>
+</ul></li>
+<li>) </li>
+<li> + <strong>payment_failure</strong>: AS -&gt; UT<sub><em>k</em></sub> </li>
+</ul>
+)<br/>
++ <strong>ins_code_failure</strong>: AS -&gt; UT<sub><em>k</em></sub>
+</p>
+</div>
+<p>Le interazioni hanno il seguente significato:</p>
+<ul>
+<li><strong>ins_code</strong>: l'utente inserisce il codice ricevuto via <em>ProntoGram</em> sul portale;</li>
+<li><strong>ins_code_res</strong>: risposta all'interazione <strong>ins_code</strong> (conferma o smentita della ricezione del codice offerta);</li>
+<li><strong>req_pay</strong>: <em>ACMESky</em> richiede il pagamento al <em>Provider dei Pagamenti</em>;</li>
+<li><strong>req_pay_res</strong>: risposta all'interazione <strong>req_pay</strong> (inoltro riferimento per il pagamento dell'offerta);</li>
+<li><strong>send_payment_ref</strong>: <em>ACMESky</em> invia all'utente il riferimento per poter pagare l'offerta tramite il <em>Provider dei Pagamenti</em>;</li>
+<li><strong>pay_offer</strong>: l'utente invia i dati per il pagamento al <em>Provider dei Pagamenti</em>;</li>
+<li><strong>pay_offer_res</strong>: risposta all'interazione <strong>pay_offer</strong> (invio esito del pagamento all'utente);</li>
+<li><strong>send_payment_status</strong>: il <em>Provider dei Pagamenti</em> comunica ad <em>ACMESky</em> l'esito del pagamento;</li>
+<li><strong>buy_flights</strong>: <em>ACMESky</em> compra per conto dell'utente il biglietto per i voli scelti presso la <em>compagnia aerea</em> CA<sub><em>i</em></sub> che fornisce entrambi i voli che soddisfano il bisogno;</li>
+<li><strong>buy_flights_res</strong>: risposta all'interazione <strong>buy_flights</strong> (CA<sub><em>i</em></sub> conferma ad <em>ACMESky</em> la disponibilità del volo e inoltra il biglietto);</li>
+<li><strong>calc_dist</strong>: <em>ACMESky</em> richiede il calcolo della distanza al servizio esterno per il calcolo delle <em>distanze geografiche</em>;</li>
+<li><strong>calc_dist_res</strong>: risposta all'interazione <strong>calc_dist</strong>;</li>
+<li><strong>pren_trs</strong>: in base alla distanza <em>ACMESky</em> può, oppure no, prenotare il trasporto;</li>
+<li><strong>pren_trs_res</strong>: risposta all'interazione <strong>pren_trs</strong>;</li>
+<li><strong>send_tickets</strong>: <em>ACMESky</em> invia all'utente i biglietti;</li>
+<li><strong>payment_failure</strong>: <em>ACMESky</em> comunica all'utente che c'è stato un problema durante il pagamento;</li>
+<li><strong>ins_code_failure</strong>: <em>ACMESky</em> comunica all'utente che il codice inserito non è valido.</li>
+</ul>
+<h2 id="verifica-della-connectedness-delle-coreografie">Verifica della connectedness delle coreografie</h2>
+<h3 id="registrazione-interesse-di-un-utente_1">Registrazione interesse di un utente</h3>
+<p><strong>RegistrazioneInteresseUtente</strong> è connessa in quanto il ricevente in <strong>reg</strong> è uguale al mittente in <strong>reg_res</strong>.</p>
+<h3 id="verifica-giornaliera-delle-offerte_1">Verifica giornaliera delle offerte</h3>
+<p>In <strong>VerificaGiornaliera</strong>, la singola comunicazione fra AS e un qualsiasi CA<sub><em>i</em></sub> è connessa come per la precedente coreografia, in quanto il ricevente in <strong>control</strong> è uguale al mittente in <strong>control_res</strong>. Le interazioni parallele non hanno condizioni per poter verificare la connectedness e quindi non vengono verificate.<br/>
+Per quanto riguarda la composizione sequenziale fra la prima parte della coreografia, in cui avvengono le interazioni ( <strong>control</strong> ; <strong>control_res</strong> ) fra AS e le varie CA<sub><em>i</em></sub>, e la seconda parte, in cui avviene l'interazione dei <strong>notify</strong> fra AS e PG, è nuovamente assicurata la connectedness. Questo poiché ogni interazione all'interno della composizione parallela termina con ricevente AS e il mittente di ogni <strong>notify</strong> è AS.<br/>
+Dopo <strong>notify</strong> nella sequenza c'è <strong>message</strong> che invia il messaggio ad UT<sub><em>k</em></sub>. Essendo PG il ricevente di <strong>notify</strong> e il mittente di <strong>message</strong>, la sequenza è connessa. Nel caso in cui non avvenga <strong>notify</strong> fra AS e PG poiché non vi sono voli per l'utente da comunicare via ProntoGram, allora viene eseguito il ramo "1" (ovvero non viene fatto nulla). In questo caso, PG rimane in attesa di <strong>notify</strong> ma è corretto poiché è il suo compito.<br/>
+Come nell'interazione fra AS e le varie CA<sub><em>i</em></sub>, le interazioni parallele ( ( <strong>notify</strong> ; <strong>message</strong> ) + 1 ) non hanno condizioni per verificare la connectedness e quindi non viene verificata.</p>
+<h3 id="ricezione-offerte-last-minute_1">Ricezione offerte last minute</h3>
+<p><strong>NotificaVoliLastMinute</strong> è connessa in modo non dissimile a quanto avviene in <strong>VerificaGiornaliera</strong>. AS è ricevente in <strong>last_minute</strong> e mittente in <strong>notify</strong>, dopodiché PG è ricevente in <strong>notify</strong> e mittente in <strong>message</strong>. Da notare che <strong>notify</strong> e <strong>message</strong>, avvengono solamente se ci sono voli di interesse per l'utente e quindi nuovamente, in caso non ce ne siano, <em>ProntoGram</em> resterebbe in attesa ma non sarebbe un problema poiché è il suo compito. Come nella precedente coreografia, per le interazioni parallele ( ( <strong>notify</strong> ; <strong>message</strong> ) + 1 ) non può essere verificata la connectedness.</p>
+<h3 id="acquisto-offerta-da-un-utente_1">Acquisto offerta da un utente</h3>
+<p><strong>AcquistoOfferta</strong> è connessa perché:</p>
+<ul>
+<li>il ricevente di <strong>ins_code</strong> è il mittente di <strong>ins_code_res</strong> e di <strong>ins_code_failure</strong> (quest'ultimo termina la coreografia);</li>
+<li>il mittente di <strong>ins_code_res</strong> è lo stesso mittente di <strong>req_pay</strong>;</li>
+<li>il ricevente di <strong>req_pay</strong> è il mittente di <strong>req_pay_res</strong>;</li>
+<li>il ricevente di <strong>req_pay_res</strong> è il mittente di <strong>send_payment_ref</strong>;</li>
+<li>il ricevente di <strong>send_payment_ref</strong> è il mittente di <strong>pay_offer</strong>;</li>
+<li>il ricevente di <strong>pay_offer</strong> è sia il mittente di <strong>pay_offer_res</strong> che di <strong>send_payment_status</strong> e i due riceventi sono diversi (UT<sub><em>k</em></sub> in un caso, AS nell'altro);</li>
+<li>il ricevente di <strong>send_payment_status</strong> è il mittente di <strong>buy_flights</strong> e di <strong>payment_failure</strong> (quest'ultimo termina la coreografia);</li>
+<li>il ricevente di <strong>buy_flights</strong> è il mittente di <strong>buy_flights_res</strong>;</li>
+<li>il ricevente di <strong>buy_flights_res</strong> è il mittente di <strong>calc_dist</strong> e di <strong>send_tickets</strong> (quest'ultimo termina la coreografia);</li>
+<li>il ricevente di <strong>calc_dist</strong> è il mittente di <strong>calc_dist_res</strong> (nella sua prima invocazione);</li>
+<li>il ricevente di <strong>calc_dist_res</strong> è il mittente della seconda invocazione di <strong>calc_dist</strong> e di <strong>send_tickets</strong> (quest'ultimo termina la coreografia);</li>
+<li>il ricevente di <strong>calc_dist</strong> è il mittente di <strong>calc_dist_res</strong> nella prima parte della sequenza ( <strong>calc_dist</strong> ; <strong>calc_dist_res</strong> )* ;</li>
+<li>il ricevente di <strong>calc_dist_res</strong> è il mittente di <strong>calc_dist</strong> nella seconda parte della sopracitata sequenza, che quindi è connessa;</li>
+<li>il ricevente di <strong>calc_dist_res</strong> (l'ultimo della sequenza lunga almeno uno per ipotesi) è il mittente di <strong>pren_trs</strong>;</li>
+<li>il ricevente di <strong>pren_trs</strong> è il mittente di <strong>pren_trs_res</strong>;</li>
+<li>il ricevente di <strong>pren_trs_res</strong> è il mittente di <strong>send_tickets</strong> (quest'ultimo termina la coreografia).</li>
+</ul>
+<h2 id="proiezioni">Proiezioni</h2>
+<p>Seguono le proiezioni delle coreografie, divise per ruolo.</p>
+<h3 id="as-acmesky">AS (ACMESky)</h3>
+<div class="projections">
+<p>
+proj(<strong>RegistrazioneInteresseUtente</strong>, AS) =<br/>
+( <strong>reg</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>reg_res</strong></span>@UT<sub><em>k</em></sub> )
+</p>
+<p>
+proj(<strong>VerificaGiornaliera</strong>, AS) =<br/> 
+(
+<ul>
+<li>(<span style="text-decoration: overline"><strong>control</strong></span>@CA<sub><em>1</em></sub> ; <strong>control_res</strong>@CA<sub><em>1</em></sub> ) |</li>
+<li>... |</li>
+<li>(<span style="text-decoration: overline"><strong>control</strong></span>@CA<sub><em>N</em></sub> ; <strong>control_res</strong>@CA<sub><em>N</em></sub> )</li>
+</ul>
+) ;<br/>
+(
+<ul>
+<li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 )</li>
+</ul>
+)
+</p>
+<p>
+proj(<strong>NotificaVoliLastMinute</strong>, AS) =<br/>
+( <strong>last_minute</strong>@CA<sub><em>i</em></sub> ) ;<br/>
+(
+<ul>
+<li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( <span style="text-decoration: overline"><strong>notify</strong></span>@PG ; 1 ) + 1 )</li>
+</ul>
+)
+</p>
+<p>
+proj(<strong>AcquistoOfferta</strong>, AS) =<br/>
+( <strong>ins_code</strong>@UT<sub><em>k</em></sub> ; <span style="text-decoration: overline"><strong>ins_code_res</strong></span>@UT<sub><em>k</em></sub>) ;<br/>
+(<br/>
+<ul>
+<li>( <span style="text-decoration: overline"><strong>req_pay</strong></span>@PP ; <strong>req_pay_res</strong>@PP ; <span style="text-decoration: overline"><strong>send_payment_ref</strong></span>@UT<sub><em>k</em></sub> ; 1 ; ( 1 | <strong>send_payment_status</strong>@PP ) ;</li>
+<li>( </li>
+<li><ul>
+<li>( <span style="text-decoration: overline"><strong>buy_flights</strong></span>@CA<sub><em>i</em></sub> ; <strong>buy_flights_res</strong>@CA<sub><em>i</em></sub> ) ;</li>
+<li>(</li>
+<li> <ul>
+<li>(</li>
+<li> <ul>
+<li>( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG ) ;</li>
+<li>(</li>
+<li> <ul>
+<li>( <span style="text-decoration: overline"><strong>calc_dist</strong></span>@DG ; <strong>calc_dist_res</strong>@DG )<sup>*</sup></li>
+<li>( <span style="text-decoration: overline"><strong>pren_trs</strong></span>@CT<sub><em>j</em></sub> ; <strong>pren_trs_res</strong>@CT<sub><em>j</em></sub> )</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>);</li>
+<li><span style="text-decoration: overline"><strong>send_tickets</strong></span>@UT<sub><em>k</em></sub></li>
+</ul></li>
+<li>)</li>
+<li>+ <span style="text-decoration: overline"><strong>payment_failure</strong></span>@UT<sub><em>k</em></sub></li>
+</ul>
+)<br/>
++ <span style="text-decoration: overline"><strong>ins_code_failure</strong></span>@UT<sub><em>k</em></sub>
+</p>
+</div>
+<h3 id="utk-utente">UT<sub><em>k</em></sub> (UTente)</h3>
+<div class="projections">
+<p>
+proj(<strong>RegistrazioneInteresseUtente</strong>, UT<sub><em>k</em></sub>) =<br/>
+( <span style="text-decoration: overline"><strong>reg</strong></span>@AS ; <strong>reg_res</strong>@AS )
+</p>
+<p>
+proj(<strong>VerificaGiornaliera</strong>, UT<sub><em>k</em></sub>) =<br/>
+(<br/>
+<ul>
+<li> ( 1 ; 1 ) |</li>
+<li>... |</li>
+<li> ( 1 ; 1 )</li>
+</ul>
+) ;  <br/>
+(<br/>
+<ul>
+<li> ( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li> ( ( 1 ; <strong>message</strong>@PG ) + 1) |</li>
+<li>... |</li>
+<li> ( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= <strong>message</strong>@PG
+</p>
+<p>
+proj(<strong>NotificaVoliLastMinute</strong>, UT<sub><em>k</em></sub>) =<br/>
+( 1 ) ;<br/>
+(
+<ul>
+<li> ( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li> ( ( 1 ; <strong>message</strong>@PG ) + 1) |</li>
+<li>... |</li>
+<li> ( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= <strong>message</strong>@PG
+</p>
+<p>
+proj(<strong>AcquistoOfferta</strong>, UT<sub><em>k</em></sub>) =<br/>
+( <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ; <strong>ins_code_res</strong>@AS ) ;<br/>
+(
+<ul>
+<li>( 1 ; 1 ; <strong>send_payment_ref</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@PP ; ( <strong>pay_offer_res</strong>@PP | 1 ) ) ;</li>
+<li>(</li>
+<li><ul>
+<li> ( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 )</li>
+<li> (</li>
+<li><ul>
+<li>( 1 ; 1 )<sup>*</sup></li>
+<li>( 1 ; 1 )</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>) ;</li>
+<li><strong>send_tickets</strong>@AS</li>
+</ul></li>
+<li>)</li>
+<li>+ <strong>payment_failure</strong>@AS</li>
+</ul>
+)<br/>
++ <strong>ins_code_failure</strong>@AS<br/>
+= (  <span style="text-decoration: overline"><strong>ins_code</strong></span>@AS ; <strong>ins_code_res</strong>@AS ) ; ( <strong>send_payment_ref</strong>@AS ; <span style="text-decoration: overline"><strong>pay_offer</strong></span>@PP ; <strong>pay_offer_res</strong>@PP ) ;
+</p>
+</div>
+<h3 id="dg-distanze-geografiche">DG (Distanze Geografiche)</h3>
+<div class="projections">
+<p>
+proj(<strong>RegistrazioneInteresseUtente</strong>, DG) =<br/>
+( 1 ; 1 )<br/>
+= 1
+</p>
+<p>
+proj(<strong>VerificaGiornaliera</strong>, DG) =<br/>
+(
+<ul>
+<li>(1 ; 1) |</li>
+<li>... |</li>
+<li>( 1 ; 1 )</li>
+</ul>
+) ;<br/>
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= 1
+</p>
+<p>
+proj(<strong>NotificaVoliLastMinute</strong>, DG) =<br/>
+( 1 ) ;<br/>  
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= 1
+</p>
+<p>
+proj(<strong>AcquistoOfferta</strong>, DG) =<br/>
+( 1 ; 1 ) ;<br/>
+(
+<ul>
+<li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1 ) ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>(</li>
+<li><ul>
+<li>( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS )<sup>*</sup></li>
+<li>( 1 ; 1 )</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>);</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul>
+)<br/>
++ 1<br/>
+= ( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS ) ; ( <strong>calc_dist</strong>@AS ; <span style="text-decoration: overline"><strong>calc_dist_res</strong></span>@AS )<sup>*</sup> ) + 1
+</p>
+</div>
+<h3 id="pp-provider-dei-pagamenti">PP (Provider dei Pagamenti)</h3>
+<div class="projections">
+<p>
+proj(<strong>RegistrazioneInteresseUtente</strong>, PP) =<br/>
+( 1 ; 1 )<br/>
+= 1
+</p>
+<p>
+proj(<strong>VerificaGiornaliera</strong>, PP) =<br/>
+(
+<ul>
+<li>( 1 ; 1 ) |</li>
+<li> ... |</li>
+<li>( 1 ; 1 )</li>
+</ul>
+) ;<br/>  
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= 1
+</p>
+<p>
+proj(<strong>NotificaVoliLastMinute</strong>, PP) =<br/>
+( 1 ) ;<br/>  
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= 1
+</p>
+<p>
+proj(<strong>AcquistoOfferta</strong>, PP) =<br/>
+( 1 ; 1 ) ; <br/>
+(
+<ul>
+<li>( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ; 1 ; <strong>pay_offer</strong>@UT<sub><em>k</em></sub> ; ( <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@UT<sub><em>k</em></sub> | <span style="text-decoration: overline"><strong>send_payment_status</strong></span>@AS ) ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 )<sup>*</sup></li>
+<li>( 1 ; 1 )</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>);</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul>
+)<br/>
++ 1<br/>
+
+= ( <strong>req_pay</strong>@AS ; <span style="text-decoration: overline"><strong>req_pay_res</strong></span>@AS ; <strong>pay_offer</strong>@UT<sub><em>k</em></sub> ; ( <span style="text-decoration: overline"><strong>pay_offer_res</strong></span>@UT<sub><em>k</em></sub> | <span style="text-decoration: overline"><strong>send_payment_status</strong></span>@AS ) )
+</p>
+</div>
+<h3 id="pg-prontogram">PG (ProntoGram)</h3>
+<div class="projections">
+<p>
+proj(<strong>RegistrazioneInteresseUtente</strong>, PG) =<br/>
+( 1 ; 1 )<br/>
+= 1
+</p>
+<p>
+proj(<strong>VerificaGiornaliera</strong>, PG) =<br/>
+(
+<ul>
+<li>( 1 ; 1 ) |</li>
+<li>... |</li>
+<li>( 1 ; 1 )</li>
+</ul>
+) ;<br/>
+(
+<ul>
+<li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 )</li>
+</ul>
+)<br/>
+= ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) | ... | ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) | ... | ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 ) 
+</p>
+<p>
+proj(<strong>NotificaVoliLastMinute</strong>, PG) =<br/>
+( 1 ) ;<br/>
+(
+<ul>
+<li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 )</li>
+</ul>
+)<br/>
+= ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>1</em></sub> ) + 1 ) | ... | ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>k</em></sub> ) | ... | ( ( <strong>notify</strong>@AS ; <span style="text-decoration: overline"><strong>message</strong></span>@UT<sub><em>N</em></sub> ) + 1 ) 
+</p>
+<p>
+proj(<strong>AcquistoOfferta</strong>, PG) =<br/>
+( 1 ; 1 ) ;<br/>
+(
+<ul>
+<li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1 ) ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 )<sup>*</sup></li>
+<li>( 1 ; 1 )</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>);</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul>
+)<br/> 
++ 1<br/>
+= 1
+</p>
+</div>
+<h3 id="ctj-compagnia-trasporti">CT<sub><em>j</em></sub> (Compagnia Trasporti)</h3>
+<div class="projections">
+<p>
+proj(<strong>RegistrazioneInteresseUtente</strong>, CT<sub><em>j</em></sub>) =<br/>
+( 1 ; 1 )<br/>
+= 1
+</p>
+<p>
+proj(<strong>VerificaGiornaliera</strong>, CT<sub><em>j</em></sub>) =<br/>
+(
+<ul>
+<li>( 1 ; 1 ) |</li>
+<li>... |</li>
+<li>( 1 ; 1 )</li>
+</ul>
+) ;<br/>
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= 1
+</p>
+<p>
+proj(<strong>NotificaVoliLastMinute</strong>, CT<sub><em>j</em></sub>) =<br/>
+( 1 ) ;<br/>
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= 1
+</p>
+<p>
+proj(<strong>AcquistoOfferta</strong>, CT<sub><em>j</em></sub>) =<br/>
+( 1 ; 1 ) ;<br/> 
+(
+<ul>
+<li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 )<sup>*</sup></li>
+<li>( <strong>pren_trs</strong>@AS; <span style="text-decoration: overline"><strong>pren_trs_res</strong></span>@AS )</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>);</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul>
+)<br/>
++ 1<br/>
+= ( <strong>pren_trs</strong>@AS; <span style="text-decoration: overline"><strong>pren_trs_res</strong></span>@AS )
+</p>
+</div>
+<h3 id="cai-compagnia-aerea">CA<sub><em>i</em></sub> (Compagnia Aerea)</h3>
+<div class="projections">
+<p>
+proj(<strong>RegistrazioneInteresseUtente</strong>, CA<sub><em>i</em></sub>) =<br/>
+( 1 ; 1 )<br/>
+= 1
+</p>
+<p>
+proj(<strong>VerificaGiornaliera</strong>, CA<sub><em>i</em></sub>) =<br/>
+(
+<ul>
+<li>(1 ; 1) |</li>
+<li>... |</li>
+<li>( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS ) |</li>
+<li>... |</li>
+<li>( 1 ; 1 )</li>
+</ul>
+) ;<br/> 
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= ( <strong>control</strong>@AS ; <span style="text-decoration: overline"><strong>control_res</strong></span>@AS )
+</p>
+<p>
+proj(<strong>NotificaVoliLastMinute</strong>, CA<sub><em>i</em></sub>) =<br/>
+( <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS ) ;<br/>
+(
+<ul>
+<li>( ( 1 ; 1 ) + 1 ) |</li>
+<li>... |</li>
+<li>( ( 1 ; 1 ) + 1 )</li>
+</ul>
+)<br/>
+= <span style="text-decoration: overline"><strong>last_minute</strong></span>@AS
+</p>
+<p>
+proj(<strong>AcquistoOfferta</strong>, CA<sub><em>i</em></sub>) =<br/>
+( 1 ; 1 ) ;<br/>
+(
+<ul>
+<li>( 1 ; 1 ; 1 ; 1 ; ( 1 | 1  )) ;</li>
+<li>(</li>
+<li><ul>
+<li>( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA ) ;</li>
+<li>(</li>
+<li><ul>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 ) ;</li>
+<li>(</li>
+<li><ul>
+<li>( 1 ; 1 )<sup>*</sup></li>
+<li>( 1 ; 1 )</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul></li>
+<li>);</li>
+<li>+ 1</li>
+</ul></li>
+<li>)</li>
+<li>+ 1</li>
+</ul>
+)<br/>
++ 1<br/>
+= ( <strong>buy_flights</strong>@AS ; <span style="text-decoration: overline"><strong>buy_flights_res</strong></span>@CA )
+</p>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href=".." rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Precedente
+              </span>
+              Home
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../coreografiebpmn/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Prossimo
+              </span>
+              Coreografie BPMN
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Documentazione del progetto ACMESky realizzato da Marco Ferrati e Tommaso Azzalin, Università di Bologna.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.top", "navigation.instant", "search.suggest"], "translations": {"clipboard.copy": "Copia", "clipboard.copied": "Copiato", "search.config.lang": "it", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+<script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+    </script>
+</body>
+</html>

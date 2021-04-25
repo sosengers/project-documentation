@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta 2020="" 2021."="" a.a.="" acmesky"="" ai="" bologna,="" content="Documentazione del progetto " corso="" del="" della="" di="" informatica="" ingegneria="" lm="" name="description" orientata="" presso="" servizi="" software="" università=""/>
+<meta content="Marco Ferrati, Tommaso Azzalin" name="author"/>
+<link href="../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
+<title>Istruzioni per l'esecuzione - ACMESky - Documentazione progetto | SOSENG</title>
+<link href="../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<link href="../css/lightgallery.min.css" rel="stylesheet"/>
+<script src="../js/lightgallery.min.js"></script>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:""}</style>
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="blue" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-clonare-il-repository">
+          Vai al contenuto
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="ACMESky - Documentazione progetto | SOSENG" class="md-header__button md-logo" data-md-component="logo" href=".." title="ACMESky - Documentazione progetto | SOSENG">
+<img alt="logo" src="../assets/favicon.ico"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ACMESky - Documentazione progetto | SOSENG
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Istruzioni per l'esecuzione
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Passa a dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"></path></svg>
+</label>
+<input class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Passa a light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Cerca" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Cerca" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sosengers/project-documentation" title="Apri repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    sosengers/project-documentation
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../coreografie/">
+      Coreografie
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../coreografiebpmn/">
+      Coreografie BPMN
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../bpmn/">
+      BPMN
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../uml/">
+      UML
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../serviziweb/">
+        Servizi web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../implementazione/">
+        Implementazione
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="./">
+      Istruzioni per l'esecuzione
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ACMESky - Documentazione progetto | SOSENG" class="md-nav__button md-logo" data-md-component="logo" href=".." title="ACMESky - Documentazione progetto | SOSENG">
+<img alt="logo" src="../assets/favicon.ico"/>
+</a>
+    ACMESky - Documentazione progetto | SOSENG
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sosengers/project-documentation" title="Apri repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    sosengers/project-documentation
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../coreografie/">
+        Coreografie
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../coreografiebpmn/">
+        Coreografie BPMN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../bpmn/">
+        BPMN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uml/">
+        UML
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+        Servizi web
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Servizi web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Servizi web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/acmesky/">
+        ACMESky
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/flightcompany/">
+        Flight Company
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/geodistances/">
+        Geographical Distances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/paymentprovider/">
+        Payment Provider
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/prontogram/">
+        ProntoGram
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../serviziweb/travelcompany/">
+        Travel Company
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7">
+        Implementazione
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Implementazione" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Implementazione
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/acmesky/">
+        ACMESky
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/flightcompany/">
+        Flight Company
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/geodistances/">
+        Geographical Distances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/paymentprovider/">
+        Payment Provider
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/prontogram/">
+        ProntoGram
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implementazione/travelcompany/">
+        Travel Company
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Istruzioni per l'esecuzione
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Istruzioni per l'esecuzione
+      </a>
+<nav aria-label="Indice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-clonare-il-repository">
+    1. Clonare il repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-creare-i-file-di-environment-necessari">
+    2. Creare i file di environment necessari
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-eseguire-i-servizi">
+    3. Eseguire i servizi
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-caricamento-dei-dati-di-esempio">
+    4. Caricamento dei dati di esempio
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-accesso-ai-servizi">
+    5. Accesso ai servizi
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Indice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-clonare-il-repository">
+    1. Clonare il repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-creare-i-file-di-environment-necessari">
+    2. Creare i file di environment necessari
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-eseguire-i-servizi">
+    3. Eseguire i servizi
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-caricamento-dei-dati-di-esempio">
+    4. Caricamento dei dati di esempio
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-accesso-ai-servizi">
+    5. Accesso ai servizi
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1>Istruzioni per l'esecuzione</h1>
+<p>Il progetto è stato testato su due macchine:</p>
+<ul>
+<li>macOS Big Sur 11.2.3, Intel Core i9-9880H 2.30 GHz CPU, 16 GB RAM;</li>
+<li>Windows 10 20H2 build 19042.928, Intel Core i5-3550 3.30 GHz CPU, 16 GB RAM.</li>
+</ul>
+<p>Entrambi con Docker versione 20.10.5, build 55c4c88 e docker-compose versione 1.29.0, build 07737305.</p>
+<h2 id="1-clonare-il-repository">1. Clonare il repository</h2>
+<p>Il progetto è diviso in due macro-repository:</p>
+<ul>
+<li>codice sorgente: <a href="https://github.com/sosengers/project-sources">project-sources</a>;</li>
+<li>report progetto: <a href="https://github.com/sosengers/project-documentation">project-documentation</a>.</li>
+</ul>
+<p>Il repository <a href="https://github.com/sosengers/project-sources">project-sources</a> contiene il codice sorgente dei diversi servizi (submodules del repository) e alcuni file di configurazione per il lancio dei servizi tramite <code>docker-compose</code>.</p>
+<p>Per clonare il repository e i suoi submodule è sufficiente utilizzare il comando:</p>
+<div class="highlight"><pre><span></span><code>git clone --recurse-submodules git@github.com:sosengers/project-sources.git
+</code></pre></div>
+<h2 id="2-creare-i-file-di-environment-necessari">2. Creare i file di environment necessari</h2>
+<p>Per poter funzionare correttamente, alcuni servizi hanno bisogno che alcune variabili d'ambiente siano impostate prima della loro esecuzione. Per far questo è necessario creare dei file di <em>environment</em> in specifiche cartelle. Questi file contengono password, API KEY e URL che cambiano da macchina a macchina.
+Di seguito vengono presentati i contenuti dei file environment sufficienti per far funzionare il sistema nel suo intero:</p>
+<ul>
+<li><code>flight-company/.env</code><a name="fc"></a>
+<div class="highlight"><pre><span></span><code><span class="nv">POSTGRES_USER</span><span class="o">=</span><span class="s2">"flight_company_admin"</span>
+<span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span><span class="s2">"password"</span>
+</code></pre></div></li>
+<li>
+<p><code>geographical-distances/.env</code>
+<div class="highlight"><pre><span></span><code><span class="nv">OPEN_CAGE_API_KEY</span><span class="o">=</span><span class="s2">"OpenCage API key"</span>
+</code></pre></div>
+Al posto di <code>OpenCage API key</code> bisogna mettere una chiave di OpenCage valida, generabile creando un profilo tramite il sito <a href="https://opencagedata.com/">OpenCage</a> e accedendo alla propria area utente.</p>
+</li>
+<li>
+<p><code>acmesky-middleware/.env</code>
+<div class="highlight"><pre><span></span><code><span class="nv">FLASK_SECRET</span><span class="o">=</span><span class="s2">"flasksecret"</span>
+<span class="nv">RABBITMQ_HOST</span><span class="o">=</span><span class="s2">"acmesky_mq"</span>
+<span class="nv">MIDDLEWARE_HOST</span><span class="o">=</span><span class="s2">"0.0.0.0"</span>
+<span class="nv">MIDDLEWARE_PORT</span><span class="o">=</span><span class="s2">"8080"</span>
+</code></pre></div></p>
+</li>
+<li><code>ProntoGram-Frontend/.env</code>
+<div class="highlight"><pre><span></span><code><span class="nv">FLASK_SECRET</span><span class="o">=</span><span class="s2">"flasksecret"</span>
+<span class="nv">RABBITMQ_HOST</span><span class="o">=</span><span class="s2">"prontogram_mq"</span>
+<span class="nv">PRONTOGRAM_HOST</span><span class="o">=</span><span class="s2">"0.0.0.0"</span>
+<span class="nv">PRONTOGRAM_PORT</span><span class="o">=</span><span class="s2">"8080"</span>
+</code></pre></div></li>
+<li><code>camunda-workers/.env</code>
+<div class="highlight"><pre><span></span><code><span class="nv">POSTGRES_USER</span><span class="o">=</span><span class="s2">"acmesky_admin"</span>
+<span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span><span class="s2">"password"</span>
+<span class="nv">MONGO_USER</span><span class="o">=</span><span class="s2">"root"</span>
+<span class="nv">MONGO_PASSWORD</span><span class="o">=</span><span class="s2">"password"</span>
+</code></pre></div></li>
+<li><code>ProntoGram-Frontend/prontogram/static/js/environment.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">prontogramSocket</span> <span class="o">=</span> <span class="s1">'http://0.0.0.0:8000'</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>PaymentProvider-Backend/.env</code>
+<div class="highlight"><pre><span></span><code><span class="nv">PAYMENT_PROVIDER_FRONTEND</span><span class="o">=</span><span class="s2">"http://127.0.0.1:4002"</span>
+</code></pre></div></li>
+<li><code>PaymentProvider-Frontend/src/environments/environment.ts</code>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">environment</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">paymentProviderBackend</span><span class="o">:</span> <span class="s2">"http://127.0.0.1:4001"</span><span class="p">,</span>
+  <span class="nx">production</span>: <span class="kt">true</span>
+<span class="p">};</span>
+</code></pre></div></li>
+<li><code>ACMESky-Frontend/src/environments/environment.ts</code>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">environment</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">acmeskyBackend</span><span class="o">:</span> <span class="s2">"http://127.0.0.1:9000"</span><span class="p">,</span>
+  <span class="nx">acmeskyMiddleware</span><span class="o">:</span> <span class="s2">"http://127.0.0.1:9001"</span><span class="p">,</span>
+  <span class="nx">production</span>: <span class="kt">true</span>
+<span class="p">};</span>
+</code></pre></div></li>
+</ul>
+<h2 id="3-eseguire-i-servizi">3. Eseguire i servizi</h2>
+<p>Il file <code>docker-compose.yaml</code> contiene le indicazioni per docker-compose su come debbano essere avviati i diversi servizi.
+Per eseguire tutti i servizi è sufficiente lanciare il comando:
+<div class="highlight"><pre><span></span><code>docker-compose up
+</code></pre></div>
+È possibile aggiungere gli argomenti:</p>
+<ul>
+<li><code>--build</code> per forzare la compilazione (nel caso non sia la prima volta in cui si utilizza il comando <code>docker-compose</code> con questo file;</li>
+<li><code>-d</code> per lanciare i container in modalità <em>detached</em>, liberando il terminale una volta lanciati tutti quanti.</li>
+</ul>
+<p>Per spegnere tutti i servizi:</p>
+<ul>
+<li>se si è usato solo il comando <code>docker-compose up</code>, è sufficiente premere <kbd>CTRL</kbd> + <kbd>C</kbd> ;</li>
+<li>se si è avviato in modalità <em>detached</em> è possibile invocare il comando:
+<div class="highlight"><pre><span></span><code>docker-compose down
+</code></pre></div></li>
+</ul>
+<p>Nel caso invece si vogliano eseguire i servizi solamente di alcuni ruoli, è stato creato un Makefile che ne semplifica la selezione:</p>
+<ul>
+<li>ACMESky
+<div class="highlight"><pre><span></span><code>make acmesky
+</code></pre></div></li>
+<li>Payment Provider
+<div class="highlight"><pre><span></span><code>make payment_provider
+</code></pre></div></li>
+<li>Travel Companies 
+<div class="highlight"><pre><span></span><code>make travel_companies
+</code></pre></div></li>
+<li>Flight Companies 
+<div class="highlight"><pre><span></span><code>make flight_companies
+</code></pre></div></li>
+<li>Geographical Distances 
+<div class="highlight"><pre><span></span><code>make geographical_distances
+</code></pre></div></li>
+<li>ProntoGram 
+<div class="highlight"><pre><span></span><code>make prontogram
+</code></pre></div></li>
+</ul>
+<p>Di default i log di alcuni servizi sono disabilitati per avere un output più chiaro e pulito. Per riabilitarli è sufficiente commentare (<code>#</code>) le righe nel file <code>docker-compose.yaml</code> in cui il driver per il log viene definite come <code>none</code>:
+<div class="highlight"><pre><span></span><code><span class="nt">logging</span><span class="p">:</span>
+  <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">none</span>
+</code></pre></div></p>
+<h2 id="4-caricamento-dei-dati-di-esempio">4. Caricamento dei dati di esempio</h2>
+<p>Per poter testare il sistema è necessario caricare dei dati di esempio dei voli delle compagnie aeree.<br/>
+Il container del database delle compagnie aeree (<code>flight_companies_db</code>) ha già dei dataset precaricati, è sufficiente importarli all'interno delle tabelle dei database. Questo è possibile farlo mediante i seguenti tre (perché tre sono le compagnie aeree di esempio) comandi:</p>
+<ul>
+<li>per <code>Flight Company 1</code>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it flight_companies_db psql -U flight_company_admin -d flightcompany1 -c <span class="s2">"COPY flights(flight_id, departure_airport_code, arrival_airport_code, cost, departure_datetime, arrival_datetime) FROM '/example_data/Flight company 1-FC 1.csv' DELIMITER ';' CSV HEADER;"</span>
+</code></pre></div></li>
+<li>per <code>Flight Company 2</code>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it flight_companies_db psql -U flight_company_admin -d flightcompany2 -c <span class="s2">"COPY flights(flight_id, departure_airport_code, arrival_airport_code, cost, departure_datetime, arrival_datetime) FROM '/example_data/Flight company 2-FC 2.csv' DELIMITER ';' CSV HEADER;"</span>
+</code></pre></div></li>
+<li>per <code>Flight Company 3</code>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it flight_companies_db psql -U flight_company_admin -d flightcompany3 -c <span class="s2">"COPY flights(flight_id, departure_airport_code, arrival_airport_code, cost, departure_datetime, arrival_datetime) FROM '/example_data/Flight company 3-FC 3.csv' DELIMITER ';' CSV HEADER;"</span>
+</code></pre></div></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Nota sui comandi precedenti</p>
+<p>Se si è modificato la variabile d'ambiente <code>POSTGRES_USER</code> definita nel file <a href="#fc"><code>flight-company/.env</code></a> allora è necessario modificare il nome utente passato dopo il parametro <code>-U</code> nei tre comandi precedenti.</p>
+</div>
+<h2 id="5-accesso-ai-servizi">5. Accesso ai servizi</h2>
+<p>Se i punti precedenti sono stati seguiti correttamente e tutti i servizi sono attivi, è possibile accedere:</p>
+<ul>
+<li>ad ACMESky all'indirizzo <a href="http://127.0.0.1:5002">http://127.0.0.1:5002</a>;</li>
+<li>a ProntoGram all'indirizzo <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>;</li>
+<li>alla dashboard di Camunda (accedendo con username <em>demo</em> e password <em>demo</em>) <a href="http://127.0.0.1:10000/camunda/">http://127.0.0.1:10000/camunda/</a>.</li>
+</ul>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../implementazione/travelcompany/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Precedente
+              </span>
+              Travel Company
+            </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Documentazione del progetto ACMESky realizzato da Marco Ferrati e Tommaso Azzalin, Università di Bologna.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.top", "navigation.instant", "search.suggest"], "translations": {"clipboard.copy": "Copia", "clipboard.copied": "Copiato", "search.config.lang": "it", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+<script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+    </script>
+</body>
+</html>

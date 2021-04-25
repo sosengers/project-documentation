@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Geographical Distances
+  version: '1.0'
+  description: Interface that models the operations available for the service that computes geographical distances in ACMESky.
+servers:
+  - url: 'http://geographical_distances:8080'
+    description: Inside the Docker network
+  - url: 'http://chosen_url:5000'
+    description: Outside the Docker network (chosen_url is a placeholder)
+paths:
+  /distance:
+    post:
+      summary: calculateDistance
+      operationId: calculateDistance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+                format: double
+                minimum: 0
+                description: Distance between the two addresses.
+        '400':
+          description: Bad Request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Locations'
+        description: ''
+      description: |-
+        Calculates the distance between the given locations. Given addresses are first transformed into coordinates via geocoding, then the distance is computed and returned in kilometers.
+        API for: ACMESky
+components:
+  schemas:
+    Locations:
+      title: Locations
+      type: object
+      description: 'Represents the two addresses to compute their distance. They are not coordinates, they are addresses.'
+      properties:
+        address_1:
+          type: string
+          minLength: 1
+        address_2:
+          type: string
+          minLength: 1
+      required:
+        - address_1
+        - address_2

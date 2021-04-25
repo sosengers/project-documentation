@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: ProntoGram
+  version: '1.0'
+  description: Interface that models the operations available for ProntoGram in ACMESky.
+servers:
+  - url: 'http://prontogram_backend:8080'
+    description: Inside the Docker network
+  - url: 'http://chosen_url:5001'
+    description: Outside the Docker network (chosen_url is a placeholder)
+paths:
+  /messages:
+    post:
+      summary: sendMessage
+      operationId: sendMessage
+      responses:
+        '200':
+          description: OK
+      description: |-
+        Sends the message to ProntoGram for being dispatched to the actual user.
+        API for: ACMESky
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+components:
+  schemas:
+    Message:
+      title: Message
+      type: object
+      properties:
+        sender:
+          type: string
+          minLength: 1
+        receiver:
+          type: string
+          minLength: 1
+        body:
+          type: string
+          minLength: 1
+        send_time:
+          type: string
+          format: date-time
+      required:
+        - sender
+        - receiver
+        - body

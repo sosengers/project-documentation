@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: Flight Company
+  version: '1.0'
+  description: Interface that models the operations available for a flight company in ACMESky.
+servers:
+  - url: 'http://flight_company_1:8080'
+    description: Inside the Docker network (for Flight Company 1)
+  - url: 'http://flight_company_2:8080'
+    description: Inside the Docker network (for Flight Company 2)
+  - url: 'http://flight_company_3:8080'
+    description: Inside the Docker network (for Flight Company 3)
+  - url: 'http://chosen_url:7001' 
+    description: Outside the Docker network (for Flight Company 1, chosen_url is a placeholder)
+  - url: 'http://chosen_url:7002'
+    description: Outside the Docker network (for Flight Company 2, chosen_url is a placeholder)
+  - url: 'http://chosen_url:7003'
+    description: Outside the Docker network (for Flight Company 3, chosen_url is a placeholder)
+paths:
+  /flights/buy:
+    parameters: []
+    post:
+      summary: buyFlights
+      operationId: buyFlights
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+      description: |-
+        Buys the flights with the given purchase details.
+        API for: ACMESky
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlightsToPurchase'
+        description: ''
+  /flights/offers:
+    get:
+      summary: getFlightOffers
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flights'
+      operationId: getFlightOffers
+      description: |-
+        Returns the daily flight offers of the company.
+        API for: ACMESky
+components:
+  schemas:
+    Flight:
+      title: Flight
+      type: object
+      properties:
+        flight_id:
+          type: string
+        departure_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        arrival_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        cost:
+          type: number
+          minimum: 0
+          format: double
+        departure_datetime:
+          type: string
+          format: date-time
+        arrival_datetime:
+          type: string
+          format: date-time
+      required:
+        - flight_id
+        - departure_airport_code
+        - arrival_airport_code
+        - cost
+        - departure_datetime
+        - arrival_datetime
+    FlightToPurchase:
+      title: FlightToPurchase
+      type: object
+      properties:
+        flight_id:
+          type: string
+        date:
+          type: string
+          format: date
+      required:
+        - flight_id
+        - date
+    Flights:
+      title: Flights
+      type: object
+      properties:
+        flights:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flight'
+    FlightsToPurchase:
+      title: FlightsToPurchase
+      type: object
+      properties:
+        flight_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlightToPurchase'
+  securitySchemes: {}

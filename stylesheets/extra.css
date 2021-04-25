@@ -1,0 +1,26 @@
+:root {
+    --md-admonition-icon--openapi: url('../assets/serviziweb/openapi.svg')
+  }
+  .md-typeset .admonition.openapi,
+  .md-typeset details.openapi {
+    border-color: rgb(43, 155, 70);
+  }
+  .md-typeset .openapi > .admonition-title,
+  .md-typeset .openapi > summary {
+    background-color: rgba(43, 155, 70, 0.1);
+    border-color: rgb(43, 155, 70);
+  }
+  .md-typeset .openapi > .admonition-title::before,
+  .md-typeset .openapi > summary::before {
+    background-color: rgb(43, 155, 70);
+    -webkit-mask-image: var(--md-admonition-icon--openapi);
+            mask-image: var(--md-admonition-icon--openapi);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-italic {
+    font-style: italic;
+  }

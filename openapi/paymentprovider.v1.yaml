@@ -1,0 +1,154 @@
+openapi: 3.0.0
+info:
+  title: Payment Provider
+  version: '1.0'
+  description: Interface that models the operations available for the Payment Provider that supports payments by customers in ACMESky.
+servers:
+  - url: 'http://payment_provider_backend:8080'
+    description: Inside the Docker network
+  - url: 'http://chosen_url:4001'
+    description: Outside the Docker network (chosen_url is a placeholder)
+paths:
+  /payments/request:
+    parameters: []
+    post:
+      summary: createPaymentRequest
+      operationId: createPaymentRequest
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentCreationResponse'
+        '400':
+          description: Bad Request
+      description: |-
+        Creates a payment request for a user.
+        API for: ACMESky
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        description: ''
+  /payments/pay:
+    parameters: []
+    post:
+      summary: sendPayment
+      operationId: sendPayment
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      description: |-
+        Sends the payment data for paying a request.
+        API for: User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentData'
+        description: ''
+  '/payments/{transaction_id}':
+    get:
+      summary: getPaymentDetails
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequest'
+        '404':
+          description: Not Found
+      operationId: getPaymentDetails
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: path
+          required: true
+          description: ID of transaction
+          name: transaction_id
+      description: |-
+        Gets the information for the payment request for a user.
+        API for: User
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: transaction_id
+        in: path
+        required: true
+        description: ID of the transaction
+components:
+  schemas:
+    PaymentRequest:
+      title: PaymentRequest
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          minimum: 0
+        description:
+          type: string
+        payment_receiver:
+          type: string
+      required:
+        - amount
+        - description
+        - payment_receiver
+    PaymentData:
+      title: PaymentData
+      type: object
+      properties:
+        transaction_id:
+          type: string
+          format: uuid
+        credit_cart_number:
+          type: string
+          pattern: '[0-9]{16,16}'
+        cvv:
+          type: string
+          pattern: '[0-9]{3,3}'
+        expiration_date:
+          type: string
+          format: date
+        owner_name:
+          type: string
+      required:
+        - transaction_id
+        - credit_cart_number
+        - cvv
+        - expiration_date
+        - owner_name
+    Error:
+      title: Error
+      type: object
+      properties:
+        description:
+          type: string
+          minLength: 1
+      required:
+        - description
+    PaymentCreationResponse:
+      title: PaymentCreationResponse
+      type: object
+      properties:
+        redirect_page:
+          type: string
+          minLength: 1
+        transaction_id:
+          type: string
+          format: uuid
+      required:
+        - redirect_page
+        - transaction_id

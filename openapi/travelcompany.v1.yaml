@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: Travel Company
+  version: '1.0'
+  description: Interface that models the operations available for a travel company that offers car transfers from the customers' house and the airports in ACMESky.
+servers:
+  - url: 'http://travel_company_1:8080'
+    description: Inside the Docker network (for Travel Company 1)
+  - url: 'http://travel_company_2:8080'
+    description: Inside the Docker network (for Travel Company 2)
+  - url: 'http://travel_company_3:8080'
+    description: Inside the Docker network (for Travel Company 3)
+  - url: 'http://chosen_url:6001'
+    description: Outside the Docker network (for Travel Company 1, chosen_url is a placeholder)
+  - url: 'http://chosen_url:6002'
+    description: Outside the Docker network (for Travel Company 2, chosen_url is a placeholder)
+  - url: 'http://chosen_url:6003'
+    description: Outside the Docker network (for Travel Company 3, chosen_url is a placeholder)
+paths:
+  /transfers/buy:
+    post:
+      summary: buyTransfer
+      operationId: buyTransfers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PurchaseDetails'
+            examples:
+              SOAP:
+                value: '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trav="travelcompany.com.xsd"><soapenv:Header/><soapenv:Body><trav:buyTransfers><departure_transfer_datetime>2020-01-31T12:38:56</departure_transfer_datetime><customer_address>Corso del Popolo, 25, Roma, Italia</customer_address><airport_code>FCO</airport_code><customer_name>Mario Rossi</customer_name><arrival_transfer_datetime>2020-02-03T12:54:04</arrival_transfer_datetime></trav:buyTransfers></soapenv:Body></soapenv:Envelope>'
+      description: |-
+        Buys the car transfers with the given purchase details.
+        API for: ACMESky
+    parameters: []
+components:
+  schemas:
+    PurchaseDetails:
+      title: PurchaseDetails
+      type: object
+      properties:
+        customer_address:
+          type: string
+        airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        departure_transfer_datetime:
+          type: string
+          format: date-time
+        arrival_transfer_datetime:
+          type: string
+          format: date-time
+        customer_name:
+          type: string
+      required:
+        - customer_address
+        - airport_code
+        - departure_transfer_datetime
+        - arrival_transfer_datetime
+        - customer_name
+      x-examples: {}
+    Error:
+      title: Error
+      type: object
+      properties:
+        description:
+          type: string
+          minLength: 1
+      required:
+        - description
+    Response:
+      title: Response
+      type: object
+      properties:
+        response:
+          type: string
+          minLength: 1
+      required:
+        - response

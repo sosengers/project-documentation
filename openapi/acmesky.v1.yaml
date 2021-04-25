@@ -1,0 +1,235 @@
+openapi: 3.0.0
+info:
+  title: ACMESky
+  version: '1.0'
+  description: Interface that models the operations for ACMESky.
+servers:
+  - url: 'http://acmesky_backend:8080'
+    description: Inside the docker network
+  - url: 'http://chosen_url:9000'
+    description: Outside the Docker network (chosen_url is a placeholder)
+paths:
+  /offers/lastminute:
+    post:
+      summary: publishLastMinuteOffer
+      operationId: publishLastMinuteOffer
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+      description: |-
+        Allows flight companies to notify ACMESky of the presence of new last minute offers.
+        API for: Flight Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Flight'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: company_name
+          description: Name of the flight company
+          required: true
+    parameters: []
+  /offers/buy:
+    post:
+      summary: buyOffer
+      operationId: buyOffer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuyOfferResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      description: |-
+        Requires to start the buying process of the offer with the given offer code.
+        API for: User
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferPurchaseData'
+        description: ''
+  /payments:
+    post:
+      summary: sendPaymentInformation
+      operationId: sendPaymentInformation
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+      description: |-
+        Sends the information received by the user for verification purposes.
+        API for: Payment Provider
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentInformation'
+        description: ''
+  /interests:
+    post:
+      summary: registerInterest
+      operationId: registerInterest
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Interest'
+      description: |-
+        Register the user interest for roundtrip flights.
+        API for: User
+components:
+  schemas:
+    Flight:
+      title: Flight
+      type: object
+      properties:
+        flight_id:
+          type: string
+        departure_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        arrival_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        cost:
+          type: number
+          format: double
+          minimum: 0
+        departure_datetime:
+          type: string
+          format: date-time
+        arrival_datetime:
+          type: string
+          format: date-time
+      required:
+        - flight_id
+        - departure_airport_code
+        - arrival_airport_code
+        - cost
+        - departure_datetime
+        - arrival_datetime
+    OfferPurchaseData:
+      title: OfferPurchaseData
+      type: object
+      properties:
+        offer_code:
+          type: string
+          minLength: 1
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          minLength: 1
+        surname:
+          type: string
+          minLength: 1
+      required:
+        - offer_code
+        - address
+        - name
+        - surname
+    Address:
+      title: Address
+      type: object
+      properties:
+        street:
+          type: string
+        number:
+          type: string
+        city:
+          type: string
+        zip_code:
+          type: string
+        country:
+          type: string
+      required:
+        - street
+        - number
+        - city
+        - zip_code
+        - country
+    PaymentInformation:
+      title: PaymentInformation
+      type: object
+      properties:
+        transaction_id:
+          type: string
+          format: uuid
+        status:
+          type: boolean
+      required:
+        - transaction_id
+        - status
+    Interest:
+      title: Interest
+      type: object
+      properties:
+        departure_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        arrival_airport_code:
+          type: string
+          pattern: '[A-Z]{3,3}'
+        min_departure_date:
+          type: string
+          format: date
+        max_comeback_date:
+          type: string
+          format: date
+        max_price:
+          type: number
+          format: double
+          minimum: 0
+        prontogram_username:
+          type: string
+          minLength: 1
+      required:
+        - departure_airport_code
+        - arrival_airport_code
+        - min_departure_date
+        - max_comeback_date
+        - max_price
+        - prontogram_username
+    Error:
+      title: Error
+      type: object
+      properties:
+        description:
+          type: string
+          minLength: 1
+      required:
+        - description
+    BuyOfferResponse:
+      title: BuyOfferResponse
+      type: object
+      properties:
+        communication_code:
+          type: string
+          minLength: 1
+      required:
+        - communication_code

@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta 2020="" 2021."="" a.a.="" acmesky"="" ai="" bologna,="" content="Documentazione del progetto " corso="" del="" della="" di="" informatica="" ingegneria="" lm="" name="description" orientata="" presso="" servizi="" software="" università=""/>
+<meta content="Marco Ferrati, Tommaso Azzalin" name="author"/>
+<link href="../../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
+<title>Travel Company - ACMESky - Documentazione progetto | SOSENG</title>
+<link href="../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<link href="../../css/lightgallery.min.css" rel="stylesheet"/>
+<script src="../../js/lightgallery.min.js"></script>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7C&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:""}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="blue" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#panoramica">
+          Vai al contenuto
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="ACMESky - Documentazione progetto | SOSENG" class="md-header__button md-logo" data-md-component="logo" href="../.." title="ACMESky - Documentazione progetto | SOSENG">
+<img alt="logo" src="../../assets/favicon.ico"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ACMESky - Documentazione progetto | SOSENG
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Travel Company
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Passa a dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"></path></svg>
+</label>
+<input class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Passa a light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Cerca" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Cerca" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sosengers/project-documentation" title="Apri repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    sosengers/project-documentation
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../coreografie/">
+      Coreografie
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../coreografiebpmn/">
+      Coreografie BPMN
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../bpmn/">
+      BPMN
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../uml/">
+      UML
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+        Servizi web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../implementazione/">
+        Implementazione
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../executeinstruction/">
+      Istruzioni per l'esecuzione
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ACMESky - Documentazione progetto | SOSENG" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="ACMESky - Documentazione progetto | SOSENG">
+<img alt="logo" src="../../assets/favicon.ico"/>
+</a>
+    ACMESky - Documentazione progetto | SOSENG
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sosengers/project-documentation" title="Apri repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    sosengers/project-documentation
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../coreografie/">
+        Coreografie
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../coreografiebpmn/">
+        Coreografie BPMN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../bpmn/">
+        BPMN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../uml/">
+        UML
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+        Servizi web
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Servizi web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Servizi web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../acmesky/">
+        ACMESky
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../flightcompany/">
+        Flight Company
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../geodistances/">
+        Geographical Distances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../paymentprovider/">
+        Payment Provider
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prontogram/">
+        ProntoGram
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Travel Company
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Travel Company
+      </a>
+<nav aria-label="Indice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#panoramica">
+    Panoramica
+  </a>
+<nav aria-label="Panoramica" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buytransfers">
+    buyTransfers
+  </a>
+<nav aria-label="buyTransfers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parametri">
+    Parametri
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipi-di-ritorno">
+    Tipi di ritorno
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#header-della-richiesta">
+    Header della richiesta
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modelli">
+    Modelli
+  </a>
+<nav aria-label="Modelli" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#error">
+    Error
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#purchasedetails">
+    PurchaseDetails
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#response">
+    Response
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interfaccia-openapi">
+    Interfaccia OpenAPI
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7">
+        Implementazione
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Implementazione" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Implementazione
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../implementazione/">
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../implementazione/acmesky/">
+        ACMESky
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../implementazione/flightcompany/">
+        Flight Company
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../implementazione/geodistances/">
+        Geographical Distances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../implementazione/paymentprovider/">
+        Payment Provider
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../implementazione/prontogram/">
+        ProntoGram
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../implementazione/travelcompany/">
+        Travel Company
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../executeinstruction/">
+        Istruzioni per l'esecuzione
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Indice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#panoramica">
+    Panoramica
+  </a>
+<nav aria-label="Panoramica" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buytransfers">
+    buyTransfers
+  </a>
+<nav aria-label="buyTransfers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parametri">
+    Parametri
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipi-di-ritorno">
+    Tipi di ritorno
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#header-della-richiesta">
+    Header della richiesta
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modelli">
+    Modelli
+  </a>
+<nav aria-label="Modelli" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#error">
+    Error
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#purchasedetails">
+    PurchaseDetails
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#response">
+    Response
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interfaccia-openapi">
+    Interfaccia OpenAPI
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1>Travel Company</h1>
+<p>Torna a <a href="../">Servizi web</a>.</p>
+<h2 id="panoramica">Panoramica</h2>
+<p>Dentro la rete Docker <code>acmesky-network</code>, tutti gli URI sono relativi a:</p>
+<ul>
+<li><em>http://travel_company_1:8080</em> for Travel Company 1;</li>
+<li><em>http://travel_company_2:8080</em> for Travel Company 2;</li>
+<li><em>http://travel_company_3:8080</em> for Travel Company 3.</li>
+</ul>
+<p>Da fuori Docker, le porte per raggiungere i servizi sono rispettivamente <em>6001</em>, <em>6002</em>, <em>6003</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Risorsa</th>
+<th>Descrizione</th>
+<th>Risorsa per</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#buyTransfers">buyTransfers</a></td>
+<td>Permette di acquistare il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto.</td>
+<td><em>ACMESky</em></td>
+</tr>
+</tbody>
+</table>
+<p><a name="buyTransfers"></a></p>
+<h3 id="buytransfers">buyTransfers</h3>
+<p>Permette di acquistare il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto.</p>
+<h4 id="parametri">Parametri</h4>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PurchaseDetails</strong></td>
+<td><a href="#purchasedetails"><strong>PurchaseDetails</strong></a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="tipi-di-ritorno">Tipi di ritorno</h4>
+<ul>
+<li><strong>200</strong>: <a href="#response"><strong>Response</strong></a></li>
+<li><strong>500</strong>: <a href="#error"><strong>Error</strong></a></li>
+</ul>
+<h4 id="header-della-richiesta">Header della richiesta</h4>
+<ul>
+<li><strong>Content-Type</strong>: application/xml</li>
+<li><strong>Accept</strong>: application/xml</li>
+</ul>
+<h2 id="modelli">Modelli</h2>
+<p><a name="error"></a></p>
+<h3 id="error">Error</h3>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>String</strong></td>
+</tr>
+</tbody>
+</table>
+<p><a name="purchasedetails"></a></p>
+<h3 id="purchasedetails">PurchaseDetails</h3>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>customer_address</strong></td>
+<td><strong>String</strong></td>
+</tr>
+<tr>
+<td><strong>airport_code</strong></td>
+<td><strong>String</strong></td>
+</tr>
+<tr>
+<td><strong>departure_transfer_datetime</strong></td>
+<td><strong>DateTime</strong></td>
+</tr>
+<tr>
+<td><strong>arrival_transfer_datetime</strong></td>
+<td><strong>DateTime</strong></td>
+</tr>
+<tr>
+<td><strong>customer_name</strong></td>
+<td><strong>String</strong></td>
+</tr>
+</tbody>
+</table>
+<p><a name="response"></a></p>
+<h3 id="response">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>response</strong></td>
+<td><strong>String</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interfaccia-openapi">Interfaccia OpenAPI</h2>
+<p>Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da Travel Company.</p>
+<details class="openapi"><summary>OpenAPI</summary><div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
+<span class="nt">info</span><span class="p">:</span>
+  <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Travel Company</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="s">'1.0'</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Interface that models the operations available for a travel company that offers car transfers from the customers' house and the airports in ACMESky.</span>
+<span class="nt">servers</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="s">'http://travel_company_1:8080'</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Inside the Docker network (for Travel Company 1)</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="s">'http://travel_company_2:8080'</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Inside the Docker network (for Travel Company 2)</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="s">'http://travel_company_3:8080'</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Inside the Docker network (for Travel Company 3)</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="s">'http://chosen_url:6001'</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Outside the Docker network (for Travel Company 1, chosen_url is a placeholder)</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="s">'http://chosen_url:6002'</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Outside the Docker network (for Travel Company 2, chosen_url is a placeholder)</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="s">'http://chosen_url:6003'</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Outside the Docker network (for Travel Company 3, chosen_url is a placeholder)</span>
+<span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">/transfers/buy</span><span class="p">:</span>
+    <span class="nt">post</span><span class="p">:</span>
+      <span class="nt">summary</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">buyTransfer</span>
+      <span class="nt">operationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">buyTransfers</span>
+      <span class="nt">responses</span><span class="p">:</span>
+        <span class="s">'200'</span><span class="p p-Indicator">:</span>
+          <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OK</span>
+          <span class="nt">content</span><span class="p">:</span>
+            <span class="nt">application/json</span><span class="p">:</span>
+              <span class="nt">schema</span><span class="p">:</span>
+                <span class="nt">$ref</span><span class="p">:</span> <span class="s">'#/components/schemas/Response'</span>
+        <span class="s">'500'</span><span class="p p-Indicator">:</span>
+          <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Internal Server Error</span>
+          <span class="nt">content</span><span class="p">:</span>
+            <span class="nt">application/json</span><span class="p">:</span>
+              <span class="nt">schema</span><span class="p">:</span>
+                <span class="nt">$ref</span><span class="p">:</span> <span class="s">'#/components/schemas/Error'</span>
+      <span class="nt">requestBody</span><span class="p">:</span>
+        <span class="nt">content</span><span class="p">:</span>
+          <span class="nt">application/xml</span><span class="p">:</span>
+            <span class="nt">schema</span><span class="p">:</span>
+              <span class="nt">$ref</span><span class="p">:</span> <span class="s">'#/components/schemas/PurchaseDetails'</span>
+            <span class="nt">examples</span><span class="p">:</span>
+              <span class="nt">SOAP</span><span class="p">:</span>
+                <span class="nt">value</span><span class="p">:</span> <span class="s">'&lt;soapenv:Envelope</span><span class="nv"> </span><span class="s">xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"</span><span class="nv"> </span><span class="s">xmlns:trav="travelcompany.com.xsd"&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;&lt;trav:buyTransfers&gt;&lt;departure_transfer_datetime&gt;2020-01-31T12:38:56&lt;/departure_transfer_datetime&gt;&lt;customer_address&gt;Corso</span><span class="nv"> </span><span class="s">del</span><span class="nv"> </span><span class="s">Popolo,</span><span class="nv"> </span><span class="s">25,</span><span class="nv"> </span><span class="s">Roma,</span><span class="nv"> </span><span class="s">Italia&lt;/customer_address&gt;&lt;airport_code&gt;FCO&lt;/airport_code&gt;&lt;customer_name&gt;Mario</span><span class="nv"> </span><span class="s">Rossi&lt;/customer_name&gt;&lt;arrival_transfer_datetime&gt;2020-02-03T12:54:04&lt;/arrival_transfer_datetime&gt;&lt;/trav:buyTransfers&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;'</span>
+      <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
+        <span class="no">Buys the car transfers with the given purchase details.</span>
+        <span class="no">API for: ACMESky</span>
+    <span class="nt">parameters</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<span class="nt">components</span><span class="p">:</span>
+  <span class="nt">schemas</span><span class="p">:</span>
+    <span class="nt">PurchaseDetails</span><span class="p">:</span>
+      <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PurchaseDetails</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+      <span class="nt">properties</span><span class="p">:</span>
+        <span class="nt">customer_address</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="nt">airport_code</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="nt">pattern</span><span class="p">:</span> <span class="s">'[A-Z]{3,3}'</span>
+        <span class="nt">departure_transfer_datetime</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">date-time</span>
+        <span class="nt">arrival_transfer_datetime</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">date-time</span>
+        <span class="nt">customer_name</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">required</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">customer_address</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">airport_code</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">departure_transfer_datetime</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arrival_transfer_datetime</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">customer_name</span>
+      <span class="nt">x-examples</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+    <span class="nt">Error</span><span class="p">:</span>
+      <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Error</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+      <span class="nt">properties</span><span class="p">:</span>
+        <span class="nt">description</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="nt">minLength</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="nt">required</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">description</span>
+    <span class="nt">Response</span><span class="p">:</span>
+      <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Response</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+      <span class="nt">properties</span><span class="p">:</span>
+        <span class="nt">response</span><span class="p">:</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="nt">minLength</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="nt">required</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">response</span>
+</code></pre></div>
+</details>
+<p>Torna a <a href="../">Servizi web</a>.</p>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../prontogram/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Precedente
+              </span>
+              ProntoGram
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../../implementazione/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Prossimo
+              </span>
+</div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Documentazione del progetto ACMESky realizzato da Marco Ferrati e Tommaso Azzalin, Università di Bologna.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.top", "navigation.instant", "search.suggest"], "translations": {"clipboard.copy": "Copia", "clipboard.copied": "Copiato", "search.config.lang": "it", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+<script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+    </script>
+</body>
+</html>
