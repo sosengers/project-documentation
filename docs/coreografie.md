@@ -175,17 +175,19 @@ Come nell'interazione fra AS e le varie CA<sub>*i*</sub>, le interazioni paralle
 ### Acquisto offerta da un utente
 **AcquistoOfferta** è connessa perché:
 
-- il ricevente di **ins_code** è il mittente di **req_pay** e di **ins_code_failure** (quest'ultimo termina la coreografia);
-- il ricevente di **req_pay** è il mittente di  **pay_offer**
-- il ricevente di **pay_offer** è il mittente di **pay_offer_res**;
-- il ricevente di **pay_offer_res** è il mittente di **req_pay_res**;
-- il ricevente di **req_pay_res** è il mittente di **buy_flights** e di **payment_failure** (quest'ultimo termina la coreografia);
+- il ricevente di **ins_code** è il mittente di **ins_code_res** e di **ins_code_failure** (quest'ultimo termina la coreografia);
+- il mittente di **ins_code_res** è lo stesso mittente di **req_pay**;
+- il ricevente di **req_pay** è il mittente di **req_pay_res**;
+- il ricevente di **req_pay_res** è il mittente di **send_payment_ref**;
+- il ricevente di **send_payment_ref** è il mittente di **pay_offer**;
+- il ricevente di **pay_offer** è sia il mittente di **pay_offer_res** che di **send_payment_status** e i due riceventi sono diversi (UT<sub><em>k</em></sub> in un caso, AS nell'altro);
+- il ricevente di **send_payment_status** è il mittente di **buy_flights** e di **payment_failure** (quest'ultimo termina la coreografia);
 - il ricevente di **buy_flights** è il mittente di **buy_flights_res**;
 - il ricevente di **buy_flights_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
-- il ricevente di **calc_dist** è il mittente di **calc_dist_res**;
-- il ricevente di **calc_dist_res** è il mittente di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
-- il ricevente di **calc_dist** è il mittente di **calc_dist_res** (prima parte della sequenza);
-- il ricevente di **calc_dist_res** è il mittente di **calc_dist** (seconda parte della sequenza che quindi è connessa);
+- il ricevente di **calc_dist** è il mittente di **calc_dist_res** (nella sua prima invocazione);
+- il ricevente di **calc_dist_res** è il mittente della seconda invocazione di **calc_dist** e di **send_tickets** (quest'ultimo termina la coreografia);
+- il ricevente di **calc_dist** è il mittente di **calc_dist_res** nella prima parte della sequenza ( **calc_dist** ; **calc_dist_res** )* ;
+- il ricevente di **calc_dist_res** è il mittente di **calc_dist** nella seconda parte della sopracitata sequenza, che quindi è connessa;
 - il ricevente di **calc_dist_res** (l'ultimo della sequenza lunga almeno uno per ipotesi) è il mittente di **pren_trs**;
 - il ricevente di **pren_trs** è il mittente di **pren_trs_res**;
 - il ricevente di **pren_trs_res** è il mittente di **send_tickets** (quest'ultimo termina la coreografia).
