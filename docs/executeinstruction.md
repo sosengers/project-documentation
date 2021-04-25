@@ -12,8 +12,8 @@ Entrambi con Docker versione 20.10.5, build 55c4c88 e docker-compose versione 1.
 ## 1. Clonare il repository
 Il progetto è diviso in due macro-repository:
 
-- [project-sources](https://github.com/sosengers/project-sources)
-- [project-documentation](https://github.com/sosengers/project-documentation)
+- codice sorgente: [project-sources](https://github.com/sosengers/project-sources);
+- report progetto: [project-documentation](https://github.com/sosengers/project-documentation).
 
 Il repository [project-sources](https://github.com/sosengers/project-sources) contiene il codice sorgente dei diversi servizi (submodules del repository) e alcuni file di configurazione per il lancio dei servizi tramite `docker-compose`.
 
@@ -102,7 +102,7 @@ Per spegnere tutti i servizi:
 docker-compose down
 ```
 
-Nel caso invece si vogliano eseguire i servizi solamente di alcuni ruoli, è stato creato un Makefile che ne semplifica la selezione 
+Nel caso invece si vogliano eseguire i servizi solamente di alcuni ruoli, è stato creato un Makefile che ne semplifica la selezione:
 
 - ACMESky
 ```bash

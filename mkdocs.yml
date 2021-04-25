@@ -89,5 +89,4 @@ nav:
     - Payment Provider: "implementazione/paymentprovider.md"
     - ProntoGram: "implementazione/prontogram.md"
     - Travel Company: "implementazione/travelcompany.md"
-  - Istruzioni per l'esecuzione:
-    - "": "executeinstruction.md"
+  - Istruzioni per l'esecuzione: "executeinstruction.md"
