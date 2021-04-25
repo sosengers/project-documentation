@@ -6,7 +6,7 @@ Da fuori Docker, la porta per raggiungere il servizio è *4001*.
 
 | Risorsa | Descrizione | Risorsa per |
 |---------|-------------|-------------|
-| [**POST** /payments/request](#createPaymentRequest) | Crea una richiesta di pagamento per un utente. | ACMESky |
+| [**POST** /payments/request](#createPaymentRequest) | Crea una richiesta di pagamento per un utente. | *ACMESky* |
 | [**GET** /payments/{transaction_id}](#getPaymentDetails) | Ritorna le informazioni relative alla richiesta di pagamento da parte di utente. | Utente finale |
 | [**POST** /payments/pay](#sendPayment) | Permette l'invio delle informazioni di pagamento per pagare un offerta. | Utente finale |
 

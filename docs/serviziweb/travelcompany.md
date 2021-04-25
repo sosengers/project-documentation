@@ -12,7 +12,7 @@ Da fuori Docker, le porte per raggiungere i servizi sono rispettivamente *6001*,
 
 | Risorsa | Descrizione | Risorsa per |
 |---------|-------------|-------------|
-| [buyTransfers](#buyTransfers) | Permette di acquistare il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto. | ACMESky |
+| [buyTransfers](#buyTransfers) | Permette di acquistare il trasferimento verso l'aeroporto passando come argomento i dettagli di acquisto. | *ACMESky* |
 
 <a name="buyTransfers"></a>
 ### buyTransfers

@@ -7,10 +7,10 @@ Da fuori Docker, la porta per raggiungere il servizio è *9000*.
 
 | Risorsa | Descrizione | Risorsa per |
 |---------|-------------|-------------|
-| [**POST** /offers/buy](#buyOffer)                      | Richiede l'avvio di un processo di acquisto dell'offerta con il codice offerta passato come argomento. | Utente finale             |
-| [**POST** /offers/lastminute](#publishLastMinuteOffer) | Permette alle compagnie aeree di notificare ACMESky della presenza di nuove offerte last minute.       | Flight Company   |
-| [**POST** /interests](#registerInterest)               | Registra l'interesse di un utente per la ricezione di offerte di volo A/R.                             | Utente finale             |
-| [**POST** /payments](#sendPaymentInformation)          | Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.                            | Payment Provider |
+| [**POST** /offers/buy](#buyOffer)                      | Richiede l'avvio di un processo di acquisto dell'offerta con il codice offerta passato come argomento. | Utente finale      |
+| [**POST** /offers/lastminute](#publishLastMinuteOffer) | Permette alle compagnie aeree di notificare *ACMESky* della presenza di nuove offerte last minute.     | *Flight Company*   |
+| [**POST** /interests](#registerInterest)               | Registra l'interesse di un utente per la ricezione di offerte di volo A/R.                             | Utente finale      |
+| [**POST** /payments](#sendPaymentInformation)          | Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.                            | *Payment Provider* |
 
 ## Richieste
 
@@ -36,7 +36,7 @@ Richiede l'avvio di un processo di acquisto dell'offerta con il codice offerta p
 
 <a name="publishLastMinuteOffer"></a>
 ### **POST** /offers/lastminute
-Permette alle compagnie aeree di notificare ACMESky della presenza di nuove offerte last minute.
+Permette alle compagnie aeree di notificare *ACMESky* della presenza di nuove offerte last minute.
 
 #### Parametri
 
@@ -165,7 +165,7 @@ Invia le informazioni di pagamento ricevute dall'utente a fini di verifica.
 
 ## Interfaccia OpenAPI
 
-Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da ACMESky.
+Nel seguente blocco (cliccare sulla barra con su scritto "OpenAPI" in basso per aprirlo) è possibile visualizzare l'interfaccia OpenAPI che descrive il funzionamento delle API fornite da *ACMESky*.
 
 ??? openapi "OpenAPI"
     ```yaml
