@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Implementazione
 
 In questa sezione vengono presentate le scelte implementative effettuate per la realizzazione dei servizi presenti in questo sistema.
