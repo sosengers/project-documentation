@@ -25,12 +25,14 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: teal
+      accent: blue
       toggle:
         icon: material/toggle-switch-off-outline
         name: Passa a dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: teal
+      accent: blue
       toggle:
         icon: material/toggle-switch
         name: Passa a light mode

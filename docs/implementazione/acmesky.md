@@ -25,7 +25,7 @@ MW[Middleware]
 end
 ```
 
-ACMESky è l'insiemi di servizi che permettono ad un utente di inserire un proprio interesse all'interno del sistema e di acquistare i voli per un viaggio.
+ACMESky è l'insieme di servizi che permettono ad un utente di inserire un proprio interesse all'interno del sistema e di acquistare i voli per un viaggio.
 
 ## Interazioni Utente e ACMESky
 ```mermaid

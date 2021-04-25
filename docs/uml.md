@@ -3,7 +3,7 @@ hide:
   - navigation
 ---
 
-In questa sezione vengono rappresentata, sotto forma di diagrammi UML con profilo **TinySOA**, la modellazione della SOA di cui fa parte l'organizzazione ACMESky. I seguenti diagrammi hanno lo scopo di evidenziare per ogni servizio quali sono le *capability* accessibili tramite il sistema e le interfacce che le espongono, esternamente e/o internamente, da ogni organizzazione facente parte della SOA.  
+In questa sezione viene rappresentata, sotto forma di diagrammi UML con profilo **TinySOA**, la modellazione della SOA di cui fa parte l'organizzazione ACMESky. I seguenti diagrammi hanno lo scopo di evidenziare, per ogni servizio, quali sono le *capability* accessibili tramite il sistema e le interfacce che le espongono, esternamente e/o internamente, da ogni organizzazione facente parte della SOA.  
 In particolare, si distinguono tre tipi di servizi:
 
 - **Task** (o **Process**): espone *capability* realizzate attraverso processi interni all'organizzazione, eventualmente svolti da umani. Sono strettamente legati al dominio del problema;
@@ -44,7 +44,7 @@ Le capability _Offer_, _Message_, _MessagePublishing_ e relative interfacce sono
 
 Nel diagramma sovrastante sono evidenziate le capability emerse dall'analisi del diagramma BPMN "Acquisto offerta da un utente" e le interfacce che le espongono. 
 
-Le capability emerse per il ruolo di ACMESky sono: _OfferCodeInsertion_, _PaymentHandler_, _Payment_, _Offer_ e _Distance_; ognuna di queste capability è esposta da una specifica interfaccia. Queste capability permettono al sistema di: ricevere la richiesta di acquisto di un'offerta da parte di un utente, ricevere l'esito di un'operazione di pagamento, verificare l'esito di un pagamento, verificare il codice dell'offerta inserito da un utente e controllare la distanza geografica tra due coordinate. La capability _OfferCodeInsertion_ dipende dalle interfacce che espongono la capability _Offer_ per poter verificare la validità del codice inserito e _Distance_ per controllare la distanza tra la casa dell'utente e l'aeroporto. La capability _PaymentHandler_ dipende dall'interfaccia che espone la capability _Payment_ per verificare l'esito del pagamento. 
+Le capability emerse per il ruolo di ACMESky sono: _OfferCodeInsertion_, _PaymentHandler_, _Payment_, _Offer_ e _Distance_; ognuna di queste capability è esposta da una specifica interfaccia. Queste capability permettono al sistema di: ricevere la richiesta di acquisto di un'offerta da parte di un utente, ricevere l'esito di un'operazione di pagamento, verificare l'esito di un pagamento, verificare il codice dell'offerta inserito da un utente e controllare la distanza geografica tra due indirizzi. La capability _OfferCodeInsertion_ dipende dalle interfacce che espongono la capability _Offer_ per poter verificare la validità del codice inserito e _Distance_ per controllare la distanza tra la casa dell'utente e l'aeroporto. La capability _PaymentHandler_ dipende dall'interfaccia che espone la capability _Payment_ per verificare l'esito del pagamento. 
 
 Per il ruolo di PaymentProvider abbiamo individuato la capability _PaymentRequest_ esposta da due interfacce _PaymentRequest_ e _PaymentHandler_. L'interfaccia _PaymentRequest_ è una dipendenza della capability _OfferCodeInsertion_ per poter creare la richiesta di un pagamento da richiedere poi all'utente. 
 
