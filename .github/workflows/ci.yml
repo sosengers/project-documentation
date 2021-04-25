@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: 3.8
       - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.ymld
+      - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.yml
   pdf-deploy:
     runs-on: ubuntu-latest
     steps:
