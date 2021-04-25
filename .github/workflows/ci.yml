@@ -13,3 +13,9 @@ jobs:
           python-version: 3.8
       - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.yml
+      - run: export ENABLE_PDF_EXPORT=1
+      - run: mkdocs build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: report.pdf
+          path: site/pdf/document.pdf
