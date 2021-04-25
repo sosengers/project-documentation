@@ -26,13 +26,13 @@ theme:
       scheme: default
       primary: teal
       toggle:
-        icon: material/lightbulb-outline
+        icon: material/lightbulbc
         name: Passa a dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: teal
       toggle:
-        icon: material/lightbulb
+        icon: material/lightbulb-outline
         name: Passa a light mode
 extra_css:
   - stylesheets/extra.css
