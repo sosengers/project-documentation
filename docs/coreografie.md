@@ -18,13 +18,13 @@ hide:
 ## Coreografie
 
 Le seguenti coreografie modellano tutti quanti i possibili processi che possono avvenire nel sistema che verrà implementato.  
-Le interazioni che non comprendono ACMESky come mittente o destinatario sono molto semplificate, in quanto esterne ad essa e di cui non possiamo conoscere l'implementazione interna.
+Le interazioni che non comprendono *ACMESky* come mittente o destinatario sono molto semplificate, in quanto esterne ad essa e di cui non possiamo conoscere l'implementazione interna.
 
 Verranno utilizzate le seguenti sigle per i ruoli delle coreografie:
 
 - AS: ACMESky;
-- CA<sub>*i*</sub>: Compagnie Aerea *i*, con *i* in [1..N];
-- CT<sub>*j*</sub>: Compagnie Trasporto (navetta) *j*, con *j* in [1..M];
+- CA<sub>*i*</sub>: Compagnie Aerea *i*, con *i* &isin; {1..N};
+- CT<sub>*j*</sub>: Compagnie Trasporto *j*, con *j* &isin; {1..M};
 - PG: ProntoGram;
 - PP: Provider dei Pagamenti;
 - DG: servizio per il calcolo delle Distanze Geografiche;
@@ -34,15 +34,14 @@ Verranno utilizzate le seguenti sigle per i ruoli delle coreografie:
 
 <div class="choreographies">
 <p>
-<strong>RegistrazioneInteresseUtente</strong> ::=<br />
-(<strong>reg</strong>: UT<sub><em>k</em></sub> -> AS; <strong>reg_res</strong>: AS -> UT<sub><em>k</em></sub>)
+<strong>RegistrazioneInteresseUtente</strong> ::= (<strong>reg</strong>: UT<sub><em>k</em></sub> -> AS; <strong>reg_res</strong>: AS -> UT<sub><em>k</em></sub>)
 </p>
 </div>
 
 Le interazioni hanno il seguente significato:
 
 - **reg**: registrazione dell'interesse di un utente per un viaggio;
-- **reg_res**: risposta all'interazione **reg**.
+- **reg_res**: risposta all'interazione **reg** (conferma o smentita della registrazione).
 
 ### Verifica giornaliera delle offerte
 
@@ -69,10 +68,10 @@ Le interazioni hanno il seguente significato:
 
 Le interazioni hanno il seguente significato:
 
-- **control**: controllo giornaliero della presenza di offerte da parte della compagnia aerea;
-- **control_res**: risposta all'interazione **control**;
-- **notify**: notifica della presenza di voli di interesse per l'utente tramite ProntoGram (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;
-- **message**: ProntoGram riferisce il messaggio all'Utente (essendo un servizio esterno questa è una semplificazione).
+- **control**: controllo giornaliero della presenza di offerte da parte della *compagnia aerea*;
+- **control_res**: risposta all'interazione **control** (inoltro delle nuove offerte disponibili);
+- **notify**: notifica della presenza di voli di interesse per l'utente tramite *ProntoGram* (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;
+- **message**: *ProntoGram* riferisce il messaggio all'utente (essendo un servizio esterno questa è una semplificazione).
 
 ### Ricezione offerte last minute
 
@@ -93,9 +92,9 @@ Le interazioni hanno il seguente significato:
 
 Le interazioni hanno il seguente significato:
 
-- **last_minute**: compagnia aerea notifica ACMESky di un'offerta last minute;
-- **notify**: notifica della presenza di voli di interesse per l'utente tramite ProntoGram (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;
-- **message**: ProntoGram riferisce il messaggio all'Utente (essendo un servizio esterno questa è una semplificazione).
+- **last_minute**: la *compagnia aerea* notifica *ACMESky* della presenza di alcune offerte last minute, inviandogliele;
+- **notify**: notifica della presenza di voli di interesse per l'utente tramite *ProntoGram* (possono esserci come no, se non ci sono l'utente non viene contattato). Il codice offerta inviato è univoco per offerta: se ci sono più utenti con gli stessi interessi viene inviato lo stesso codice offerta;
+- **message**: *ProntoGram* riferisce il messaggio all'utente (essendo un servizio esterno questa è una semplificazione).
 
 ### Acquisto offerta da un utente
 
@@ -141,23 +140,23 @@ Le interazioni hanno il seguente significato:
 
 Le interazioni hanno il seguente significato:
 
-- **ins_code**: utente inserisce il codice ricevuto via ProntoGram sul portale;
-- **ins_code_res**: risposta all'interazione **ins_code**;
-- **req_pay**: ACMESky richiede il pagamento al Provider dei Pagamenti;
+- **ins_code**: l'utente inserisce il codice ricevuto via *ProntoGram* sul portale;
+- **ins_code_res**: risposta all'interazione **ins_code** (conferma o smentita della ricezione del codice offerta);
+- **req_pay**: *ACMESky* richiede il pagamento al *Provider dei Pagamenti*;
 - **req_pay_res**: risposta all'interazione **req_pay** (inoltro riferimento per il pagamento dell'offerta);
-- **send_payment_ref**: ACMESky invia all'utente il riferimento per poter pagare l'offerta tramite il Provider dei Pagamenti;
-- **pay_offer**: l'utente invia i dati per il pagamento al Provider dei Pagamenti;
-- **pay_offer_res**: risposta all'interazione **pay_offer** (invio esito del pagamento);
-- **send_payment_status**: il Provider dei Pagamenti comunica ad ACMESky l'esito del pagamento;
-- **buy_flights**: ACMESky compra per conto dell'utente il biglietto per il volo A/R da lui/lei scelto presso la compagnia aerea CA<sub>*i*</sub> che fornisce i due voli che soddisfano il bisogno;
-- **buy_flights_res**: risposta all'interazione **buy_flights** (CA<sub>*i*</sub> conferma ad ACMESky la disponibilità del volo e inoltra il biglietto);
-- **calc_dist**: ACMESky richiede il calcolo della distanza al servizio esterno per il calcolo delle distanze geografiche;
+- **send_payment_ref**: *ACMESky* invia all'utente il riferimento per poter pagare l'offerta tramite il *Provider dei Pagamenti*;
+- **pay_offer**: l'utente invia i dati per il pagamento al *Provider dei Pagamenti*;
+- **pay_offer_res**: risposta all'interazione **pay_offer** (invio esito del pagamento all'utente);
+- **send_payment_status**: il *Provider dei Pagamenti* comunica ad *ACMESky* l'esito del pagamento;
+- **buy_flights**: *ACMESky* compra per conto dell'utente il biglietto per i voli scelti presso la *compagnia aerea* CA<sub>*i*</sub> che fornisce entrambi i voli che soddisfano il bisogno;
+- **buy_flights_res**: risposta all'interazione **buy_flights** (CA<sub>*i*</sub> conferma ad *ACMESky* la disponibilità del volo e inoltra il biglietto);
+- **calc_dist**: *ACMESky* richiede il calcolo della distanza al servizio esterno per il calcolo delle *distanze geografiche*;
 - **calc_dist_res**: risposta all'interazione **calc_dist**;
-- **pren_trs**: in base alla distanza ACMESky può, oppure no, prenotare il trasporto;
+- **pren_trs**: in base alla distanza *ACMESky* può, oppure no, prenotare il trasporto;
 - **pren_trs_res**: risposta all'interazione **pren_trs**;
-- **send_tickets**: ACMESky invia all'utente i biglietti;
-- **payment_failure**: ACMESky comunica all'utente che c'è stato un problema durante il pagamento;
-- **ins_code_failure**: ACMESky comunica all'utente che il codice inserito non è valido.
+- **send_tickets**: *ACMESky* invia all'utente i biglietti;
+- **payment_failure**: *ACMESky* comunica all'utente che c'è stato un problema durante il pagamento;
+- **ins_code_failure**: *ACMESky* comunica all'utente che il codice inserito non è valido.
 
 ### Verifica della connectedness delle coreografie
 - **RegistrazioneInteresseUtente** è connessa in quanto il ricevente in **reg** è uguale al mittente in **reg_res**.
