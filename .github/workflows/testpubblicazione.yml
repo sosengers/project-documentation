@@ -13,6 +13,7 @@ jobs:
           python-version: 3.8
       - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force --clean --config-file ./mkdocs.yml
+      - run: mkdir converted_mermaid_diagrams
       - run: markdown_mermaid_to_images -f docs/implementazione -o converted_mermaid_diagrams
       - run: cp converted_mermaid_diagrams/* docs/implementazione/
       - run: export ENABLE_PDF_EXPORT=1
