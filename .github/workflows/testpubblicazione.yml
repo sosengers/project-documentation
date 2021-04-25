@@ -22,8 +22,7 @@ jobs:
       - run: sudo rm /usr/bin/chromium-browser
       - run: markdown_mermaid_to_images -l DEBUG -f docs/implementazione -o converted_mermaid_diagrams
       - run: cp converted_mermaid_diagrams/* docs/implementazione/
-      - run: export ENABLE_PDF_EXPORT=1
-      - run: mkdocs build
+      - run: ENABLE_PDF_EXPORT=1 mkdocs build
       - uses: actions/upload-artifact@v2
         with:
           name: report.pdf
