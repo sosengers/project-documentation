@@ -12,8 +12,31 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.expand
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+  font:
+    text: Open Sans
+  icon:
+    repo: fontawesome/brands/github
+  favicon: "assets/favicon.ico"
+  logo: "assets/favicon.ico"
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Passa a dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      toggle:
+        icon: material/toggle-switch
+        name: Passa a light mode
 extra_css:
   - stylesheets/extra.css
+edit_uri: ""
 plugins:
   - search
   - mermaid2:
