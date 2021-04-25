@@ -27,7 +27,7 @@ theme:
       primary: teal
       accent: blue
       toggle:
-        icon: material/lightbulbc
+        icon: material/lightbulb
         name: Passa a dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
