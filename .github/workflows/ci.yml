@@ -25,5 +25,5 @@ jobs:
       - run: ENABLE_PDF_EXPORT=1 mkdocs build
       - uses: actions/upload-artifact@v2
         with:
-          name: report.pdf
+          name: AzzalinFerrati-ProjectReport.pdf
           path: site/pdf/document.pdf
